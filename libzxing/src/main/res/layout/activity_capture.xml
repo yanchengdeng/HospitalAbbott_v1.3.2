@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="42.7dp"
+        android:background="#0099ff">
+
+        <ImageView
+            android:id="@+id/capture_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10.7dp"
+            android:paddingRight="10.7dp"
+            android:paddingTop="5dp"
+            android:src="@drawable/top_back" />
+
+        <TextView
+            android:id="@+id/capture_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            tools:text="护士1111" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:orientation="vertical">
+
+        <SurfaceView
+            android:id="@+id/capture_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:id="@+id/capture_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/capture_mask_top_rl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/capture_mask_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/shadow" />
+
+                <TextView
+                    android:id="@+id/capture_tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="4dp"
+                    android:text="2018/01/18    星期三     09:17"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/capture_crop_view"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/capture_mask_top_rl"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/zxing_code_bg">
+
+                <ImageView
+                    android:id="@+id/capture_scan_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/line" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/capture_mask_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/capture_crop_view"
+                android:background="@drawable/shadow" />
+
+            <ImageView
+                android:id="@+id/capture_mask_left"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_above="@id/capture_mask_bottom"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/capture_mask_top_rl"
+                android:layout_toLeftOf="@id/capture_crop_view"
+                android:background="@drawable/shadow" />
+
+            <ImageView
+                android:id="@+id/capture_mask_right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_above="@id/capture_mask_bottom"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/capture_mask_top_rl"
+                android:layout_toRightOf="@id/capture_crop_view"
+                android:background="@drawable/shadow" />
+
+            <TextView
+                android:id="@+id/capture_manual_control"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/capture_crop_view"
+                android:layout_alignRight="@+id/capture_crop_view"
+                android:layout_below="@+id/capture_crop_view"
+                android:paddingTop="14dp"
+                android:paddingBottom="10dp"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:text="将患者腕带条码放入框内，即可自动扫描若扫描失败，请手动选择用户"
+                android:textColor="@android:color/white"
+                android:textSize="12.3sp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</LinearLayout>

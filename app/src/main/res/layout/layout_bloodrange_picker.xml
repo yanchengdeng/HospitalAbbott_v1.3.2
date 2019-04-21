@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000">
+
+    <LinearLayout
+        android:id="@+id/container_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:id="@+id/container_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="41.3dp"
+            android:background="#f8f9f8">
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:text="血糖时间点"-->
+            <!--android:textColor="#0073ff"-->
+            <!--android:textSize="@dimen/text_17" />-->
+
+            <TextView
+                android:id="@+id/btn_cancel"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="center_vertical|left"
+                android:paddingLeft="11.3dp"
+                android:text="取消"
+                android:textColor="#666666"
+                android:textSize="16sp" />
+            <!--android:paddingLeft="@dimen/top_left"-->
+            <!--android:paddingRight="@dimen/top_right"-->
+
+            <TextView
+                android:id="@+id/btn_confirm"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:gravity="center_vertical|right"
+                android:paddingRight="11.3dp"
+                android:text="确定"
+                android:textColor="#0099ff"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#e3e3e3" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="217.3dp"
+                android:background="#ffffff"
+                android:gravity="center"
+                android:padding="5dp"
+                android:orientation="horizontal">
+
+                <com.comvee.hospitalabbott.widget.pick.LoopView
+                    android:id="@+id/loopView_range"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:canLoopLoopView="false"
+                    app:centerTextColorLoopView="#000000"
+                    app:gravityLoopView="2"
+                    app:lineColorLoopView="#e3e3e3"
+                    app:textSizeLoopView="21.3sp"
+                    app:topBottomTextColorLoopView="#999999" />
+
+            </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

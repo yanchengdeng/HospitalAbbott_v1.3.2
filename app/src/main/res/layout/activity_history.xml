@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/test_title_bar" />
+
+    <LinearLayout
+        android:id="@+id/historyFragment_ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="53.3dp"
+        android:layout_alignParentBottom="true"
+        android:background="#f7f8fb"
+        android:gravity="center_horizontal">
+
+        <RadioGroup
+            android:layout_width="200dp"
+            android:layout_height="37.3dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/historyFragment_rd_list"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/history_list_bg"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="列表"
+                android:textColor="@drawable/history_text_color"
+                android:textSize="@dimen/text_17" />
+
+            <RadioButton
+                android:id="@+id/historyFragment_rd_curve"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/history_curve_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="曲线"
+                android:textColor="@drawable/history_text_color"
+                android:textSize="@dimen/text_17" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/h_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@+id/historyFragment_ll_bottom"
+        android:background="#c7c7d5" />
+
+
+    <FrameLayout
+        android:id="@+id/historyFragment_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/h_line"
+        android:layout_below="@+id/test_title_bar" />
+
+
+</RelativeLayout>

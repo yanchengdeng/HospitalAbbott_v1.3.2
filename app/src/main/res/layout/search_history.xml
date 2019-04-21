@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/searchFragment_scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10.7dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="33.3dp"
+            android:paddingLeft="@dimen/top_left"
+            android:paddingRight="@dimen/top_right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="搜索历史"
+                android:textColor="@color/text_gray_99"
+                android:textSize="@dimen/text_16" />
+
+            <TextView
+                android:id="@+id/searchFragment_cleared"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="清空"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <!--<View style="@style/horizontal_gray" />-->
+
+        <com.comvee.hospitalabbott.widget.flowlayout.TagFlowLayout
+            android:id="@+id/searchFragment_flowLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:gravity="left"
+            app:max_select="1" />
+
+    </LinearLayout>
+</ScrollView>

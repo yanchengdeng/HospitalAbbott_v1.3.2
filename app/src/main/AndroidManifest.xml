@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.comvee.hospitalabbott">
+
+    <uses-feature android:name="android.hardware.usb.host" />
+
+    <!-- 访问CellID或WiFi,只要当前设备可以接收到基站的服务信号，便可获得位置信息 -->
+    <uses-permission-sdk-23 android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许读取网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许读取wifi网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许 弹出系统级别的AlterDialog -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 允许 修改屏幕亮度 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <!-- 获取设备ID -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- 设置系统时间 -->
+    <!-- <uses-permission android:name="android.permission.SET_TIME" /> -->
+
+
+    <!-- 获取读写的权利 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.BATTERY_STATS" />
+
+    <!-- WIFI -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- 允许程序改变网络链接状态 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 允许程序改变WIFI链接状态 -->
+
+
+    <!-- 屏幕待机时间 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <!-- 屏蔽HOME、BACK -->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+
+    <!-- 震动权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 拨号 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+
+    <application
+        android:name=".XTYApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:launchMode="singleTask">
+
+            <!-- <activity android:name=".ui.detection.MemberResultActivity" -->
+            <!-- android:theme="@style/activityStyle"> -->
+            <!-- <activity android:name=".ui.testble.TestBleAcivity"> -->
+            <intent-filter>
+
+                <!-- 增加lancher配置 -->
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>
+        <activity
+            android:name=".ui.search.SearchActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/activityStyle"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.patient.PatientActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/activityStyle" />
+        <activity
+            android:name=".ui.record.ManualRecordActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/activityStyle" />
+        <activity
+            android:name=".ui.detection.MemberResultActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/activityStyle" />
+        <activity
+            android:name=".ui.quality.QualityControlActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/activityStyle" />
+        <activity
+            android:name=".ui.quality.QualityResultActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/activityStyle" />
+        <activity
+            android:name=".ui.detection.TestBloodActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.scan.CaptureActivity" />
+        <activity
+            android:name=".ui.history.HistoryActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.history.DayHistoryActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.update.UpDateActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/activityStyle" />
+        <activity
+            android:name=".ui.download.DownloadActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/activityStyle" />
+
+        <service android:name=".network.service.BloodUpdateService" />
+        <service android:name=".network.service.IndexLoadRefreshService" />
+
+        <activity android:name=".ui.login.NetworkTestActivity"></activity>
+    </application>
+
+</manifest>

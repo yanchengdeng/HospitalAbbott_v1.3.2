@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="42.7dp"
+        android:background="#0099ff">
+
+        <ImageView
+            android:id="@+id/capture_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10.7dp"
+            android:paddingRight="10.7dp"
+            android:paddingTop="5dp"
+            android:src="@drawable/top_back" />
+
+        <TextView
+            android:id="@+id/capture_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            tools:text="护士1111" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#141e30"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/capture_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/capture_mask_top_rl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/capture_mask_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+
+                    android:layout_alignParentTop="true" />
+
+                <TextView
+                    android:id="@+id/capture_tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="90dp"
+                    android:layout_marginTop="35dp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="4dp"
+                    android:text="2018/01/18    星期三     09:17"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+
+                android:id="@+id/capture_crop_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/capture_mask_top_rl"
+                android:layout_centerHorizontal="true"
+
+
+                android:background="@drawable/shaomiao">
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/capture_mask_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/capture_crop_view" />
+
+            <ImageView
+                android:id="@+id/capture_mask_left"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_above="@id/capture_mask_bottom"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/capture_mask_top_rl"
+                android:layout_toLeftOf="@id/capture_crop_view" />
+
+            <ImageView
+                android:id="@+id/capture_mask_right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_above="@id/capture_mask_bottom"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/capture_mask_top_rl"
+                android:layout_toRightOf="@id/capture_crop_view" />
+
+            <TextView
+                android:id="@+id/capture_manual_control"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/capture_crop_view"
+                android:layout_alignRight="@+id/capture_crop_view"
+                android:layout_below="@+id/capture_crop_view"
+                android:layout_marginTop="80dp"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:paddingBottom="10dp"
+                android:text="将设备后方的摄像头对准患者腕带条码即可自动扫描"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/scan_fail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/capture_crop_view"
+                android:layout_alignRight="@+id/capture_crop_view"
+                android:layout_below="@+id/capture_crop_view"
+                android:layout_marginTop="55dp"
+                android:gravity="center"
+                android:text="扫描失败"
+                android:textColor="#ff2a00"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/capture_scan_line_fail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/capture_crop_view"
+                android:layout_alignRight="@+id/capture_crop_view"
+                android:layout_below="@+id/scan_fail"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:text="请手动选择用户或者点击“重新扫描”按钮进行重新扫描"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+
+            <LinearLayout
+                android:id="@+id/ll_operating_btn"
+                android:layout_width="250dp"
+                android:layout_height="46dp"
+                android:layout_below="@+id/capture_scan_line_fail"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/rounded_rectangle_btn"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/operating_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="重新扫描"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_16" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</LinearLayout>

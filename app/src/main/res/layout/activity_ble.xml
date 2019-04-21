@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/contentTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/start_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开启" />
+
+        <LinearLayout
+            android:id="@+id/content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/ReadDeviceUUIDP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="获取UUID指令报文" />
+
+            <Button
+                android:id="@+id/ReadDeviceTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="读取设备时间的报文" />
+
+            <Button
+                android:id="@+id/SetDeviceTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置设备时间" />
+
+            <Button
+                android:id="@+id/ReadDeviceDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="读取设备日期的报文" />
+
+            <Button
+                android:id="@+id/SetDeviceDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置设备日期" />
+
+            <Button
+                android:id="@+id/ReadDeviceCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="读取记录条数" />
+
+            <Button
+                android:id="@+id/GetReadSugarCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="葡萄糖历史记录数[记录类型0]" />
+
+            <Button
+                android:id="@+id/ReadSugarData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="葡萄糖历史记录的数据[记录类型0]" />
+
+            <Button
+                android:id="@+id/getReadScanSugarCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="葡萄糖扫描记录数[记录类型1]" />
+
+            <Button
+                android:id="@+id/GetDeviceSN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="读取设备SN[扫描检测仪背后SN]" />
+
+            <Button
+                android:id="@+id/GetNotifyStopOTG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发送停止OTG指令" />
+
+            <Button
+                android:id="@+id/GetNotifyStartOTG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="开启OTG指令" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

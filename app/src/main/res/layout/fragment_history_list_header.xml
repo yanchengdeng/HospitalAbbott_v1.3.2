@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:circleProgress="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="126.7dp">
+        <!--android:layout_marginBottom="18.7dp"-->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.comvee.hospitalabbott.widget.view.CircleProgressBar
+                android:id="@+id/circleProgress_normal"
+                android:layout_width="57.3dp"
+                android:layout_height="57.3dp"
+                android:layout_marginTop="@dimen/history_list_header_top"
+                circleProgress:bgCircleProgressColor="#e6e6e6"
+                circleProgress:circleProgressColor="@color/green"
+                circleProgress:circleProgressDisplayType="2"
+                circleProgress:circleProgressStrokeWidth="2px"
+                circleProgress:circleProgressTextColor="@color/black"
+                circleProgress:circleProgressTextSize="16sp"
+                circleProgress:companyTextSize="@dimen/text_13" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9.3dp"
+                android:text="正常"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_14" />
+            <!--android:layout_marginTop="@dimen/history_list_header_top_tv"-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="34dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.comvee.hospitalabbott.widget.view.CircleProgressBar
+                android:id="@+id/circleProgress_low"
+                android:layout_width="57.3dp"
+                android:layout_height="57.3dp"
+                android:layout_marginTop="@dimen/history_list_header_top"
+                circleProgress:bgCircleProgressColor="#e6e6e6"
+                circleProgress:circleProgressColor="@color/blue"
+                circleProgress:circleProgressDisplayType="2"
+                circleProgress:circleProgressStrokeWidth="2px"
+                circleProgress:circleProgressTextColor="@color/black"
+                circleProgress:circleProgressTextSize="16sp"
+                circleProgress:companyTextSize="@dimen/text_13" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9.3dp"
+                android:text="偏低"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_14" />
+            <!--android:layout_marginTop="@dimen/history_list_header_top_tv"-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="34dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.comvee.hospitalabbott.widget.view.CircleProgressBar
+                android:id="@+id/circleProgress_high"
+                android:layout_width="57.3dp"
+                android:layout_height="57.3dp"
+                android:layout_marginTop="@dimen/history_list_header_top"
+                circleProgress:bgCircleProgressColor="#e6e6e6"
+                circleProgress:circleProgressColor="#fe633c"
+                circleProgress:circleProgressDisplayType="2"
+                circleProgress:circleProgressStrokeWidth="2px"
+                circleProgress:circleProgressTextColor="@color/black"
+                circleProgress:circleProgressTextSize="16sp"
+                circleProgress:companyTextSize="@dimen/text_13" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9.3dp"
+                android:text="偏高"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_14" />
+            <!--android:layout_marginTop="@dimen/history_list_header_top_tv"-->
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <include layout="@layout/fragment_history_list_header_item" />
+
+</LinearLayout>

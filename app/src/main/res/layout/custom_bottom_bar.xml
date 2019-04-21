@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?><!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"--><!--android:layout_height="120px"--><!--android:background="@color/white">-->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/bottom_one_layout"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_width="0dp">
+
+        <TextView
+            style="@style/bottom_tv"
+            android:drawableTop="@drawable/bottom_bed_bg"
+            android:id="@+id/bottom_one"
+            android:text="病床" />
+    </RelativeLayout>
+
+    <!--<ImageView-->
+    <!--android:id="@+id/bottom_two"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:src="@drawable/bottom_ward_bg" />-->
+    <RelativeLayout
+        android:id="@+id/bottom_two_layout"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_width="0dp">
+
+        <TextView
+            style="@style/bottom_tv"
+            android:drawableTop="@drawable/bottom_ward_bg"
+            android:id="@+id/bottom_two"
+            android:text="今日任务" />
+
+        <TextView
+            android:background="@drawable/rounded_rectangle_red"
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/fragment_main_countTv"
+            android:layout_alignParentTop="true"
+            android:layout_height="18dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="18dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_12"
+            android:visibility="visible"
+            tools:text="3" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottom_three_layout"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:visibility="visible">
+
+        <TextView
+            style="@style/bottom_tv"
+            android:drawableTop="@drawable/bottom_zxing_bg"
+            android:id="@+id/bottom_three"
+            android:text="扫描腕带" />
+    </RelativeLayout>
+
+
+    <!--<ImageView-->
+    <!--android:id="@+id/bottom_three"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:src="@drawable/bottom_setting_bg" />-->
+    <RelativeLayout
+        android:id="@+id/bottom_four_layout"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_width="0dp">
+
+        <TextView
+            style="@style/bottom_tv"
+            android:drawableTop="@drawable/bottom_setting_bg"
+            android:id="@+id/bottom_four"
+            android:text="设置" />
+
+    </RelativeLayout>
+
+</merge>
+
+
+    <!--</LinearLayout>-->

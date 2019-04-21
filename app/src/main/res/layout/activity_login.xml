@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_login_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rel_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/login_iv_log"
+            android:layout_width="77.3dp"
+            android:layout_height="77.3dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:src="@drawable/hospital_09" />
+
+        <LinearLayout
+            android:id="@+id/login_ed_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_iv_log"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="26.7dp"
+            android:layout_marginRight="26.7dp"
+            android:layout_marginTop="46.7dp"
+            android:gravity="right"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ed_height"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6.7dp"
+                    android:layout_marginRight="3.3dp"
+                    android:src="@drawable/hospital_01" />
+
+                <com.comvee.hospitalabbott.widget.view.CleanEditTextWithIcon
+                    android:id="@+id/login_ed_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20px"
+                    android:background="@null"
+                    android:hint="请输入帐号"
+                    android:inputType="textVisiblePassword"
+                    android:maxLength="11"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="#cccccc"
+                    android:textSize="@dimen/text_17" />
+
+            </LinearLayout>
+
+
+            <!--自动弹出输入框-->
+            <!--android:focusable="true"-->
+            <!--android:focusableInTouchMode="true"-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#c7c7d5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ed_height"
+                android:layout_marginTop="20px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6.7dp"
+                    android:layout_marginRight="3.3dp"
+                    android:src="@drawable/hospital_03" />
+
+                <com.comvee.hospitalabbott.widget.view.CleanEditTextWithIcon
+                    android:id="@+id/login_ed_pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20px"
+                    android:background="@null"
+                    android:hint="请输入密码"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="#cccccc"
+                    android:textSize="@dimen/text_17" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#c7c7d5" />
+
+            <TextView
+                android:id="@+id/login_tv_forget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13.3dp"
+                android:text="忘记密码?"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <com.comvee.hospitalabbott.widget.view.ProgressButton
+            android:id="@+id/pb_btn"
+            android:layout_width="match_parent"
+            android:layout_height="46.7dp"
+            android:layout_below="@+id/login_ed_ll"
+            android:layout_marginLeft="26.7dp"
+            android:layout_marginRight="26.7dp"
+            android:layout_marginTop="26.7dp" />
+
+        <TextView
+            android:id="@+id/toWifi_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pb_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:padding="10dp"
+            android:text="无线网络连接"
+            android:textColor="#cccccc"
+            android:visibility="gone"
+            android:textSize="@dimen/text_16" />
+
+        <TextView
+            android:id="@+id/deviceCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toWifi_tv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_17"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/address_tv"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/deviceCode"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_connect_test"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="网络测试"
+        android:background="@color/gray_divider"
+        android:visibility="gone"/>
+
+
+</LinearLayout>

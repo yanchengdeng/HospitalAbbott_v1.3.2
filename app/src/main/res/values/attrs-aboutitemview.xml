@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AboutItemView">
+        <attr name="marginLeft" format="dimension" />
+        <attr name="marginRight" format="dimension" />
+        <attr name="right_icon" format="reference|integer" />
+        <attr name="right_icon_marginRight" format="dimension" />
+        <attr name="right_icon_visibility" format="boolean" />
+        <attr name="left_text" format="string" />
+        <attr name="right_text" format="string" />
+        <attr name="right_text_color" format="color" />
+        <attr name="left_log" format="reference" />
+        <attr name="left_drawablePadding" format="dimension" />
+    </declare-styleable>
+</resources>

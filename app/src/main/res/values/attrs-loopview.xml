@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LoopView">
+        <attr name="lineColorLoopView" format="color"/>
+        <attr name="topBottomTextColorLoopView" format="color"/>
+        <attr name="centerTextColorLoopView" format="color"/>
+        <attr name="textSizeLoopView" format="dimension"/>
+        <attr name="minTextSizeLoopView" format="dimension"/>
+        <attr name="canLoopLoopView" format="boolean"/>
+        <attr name="initPositionLoopView" format="integer"/>
+        <attr name="drawItemCountLoopView" format="integer"/>
+        <attr name="gravity_left_marginLeft" format="dimension"/>
+        <attr name="gravity_right_marginRight" format="dimension"/>
+        <attr name="gravityLoopView" format="integer">
+            <flag name="left" value="0" />
+            <flag name="right" value="1" />
+            <flag name="center" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

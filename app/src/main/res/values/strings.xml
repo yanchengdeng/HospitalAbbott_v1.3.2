@@ -1,0 +1,101 @@
+<resources>
+    <string name="app_name">血糖仪</string>
+
+    <!--%d   （表示整数）
+        %f   （表示浮点数）
+        %s   （表示字符串）-->
+    <string name="bed_name">%s号病房</string>
+    <string name="ward_name">%s科</string>
+    <string name="setFragment_name">设置</string>
+    <string name="current_version">当前版本：V%s</string>
+
+    <!--更新-->
+    <string name="cancel_dialog">取消</string>
+    <string name="ok_dialog">确定下载</string>
+    <string name="exit_dialog">"有新版本,您需要马上更新吗?选择取消后,可以到应用中手动更新!"</string>
+    <string name="title_dialog">更新提醒:</string>
+    <string name="update">有新版本，请更新版本！</string>
+    <string name="download">开始下载</string>
+    <string name="company">mmol/L</string>
+
+    <string name="titlebar_ward_number">%s 号病房</string>
+    <string name="titlebar_bed_number_name">%1$s 床 %2$s</string>
+    <string name="insert_dipstick">请先插入试纸</string>
+    <string name="test_guide_insert_paper_gray">插入成功后会自动进入下一步</string>
+    <string name="blood_sampling">试纸采血</string>
+    <string name="test_guide_get_blood">请在试纸顶部采血口吸取血珠，采血成功后会自动进入下一步</string>
+
+    <string name="string_null" />
+    <string name="image">0</string>
+    <string name="blood_sugar_testing">采血成功，正在分析中...</string>
+    <string name="blood_sugar_testing_content">5秒内会分析出结果</string>
+    <string name="reference_value">参考值： %1$s - %2$s mmol/L</string>
+    <string name="nurse_name">护士： %s</string>
+    <string name="empty_no_data">没有搜索到相关信息</string>
+
+    <string name="gravity_left">left</string>
+    <string name="gravity_center">center</string>
+    <string name="gravity_right">right</string>
+    <string name="txt_getMsgCode_validate">获取验证码</string>
+    <string name="test_paper_14">试纸已使用，请插入新的试纸</string>
+    <string name="test_paper_15">血量不足（需重新滴血）</string>
+    <string name="test_paper_7">请插入试纸</string>
+    <string name="reslut_select_time">请选时间段</string>
+    <string name="network_err">加载失败，点击重试</string>
+
+    <string name="cube_ptr_pull_down_to_refresh">下拉刷新</string>
+    <string name="cube_ptr_release_to_refresh">释放刷新</string>
+    <string name="cube_ptr_refreshing">刷新中...</string>
+    <string name="cube_ptr_refresh_complete">更新完成</string>
+
+    <string name="cube_ptr_last_update">上一次更新:&#160;</string>
+    <string name="cube_ptr_seconds_ago">&#160;秒前</string>
+    <string name="cube_ptr_minutes_ago">&#160;分钟前</string>
+    <string name="cube_ptr_hours_ago">&#160;小时前</string>
+    <string name="open_wifi">开启无线网络，请点击此处</string>
+    <string name="open_Connect">请选择网络进行连接</string>
+
+    <string name="previous">Go to previous</string>
+    <string name="next">Go to next</string>
+    <string name="calendar">Calendar</string>
+    <string name="today">今天</string>
+
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="hours">时</string>
+    <string name="minutes">分</string>
+    <string name="one">一</string>
+    <string name="two">二</string>
+    <string name="three">三</string>
+    <string name="four">四</string>
+    <string name="five">五</string>
+    <string name="six">六</string>
+
+    <string name="txt_date_choose_limit">不能选择未来的时间</string>
+    <string name="day_paramcode">%s血糖结果监测结果</string>
+    <string name="param_code_remind">%s血糖检测提醒</string>
+    <string name="unlocked_str">请登记您的信息稍后会有工作人员联系您，帮助您解决该问题。</string>
+    <string name="accessibility_service_description">无障碍服务描述</string>
+    <string name="contact">您的联系方式（手机、QQ、邮箱等）</string>
+    <string name="bug">程序错误</string>
+    <string name="suggest">产品建议</string>
+    <string name="not_allowed">测血糖不准</string>
+    <string name="no_param_code">该时段暂无测血糖病人!\n若要新增测血糖病人，请到医生后台添加!</string>
+    <string name="err_low"><![CDATA[温度过低不可测量(<10°C)]]></string>
+
+    <string name="test_BLE_not_Strike">未连接设备</string>
+    <string name="test_BLE_not_connect">设备未连接</string>
+    <string name="test_BLE_opening">设备开启中</string>
+    <string name="test_BLE_connect">设备连接中...</string>
+    <string name="test_doing">正在获取血糖...</string>
+    <string name="test_value">上传血糖</string>
+    <string name="test_remark_hand">请在测量完成后，点击\'上传血糖\'</string>
+    <string name="test_state_hand">请开始测试血糖</string>
+    <string name="test_state_doing">点击获取血糖</string>
+    <string name="test_state_error">血糖获取失败!</string>
+    <string name="test_remark_error">血糖获取失败，请重新点击获取</string>
+    <string name="test_device_error">连接设备失败，请重新连接</string>
+    <string name="test_again_obtain">重新获取血糖</string>
+    <string name="test_state_sucess">血糖获取成功</string>
+</resources>

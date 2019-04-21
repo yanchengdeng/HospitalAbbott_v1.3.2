@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#0099ff</color>
+    <color name="colorAccent">#0099ff</color>
+    <color name="alertdialog_line">#c6c6c6</color>
+    <color name="actionsheet_blue">#037BFF</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+
+    <color name="gray_divider">#e3e3ea</color>
+
+    <color name="blue">#0099ff</color>
+    <color name="red">#fe633c</color>
+    <color name="green">#44b875</color>
+
+    <color name="text_gray">#FF363535</color>
+    <color name="text_gray_66">#666666</color>
+    <color name="text_gray_99">#999999</color>
+    <color name="text_black_33">#333333</color>
+    <color name="text_gray_f6f6f8">#f6f6f8</color>
+    <color name="bottom_color">#f7f8fb</color>
+    <color name="blue_80ccff">#80ccff</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="fragment_background_color">#e7e8ee</color>
+    <color name="line_grey">#e0e0e0</color>
+
+    <color name="text_null">#999999</color>
+    <color name="spinner_color">#FF687BDF</color>
+    <color name="text_blue">#0099ff</color>
+    <color name="divider_blue">#75c5fa</color>
+    <color name="login_btn_color">#80ccff</color>
+
+
+    <color name="cpb_grey">#ffdedede</color>
+    <color name="cpb_blue">#ff0099cc</color>
+    <color name="cpb_blue_dark">#ff00719b</color>
+    <color name="cpb_red">#ffff4444</color>
+    <color name="cpb_red_dark">#ffcd3a3a</color>
+    <color name="cpb_green">#ff99cc00</color>
+    <color name="cpb_green_dark">#ff6d9b00</color>
+    <color name="cpb_white">@android:color/white</color>
+    <color name="max_red">#ff0000</color>
+
+    <color name="transparent_50">#80000000</color>
+    <color name="yellow">#ff9933</color>
+    <color name="f7f7f9">#f7f7f9</color>
+
+    <color name="low_blood">#0099ff</color>
+    <color name="normal_blood">#02c968</color>
+    <color name="high_blood">#fa7437</color>
+</resources>

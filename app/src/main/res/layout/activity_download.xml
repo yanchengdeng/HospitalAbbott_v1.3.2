@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_background_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_titlebar" />
+
+    <LinearLayout
+        android:id="@+id/download_update"
+        android:layout_width="match_parent"
+        android:layout_height="66.7dp"
+        android:background="@color/cpb_white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/top_left"
+        android:paddingRight="@dimen/top_right">
+
+        <ImageView
+            android:id="@+id/log_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/hospital_153" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/top_left">
+            <!--android:paddingTop="13.3dp"-->
+            <!--android:paddingBottom="13.3dp"-->
+
+            <TextView
+                android:id="@+id/title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="血糖仪-正在下载更新包"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+
+            <ProgressBar
+                android:id="@+id/number_progress_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:id="@+id/tv_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_gray_99"
+                android:textSize="@dimen/text_13" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

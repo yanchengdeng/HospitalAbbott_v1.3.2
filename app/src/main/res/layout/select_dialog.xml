@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view xmlns:android="http://schemas.android.com/apk/res/android"
+      android:id="@+id/my_select_dialog_listview"
+      class="com.comvee.hospitalabbott.widget.comveealert.AlertController$RecycleListView"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_marginTop="5.0dip"
+      android:cacheColorHint="@null"
+      android:divider="@android:drawable/divider_horizontal_bright"
+      android:listSelector="#00000000"
+      android:scrollbars="vertical"/>

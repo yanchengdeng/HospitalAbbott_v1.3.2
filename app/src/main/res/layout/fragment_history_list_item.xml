@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <!--总的12个
+            日期占2格
+            空腹占1各
+            早餐占2格
+            午餐占2各
+            晚餐占2格
+            睡前占1各
+            随机占1格-->
+        <TextView
+            android:id="@+id/history_date"
+            android:layout_width="41dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_13"
+            tools:text="日期" />
+
+        <View style="@style/history_text_vertical_gray" />
+
+        <RelativeLayout
+            android:id="@+id/history_fasting_rl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/history_fasting_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bloodtwo_03"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/history_fasting"
+                style="@style/history_textView"
+                tools:text="空腹" />
+        </RelativeLayout>
+
+        <View style="@style/history_text_vertical_gray" />
+
+        <RelativeLayout
+            android:id="@+id/history_three_rl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/history_three_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bloodtwo_03"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/history_three"
+                style="@style/history_textView"
+                tools:text="3AM" />
+        </RelativeLayout>
+
+        <View style="@style/history_text_vertical_gray" />
+
+        <RelativeLayout
+            android:id="@+id/history_breakfast_before_rl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/history_breakfast_before_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bloodtwo_03"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/history_breakfast_before"
+                style="@style/history_textView"
+                tools:text="早前" />
+        </RelativeLayout>
+
+
+        <View style="@style/history_text_vertical_gray" />
+
+        <RelativeLayout
+            android:id="@+id/history_breakfast_rear_rl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/history_breakfast_rear_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bloodtwo_03"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/history_breakfast_rear"
+                style="@style/history_textView"
+                tools:text="早后" />
+        </RelativeLayout>
+
+        <View style="@style/history_text_vertical_gray" />
+
+        <RelativeLayout
+            android:id="@+id/history_lunch_before_rl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/history_lunch_before_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bloodtwo_03"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/history_lunch_before"
+                style="@style/history_textView"
+                tools:text="午前" />
+        </RelativeLayout>
+
+        <View style="@style/history_text_vertical_gray" />
+
+        <RelativeLayout
+            android:id="@+id/history_lunch_rear_rl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/history_lunch_rear_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bloodtwo_03"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/history_lunch_rear"
+                style="@style/history_textView"
+                tools:text="午后" />
+        </RelativeLayout>
+
+        <View style="@style/history_text_vertical_gray" />
+
+        <RelativeLayout
+            android:id="@+id/history_dinner_before_rl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/history_dinner_before_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bloodtwo_03"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/history_dinner_before"
+                style="@style/history_textView"
+                tools:text="晚前" />
+        </RelativeLayout>
+
+        <View style="@style/history_text_vertical_gray" />
+
+        <RelativeLayout
+            android:id="@+id/history_dinner_rear_rl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/history_dinner_rear_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bloodtwo_03"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/history_dinner_rear"
+                style="@style/history_textView"
+                tools:text="晚后" />
+        </RelativeLayout>
+
+        <View style="@style/history_text_vertical_gray" />
+
+        <RelativeLayout
+            android:id="@+id/history_beforeBed_rl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/history_beforeBed_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bloodtwo_03"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/history_beforeBed"
+                style="@style/history_textView"
+                tools:text="睡前" />
+        </RelativeLayout>
+
+        <View style="@style/history_text_vertical_gray" />
+
+        <RelativeLayout
+            android:id="@+id/history_random_rl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/history_random_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bloodtwo_03"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/history_random"
+                style="@style/history_textView"
+                tools:text="随机" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/history_last"
+        style="@style/horizontal_gray" />
+
+</LinearLayout>

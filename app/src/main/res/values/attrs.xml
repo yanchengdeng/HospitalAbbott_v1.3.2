@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--加载动画button-->
+    <declare-styleable name="RoundLoadView">
+        <!--圆角矩形宽、高、填充颜色-->
+        <attr name="round_color" format="color" />
+        <attr name="round_width" format="dimension" />
+        <attr name="round_height" format="dimension" />
+        <!--圆角矩形Stroke宽度与填充颜色-->
+        <attr name="round_stroke_width" format="dimension" />
+        <attr name="round_stroke_color" format="color" />
+        <!--加载内圆颜色、直径、Stroke宽度与填充颜色-->
+        <attr name="circle_color" format="color" />
+        <attr name="circle_diameter" format="dimension" />
+        <attr name="circle_stroke_width" format="dimension" />
+        <attr name="circle_stroke_color" format="color" />
+        <!--文字内容、大小、颜色-->
+        <attr name="round_load_text" format="string" />
+        <attr name="round_load_text_size" format="dimension" />
+        <attr name="round_load_text_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundedImageView">
+        <attr name="corner_radius" format="dimension" />
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="round_background" format="boolean" />
+        <attr name="is_oval" format="boolean" />
+        <attr name="android:scaleType" />
+    </declare-styleable>
+
+    <declare-styleable name="GifView">
+        <attr name="gif" format="reference" />
+        <attr name="paused" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="CustomTheme">
+        <attr name="gifViewStyle" format="reference" />
+    </declare-styleable>
+</resources>

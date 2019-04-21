@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.vise.xiaoyaoyou:baseble:2.0.5@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/baseble-2.0.5.aar/2aa39e8bc9b311266727e2314d147294/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/baseble-2.0.5.aar/2aa39e8bc9b311266727e2314d147294/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vise.xiaoyaoyou/baseble/2.0.5/14d562d351365eb1b3e9c462c7d62801874e8552/baseble-2.0.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

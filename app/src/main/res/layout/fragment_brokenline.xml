@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f7f8fb"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="46.7dp"
+            android:background="#f7f8fb">
+            <!--android:layout_marginBottom="5dp"-->
+
+            <TextView
+                android:id="@+id/brokenLine_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="2017年1月9日"
+                android:textColor="#0099ff"
+                android:textSize="@dimen/text_17" />
+
+            <RelativeLayout
+                android:id="@+id/brokenLine_left_icon"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/brokenLine_left"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/hospital_84" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/brokenLine_right_icon"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/brokenLine_right"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/hospital_86" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <com.comvee.hospitalabbott.widget.view.BrokenLineView xmlns:line="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/brokenLineView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/brokenLine_left"
+                android:layout_marginTop="22dp"
+                android:paddingBottom="66.7dp"
+                android:paddingRight="@dimen/brokenLine_right"
+                line:brokenLineTextColor="@color/black"
+                line:brokenLineTextSize="@dimen/text_13"
+                line:brokenLineWidth="1px"
+                line:xyBrokenLineWidth="1px" />
+            <!--android:layout_marginRight="@dimen/brokenLine_right"-->
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

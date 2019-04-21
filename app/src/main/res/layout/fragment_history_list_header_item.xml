@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#75c5fa"
+    android:paddingBottom="4dp"
+    android:paddingTop="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="51.3dp"
+        android:orientation="horizontal">
+
+        <!--总的12个
+            日期占2格
+            空腹占1各
+            早餐占2格
+            午餐占2各
+            晚餐占2格
+            睡前占1各
+            随机占1格-->
+
+        <TextView
+            android:layout_width="41dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_13"
+            android:text="日期" />
+
+        <View style="@style/history_vertical_gray" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_13"
+                android:textColor="@color/white"
+                android:ems="1"
+                android:text="0AM" />
+
+        </LinearLayout>
+        <!--<TextView-->
+            <!--android:id="@+id/history_fasting"-->
+            <!--style="@style/history_title_textView"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="凌晨" />-->
+
+        <View style="@style/history_vertical_gray" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_13"
+                android:textColor="@color/white"
+                android:ems="1"
+                android:text="3AM" />
+
+        </LinearLayout>
+        <View style="@style/history_vertical_gray" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="早餐"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_13" />
+
+            <View style="@style/history_horizontal_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/history_title_textView"
+                    android:layout_weight="1"
+                    android:text="空" />
+
+                <!--<View style="@style/history_vertical_gray" />-->
+
+                <TextView
+                    style="@style/history_title_textView"
+                    android:layout_weight="1"
+                    android:text="后" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View style="@style/history_vertical_gray" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="午餐"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_13" />
+
+            <View style="@style/history_horizontal_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/history_title_textView"
+                    android:layout_weight="1"
+                    android:text="前" />
+
+                <!--<View style="@style/history_vertical_gray" />-->
+
+                <TextView
+                    style="@style/history_title_textView"
+                    android:layout_weight="1"
+                    android:text="后" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View style="@style/history_vertical_gray" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="晚餐"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_13" />
+
+            <View style="@style/history_horizontal_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/history_title_textView"
+                    android:layout_weight="1"
+                    android:text="前" />
+
+                <!--<View style="@style/history_vertical_gray" />-->
+
+                <TextView
+                    style="@style/history_title_textView"
+                    android:layout_weight="1"
+                    android:text="后" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View style="@style/history_vertical_gray" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_13"
+                android:textColor="@color/white"
+                android:ems="1"
+                android:text="睡前" />
+
+        </LinearLayout>
+
+
+        <View style="@style/history_vertical_gray" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_13"
+                android:textColor="@color/white"
+                android:ems="1"
+                android:text="随机" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/ed_height"
+    android:background="@color/white"
+    android:paddingLeft="@dimen/top_left">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30.7dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="53.3dp"
+        android:background="@drawable/rounded_rectangle_edt"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6.7dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/hospital_109" />
+    </LinearLayout>
+
+    <com.comvee.hospitalabbott.widget.view.CleanEditTextWithIcon
+        android:id="@+id/et_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="56.7dp"
+        android:layout_marginLeft="32.7dp"
+        android:background="@null"
+        android:gravity="center_vertical|left"
+        android:hint="输入病床号"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="#cccccc"
+        android:textSize="@dimen/text_16" />
+
+    <TextView
+        android:id="@+id/tv_search"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="10.7dp"
+        android:paddingRight="@dimen/top_right"
+        android:gravity="center"
+        android:text="搜索"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_17" />
+
+</RelativeLayout>

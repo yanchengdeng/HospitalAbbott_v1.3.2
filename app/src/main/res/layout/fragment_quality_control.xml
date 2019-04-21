@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_background_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_titlebar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/empty_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="数据获取失败，点击重试!"
+            android:textSize="@dimen/text_17"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/titleBar"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/qualityControlFragment_monitorTime_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/aboutItem_height"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/top_left"
+                    android:drawableLeft="@drawable/bloodtwo_56"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="监测时间"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_17" />
+
+                <TextView
+                    android:id="@+id/qualityControlFragment_monitorTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/top_left"
+                    android:layout_marginRight="@dimen/top_right"
+                    android:drawablePadding="13.3dp"
+                    android:drawableRight="@drawable/hospital_107"
+                    android:gravity="right|center_vertical"
+                    android:hint="请选择时间"
+                    android:textColor="@color/black"
+                    android:textColorHint="#cccccc"
+                    android:textSize="@dimen/text_16" />
+            </LinearLayout>
+
+            <View style="@style/horizontal_gray" />
+
+            <LinearLayout
+                android:id="@+id/qualityControlFragment_paperNumber_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/aboutItem_height"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/top_left"
+                    android:drawableLeft="@drawable/bloodtwo_58"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="试纸批号"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_17" />
+
+                <TextView
+                    android:id="@+id/qualityControlFragment_paperNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/top_left"
+                    android:layout_marginRight="@dimen/top_right"
+                    android:background="@null"
+                    android:drawablePadding="13.3dp"
+                    android:drawableRight="@drawable/hospital_107"
+                    android:focusable="false"
+                    android:gravity="right|center_vertical"
+                    android:hint="请选择试纸批号"
+                    android:textColor="@color/black"
+                    android:textColorHint="#cccccc" />
+            </LinearLayout>
+
+            <View style="@style/horizontal_gray" />
+
+            <LinearLayout
+                android:id="@+id/qualityControlFragment_deviceCode_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/aboutItem_height"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/top_left"
+                    android:drawableLeft="@drawable/bloodtwo_60"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="设备编码"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_17" />
+
+                <TextView
+                    android:id="@+id/qualityControlFragment_deviceCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/top_left"
+                    android:layout_marginRight="@dimen/top_right"
+                    android:background="@null"
+                    android:gravity="right|center_vertical"
+                    android:hint="请输入试纸批号"
+                    android:textColor="@color/text_gray_66"
+                    android:textColorHint="#cccccc" />
+            </LinearLayout>
+            <!--<com.comvee.xty.widget.AboutItemView-->
+            <!--android:id="@+id/qualityControlFragment_deviceCode"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/aboutItem_height"-->
+            <!--android:background="@color/white"-->
+            <!--app:left_drawablePadding="8dp"-->
+            <!--app:left_log="@drawable/bloodtwo_60"-->
+            <!--app:left_text="设备编码"-->
+            <!--app:marginLeft="8dp"-->
+            <!--app:marginRight="@dimen/top_right"-->
+            <!--app:right_icon_marginRight="@dimen/right_icon_marginRight"-->
+            <!--app:right_icon_visibility="false" />-->
+
+            <View style="@style/horizontal_gray" />
+
+            <LinearLayout
+                android:id="@+id/qualityControlFragment_QualityNumber_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/aboutItem_height"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/top_left"
+                    android:drawableLeft="@drawable/bloodtwo_89"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="质控液编号"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_17" />
+
+                <TextView
+                    android:id="@+id/qualityControlFragment_QualityNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/top_left"
+                    android:layout_marginRight="@dimen/top_right"
+                    android:background="@null"
+                    android:drawablePadding="13.3dp"
+                    android:drawableRight="@drawable/hospital_107"
+                    android:gravity="right|center_vertical"
+                    android:hint="请选择质控液编号"
+                    android:textColor="@color/black"
+                    android:textColorHint="#cccccc" />
+            </LinearLayout>
+
+            <View style="@style/horizontal_gray" />
+
+            <LinearLayout
+                android:id="@+id/qualityControlFragment_range_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/aboutItem_height"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/top_left"
+                    android:drawableLeft="@drawable/bloodtwo_62"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="质控液范围"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_17" />
+
+                <TextView
+                    android:id="@+id/qualityControlFragment_range"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/top_left"
+                    android:layout_marginRight="@dimen/top_right"
+                    android:drawablePadding="13.3dp"
+                    android:drawableRight="@drawable/hospital_107"
+                    android:gravity="right|center_vertical"
+                    android:hint="请选择范围"
+                    android:textColor="@color/text_black_33"
+                    android:textSize="@dimen/text_15" />
+                <!--android:text="正常（5.4 - 7.2）"-->
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/qualityControlFragment_btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginLeft="@dimen/top_left"
+                android:layout_marginRight="@dimen/top_right"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_rectangle_btn_80ccff"
+                android:text="开始测试"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_18" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

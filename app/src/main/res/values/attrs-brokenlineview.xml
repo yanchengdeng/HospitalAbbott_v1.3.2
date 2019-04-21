@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--坐标轴线条粗细-->
+    <attr name="xyBrokenLineWidth" format="dimension" />
+    <!--坐标轴线条颜色-->
+    <attr name="xyBrokenLineColor" format="color" />
+    <!--坐标轴字体大小-->
+    <attr name="brokenLineTextSize" format="dimension" />
+    <!--坐标轴字体颜色-->
+    <attr name="brokenLineTextColor" format="color" />
+    <!--折线颜色-->
+    <attr name="brokenLineColor" format="color" />
+    <!--折线粗细-->
+    <attr name="brokenLineWidth" format="dimension" />
+    <!--圆点半径-->
+    <attr name="brokenLineCircleRadius" format="dimension" />
+    <!--圆点的颜色-->
+    <attr name="brokenLineCircleColor" format="color" />
+    <!--数值文字颜色-->
+    <attr name="brokenTextColor" format="color" />
+
+    <declare-styleable name="BrokenLineView">
+        <attr name="xyBrokenLineWidth" />
+        <attr name="xyBrokenLineColor"/>
+        <attr name="brokenLineTextSize" />
+        <attr name="brokenLineTextColor" />
+        <attr name="brokenLineColor" />
+        <attr name="brokenLineWidth" />
+        <attr name="brokenLineCircleRadius" />
+        <attr name="brokenLineCircleColor" />
+        <attr name="brokenTextColor"/>
+    </declare-styleable>
+</resources>

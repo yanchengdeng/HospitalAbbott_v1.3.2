@@ -1,0 +1,1 @@
+include ':app', ':blelibrary', ':libzxing', ':blinkpdf417'

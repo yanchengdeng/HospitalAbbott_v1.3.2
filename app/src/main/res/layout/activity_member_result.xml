@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.comvee.hospitalabbott.widget.view.KeyboardLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/new_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include layout="@layout/activity_titlebar" />
+
+    <LinearLayout
+        android:id="@+id/resultFragment_bottom_ll"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <View style="@style/horizontal_gray" />
+
+        <Button
+            android:id="@+id/resultFragment_complete"
+            style="@style/cancel_btn"
+            android:layout_width="@dimen/btn_width"
+            android:layout_height="@dimen/btn_height"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_rectangle_btn"
+            android:text="保存本地并上传"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_18" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/resultFragment_bottom_ll"
+        android:layout_below="@+id/titleBar"
+
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/top_left"
+            android:paddingRight="@dimen/top_right">
+
+            <RelativeLayout
+                android:id="@+id/blood_cardView_ll"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/test_result_height"
+                android:layout_marginTop="10.7dp"
+                android:orientation="vertical"
+                tools:background="@drawable/bloodthree_28">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/bloodthree_35"
+                    android:visibility="gone" />
+
+                <com.comvee.hospitalabbott.widget.view.NewCircleProgressBar
+                    android:id="@+id/resultFragment_circleProgress"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="43dp"
+                    app:bgCircleProgressColor="#e6e6e6"
+                    app:circleProgressColor="#fe633c"
+                    app:circleProgressDisplayType="1"
+                    app:circleProgressStrokeWidth="6px"
+                    app:circleProgressTextColor="@color/black"
+                    app:circleProgressTextSize="@dimen/text_33" />
+
+                <TextView
+                    android:id="@+id/reference_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="18dp"
+                    android:text="@string/reference_value"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_14" />
+
+                <TextView
+                    android:id="@+id/resultFragment_tv_remind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/reference_value"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_17"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_half_rectangle_white"
+                android:orientation="vertical"
+                android:paddingBottom="18.7dp"
+                android:paddingTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/top_left"
+                    android:drawableLeft="@drawable/clock_03"
+                    android:drawablePadding="6.7dp"
+                    android:text="血糖时间点"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_17" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/point_of_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18.7dp"
+                    android:scrollbars="none" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10.7dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_rectangle_boundless_white"
+                android:minHeight="106dp"
+                android:orientation="vertical"
+                android:paddingBottom="18.7dp"
+                android:paddingLeft="@dimen/top_left"
+                android:paddingRight="@dimen/top_right"
+                android:paddingTop="13.3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/fankui_03"
+                    android:drawablePadding="6.7dp"
+                    android:text="备注信息"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_17" />
+
+                <EditText
+                    android:id="@+id/add_remarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@null"
+                    android:gravity="left|top"
+                    android:hint="添加备注"
+                    android:textColor="@color/black"
+                    android:textColorHint="#cccccc"
+                    android:textSize="@dimen/text_17" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</com.comvee.hospitalabbott.widget.view.KeyboardLayout>

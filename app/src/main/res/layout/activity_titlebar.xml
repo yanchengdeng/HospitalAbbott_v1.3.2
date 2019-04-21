@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.comvee.hospitalabbott.widget.view.CustomTitleBar xmlns:top="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/titleBar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/title_height"
+    top:right_button_visible="false"
+    top:title_background_color="@color/blue"
+    top:title_text="- - -"
+    top:title_text_color="@color/white"
+    top:right_button_text_color="@color/white"/>
