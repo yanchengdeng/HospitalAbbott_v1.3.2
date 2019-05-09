@@ -19,8 +19,8 @@
     <dimen name="spinner_height">46.7dp</dimen>
 
 
-    <dimen name="activity_horizontal_margin">16px</dimen>
-    <dimen name="activity_vertical_margin">16px</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="touch_raise">10px</dimen>
     <dimen name="top_left">10.7dp</dimen>

@@ -18,15 +18,11 @@ import com.comvee.hospitalabbott.bean.ParamCodeBean;
 import com.comvee.hospitalabbott.bean.TestInfo;
 import com.comvee.hospitalabbott.helper.RangeHelper;
 import com.comvee.hospitalabbott.tool.TestResultDataUtil;
-import com.comvee.hospitalabbott.ui.detection.TestBloodActivity;
+import com.comvee.hospitalabbott.ui.detection.TestBloodNewActivity;
 import com.comvee.hospitalabbott.widget.calendar.TimeUtil;
 import com.scwang.smartrefresh.layout.util.DensityUtil;
 
-import org.greenrobot.greendao.query.QueryBuilder;
-
 import java.util.List;
-
-import okhttp3.internal.Util;
 
 public class BedGridAdapter extends BaseQuickAdapter<HospitalBed, BaseViewHolder> {
     private Activity activity;
@@ -52,7 +48,7 @@ public class BedGridAdapter extends BaseQuickAdapter<HospitalBed, BaseViewHolder
         helper.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { //测血糖
-                TestBloodActivity.startBloodActivity(activity, bedModel, "");
+                TestBloodNewActivity.startBloodNewActivity(activity, bedModel, "");
             }
         });
         ParamCodeBean paramCodeBean = bedModel.getParamCodeModel();

@@ -80,7 +80,7 @@ public class Utils {
      * @return
      */
     public static String getDeviceID(Context ctx) {
-        String strResult = "";
+        String strResult = "1000000000";
         try {
             TelephonyManager telephonyManager = (TelephonyManager) ctx
                     .getSystemService(Context.TELEPHONY_SERVICE);

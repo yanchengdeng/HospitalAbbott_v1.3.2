@@ -2,6 +2,8 @@ package com.comvee.hospitalabbott.network.api;
 
 
 import com.comvee.hospitalabbott.bean.BloodRangeBean;
+import com.comvee.hospitalabbott.bean.BloodSugarChatDynmicInfo;
+import com.comvee.hospitalabbott.bean.BloodSugarChatInfo;
 import com.comvee.hospitalabbott.bean.HistoryModel;
 import com.comvee.hospitalabbott.bean.LoginModel;
 import com.comvee.hospitalabbott.bean.MemberCountBean;
@@ -99,6 +101,40 @@ public interface ComveeApi {
     @FormUrlEncoded
     @POST("glucometer/bloodSugar/getMemberParamLog.do")
     Observable<BaseResponse<HistoryModel>> getMemberParamLog(@FieldMap Map<String, String> map);
+
+
+    /**
+     *批量上传血糖数据
+     * memberId
+     *
+     * paramLogArrayJson
+     */
+
+    @FormUrlEncoded
+    @POST("glucometer/bloodSugar/batchUploadMemberParamLog.do")
+    Observable<BaseResponse<String>> batchUploadMemberData(@FieldMap Map<String, String> map );
+
+
+    /**
+     * 获取统计图信息
+     */
+
+    @FormUrlEncoded
+    @POST("glucometer/bloodSugar/loadMemberBloodSugarChart.do")
+    Observable<BaseResponse<BloodSugarChatInfo>> loadMemberBloodSugarChar(@FieldMap Map<String,String> maps);
+
+
+    /**
+     * 获取统计图信息
+     */
+
+    @FormUrlEncoded
+    @POST("glucometer/bloodSugar/loadMemberBloodSugarChart.do")
+    Observable<BaseResponse<BloodSugarChatDynmicInfo>> loadMemberBloodSugarCharDyanmic(@FieldMap Map<String,String> maps);
+
+
+
+
 
     /**
      * 刷新用户血糖记录列表

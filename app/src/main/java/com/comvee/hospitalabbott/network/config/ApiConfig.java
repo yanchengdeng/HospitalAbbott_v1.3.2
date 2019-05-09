@@ -14,7 +14,15 @@ public class ApiConfig {
 //    public static final String TEST_2_4_y_2 = "http://192.168.20.11:9081/diabetesms/";//雨堆2本地测试接口
 //    public static final String TEST_2_4_zh = "http://192.168.5.214:8080/diabetesms/";//左河本地测试接口
 //    public static final String TEST_2_5 = "http://192.168.2.5:8080/diabetesms/";//2.5本地公司内网测试接口
+
+
+
     public static final String BASE_URL = "http://huxiweishi.3322.org:5501/diabetesms/";
+
+//    public static final String BASE_URL = "http://192.168.7.135:8080/diabetesms/";
+
+
+
     //河南正式地址公司内网：http://117.158.201.79:8888/
 //    public static final String BASE_URL = "http://172.19.19.5/"; //河南正式上线地址
 //    public static final String BASE_URL_OUT = "http://117.158.201.79:8888/"; //河南正式上线外网地址

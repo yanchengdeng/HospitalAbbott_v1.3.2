@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/text_gray_f6f6f8"
+    tools:context=".ui.detection.ChartScanActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/activity_horizontal_margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="每日葡萄糖图表"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@color/white"
+                android:text="(单位：mmol/L)"
+                android:textColor="@color/text_gray_66"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/bubbleChart"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@android:color/white" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <include layout="@layout/layou_bottom_blood_params"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line_grey" />
+
+            <include layout="@layout/layou_bottom_blood_params_big"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

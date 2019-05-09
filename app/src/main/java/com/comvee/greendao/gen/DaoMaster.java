@@ -25,6 +25,7 @@ public class DaoMaster extends AbstractDaoMaster {
         RefreshHistoryModelDao.createTable(db, ifNotExists);
         ParamLogListBeanDao.createTable(db, ifNotExists);
         DepartmentModelDao.createTable(db, ifNotExists);
+        NewBloodItemDao.createTable(db, ifNotExists);
         TestPaperModelDao.createTable(db, ifNotExists);
         TestInfoDao.createTable(db, ifNotExists);
         QualityBeanDao.createTable(db, ifNotExists);
@@ -40,6 +41,7 @@ public class DaoMaster extends AbstractDaoMaster {
         RefreshHistoryModelDao.dropTable(db, ifExists);
         ParamLogListBeanDao.dropTable(db, ifExists);
         DepartmentModelDao.dropTable(db, ifExists);
+        NewBloodItemDao.dropTable(db, ifExists);
         TestPaperModelDao.dropTable(db, ifExists);
         TestInfoDao.dropTable(db, ifExists);
         QualityBeanDao.dropTable(db, ifExists);
@@ -69,6 +71,7 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(RefreshHistoryModelDao.class);
         registerDaoClass(ParamLogListBeanDao.class);
         registerDaoClass(DepartmentModelDao.class);
+        registerDaoClass(NewBloodItemDao.class);
         registerDaoClass(TestPaperModelDao.class);
         registerDaoClass(TestInfoDao.class);
         registerDaoClass(QualityBeanDao.class);

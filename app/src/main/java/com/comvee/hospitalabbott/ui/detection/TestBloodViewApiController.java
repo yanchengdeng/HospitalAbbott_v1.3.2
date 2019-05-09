@@ -21,7 +21,6 @@ public interface TestBloodViewApiController extends BaseViewController {
 
     void onReadSucess(String recv,String bloodData);//读取成功
 
-
     void onReadFinish();//读取完成
 
     void onReadFail();//读取失败

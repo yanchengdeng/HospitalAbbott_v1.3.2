@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/text_gray_f6f6f8"
+    tools:context=".ui.detection.ChartScanActivity">
+
+    <include layout="@layout/test_title_bar" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:paddingBottom="5dp"
+        android:background="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        style="@style/MyTablayoutstyle"
+        app:layout_constraintTop_toBottomOf="@+id/test_title_bar"
+        app:tabSelectedTextColor="@color/blue"
+        app:tabTextColor="@color/black" />
+
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpage"
+        android:background="@color/white"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tablayout" />
+
+</android.support.constraint.ConstraintLayout>

@@ -12,6 +12,7 @@ import com.comvee.hospitalabbott.bean.MemberModel;
 import com.comvee.hospitalabbott.bean.RefreshHistoryModel;
 import com.comvee.hospitalabbott.bean.ParamLogListBean;
 import com.comvee.hospitalabbott.bean.DepartmentModel;
+import com.comvee.hospitalabbott.bean.NewBloodItem;
 import com.comvee.hospitalabbott.bean.TestPaperModel;
 import com.comvee.hospitalabbott.bean.TestInfo;
 import com.comvee.hospitalabbott.bean.QualityBean;
@@ -24,6 +25,7 @@ import com.comvee.greendao.gen.MemberModelDao;
 import com.comvee.greendao.gen.RefreshHistoryModelDao;
 import com.comvee.greendao.gen.ParamLogListBeanDao;
 import com.comvee.greendao.gen.DepartmentModelDao;
+import com.comvee.greendao.gen.NewBloodItemDao;
 import com.comvee.greendao.gen.TestPaperModelDao;
 import com.comvee.greendao.gen.TestInfoDao;
 import com.comvee.greendao.gen.QualityBeanDao;
@@ -45,6 +47,7 @@ public class DaoSession extends AbstractDaoSession {
     private final DaoConfig refreshHistoryModelDaoConfig;
     private final DaoConfig paramLogListBeanDaoConfig;
     private final DaoConfig departmentModelDaoConfig;
+    private final DaoConfig newBloodItemDaoConfig;
     private final DaoConfig testPaperModelDaoConfig;
     private final DaoConfig testInfoDaoConfig;
     private final DaoConfig qualityBeanDaoConfig;
@@ -57,6 +60,7 @@ public class DaoSession extends AbstractDaoSession {
     private final RefreshHistoryModelDao refreshHistoryModelDao;
     private final ParamLogListBeanDao paramLogListBeanDao;
     private final DepartmentModelDao departmentModelDao;
+    private final NewBloodItemDao newBloodItemDao;
     private final TestPaperModelDao testPaperModelDao;
     private final TestInfoDao testInfoDao;
     private final QualityBeanDao qualityBeanDao;
@@ -80,6 +84,9 @@ public class DaoSession extends AbstractDaoSession {
 
         departmentModelDaoConfig = daoConfigMap.get(DepartmentModelDao.class).clone();
         departmentModelDaoConfig.initIdentityScope(type);
+
+        newBloodItemDaoConfig = daoConfigMap.get(NewBloodItemDao.class).clone();
+        newBloodItemDaoConfig.initIdentityScope(type);
 
         testPaperModelDaoConfig = daoConfigMap.get(TestPaperModelDao.class).clone();
         testPaperModelDaoConfig.initIdentityScope(type);
@@ -106,6 +113,7 @@ public class DaoSession extends AbstractDaoSession {
         refreshHistoryModelDao = new RefreshHistoryModelDao(refreshHistoryModelDaoConfig, this);
         paramLogListBeanDao = new ParamLogListBeanDao(paramLogListBeanDaoConfig, this);
         departmentModelDao = new DepartmentModelDao(departmentModelDaoConfig, this);
+        newBloodItemDao = new NewBloodItemDao(newBloodItemDaoConfig, this);
         testPaperModelDao = new TestPaperModelDao(testPaperModelDaoConfig, this);
         testInfoDao = new TestInfoDao(testInfoDaoConfig, this);
         qualityBeanDao = new QualityBeanDao(qualityBeanDaoConfig, this);
@@ -118,6 +126,7 @@ public class DaoSession extends AbstractDaoSession {
         registerDao(RefreshHistoryModel.class, refreshHistoryModelDao);
         registerDao(ParamLogListBean.class, paramLogListBeanDao);
         registerDao(DepartmentModel.class, departmentModelDao);
+        registerDao(NewBloodItem.class, newBloodItemDao);
         registerDao(TestPaperModel.class, testPaperModelDao);
         registerDao(TestInfo.class, testInfoDao);
         registerDao(QualityBean.class, qualityBeanDao);
@@ -132,6 +141,7 @@ public class DaoSession extends AbstractDaoSession {
         refreshHistoryModelDaoConfig.clearIdentityScope();
         paramLogListBeanDaoConfig.clearIdentityScope();
         departmentModelDaoConfig.clearIdentityScope();
+        newBloodItemDaoConfig.clearIdentityScope();
         testPaperModelDaoConfig.clearIdentityScope();
         testInfoDaoConfig.clearIdentityScope();
         qualityBeanDaoConfig.clearIdentityScope();
@@ -155,6 +165,10 @@ public class DaoSession extends AbstractDaoSession {
 
     public DepartmentModelDao getDepartmentModelDao() {
         return departmentModelDao;
+    }
+
+    public NewBloodItemDao getNewBloodItemDao() {
+        return newBloodItemDao;
     }
 
     public TestPaperModelDao getTestPaperModelDao() {

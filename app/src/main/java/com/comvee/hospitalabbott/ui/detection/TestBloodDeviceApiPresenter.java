@@ -48,10 +48,6 @@ public class TestBloodDeviceApiPresenter extends BasePresenter<TestBloodViewApiC
     // ResumeUsbList方法用于枚举CH34X设备以及打开相关设备
     private int retval;
 
-//    public static String SEND_ORDER = "68 01 68 06 00 89 16";
-    public static String SEND_ORDER = "68 01 68 01 00 06 89 16";
-
-
 
     public TestBloodDeviceApiPresenter(TestBloodViewApiController viewModel) {
         super(viewModel);
@@ -142,9 +138,6 @@ public class TestBloodDeviceApiPresenter extends BasePresenter<TestBloodViewApiC
         }
     }
 
-
-    int countByteSizeIsZero ;//计算请求的字节码 为0 的 次数 ，初略估算为0 的超过3次表示数据已读完
-
     private class readThread extends Thread {
         public void run() {
             viewModel.log("进入子线程");
@@ -164,7 +157,7 @@ public class TestBloodDeviceApiPresenter extends BasePresenter<TestBloodViewApiC
                     }
                     //viewModel.log("循环数据读取");
                     final int length = XTYApplication.driver.ReadData(buffer, 64);
-                     Log.w("收到数据length","长度为"+ length);
+                    // viewModel.log("收到数据：长度为"+ length);
                     if (length > 0) {
 
                         if (timer != null) {
@@ -184,7 +177,7 @@ public class TestBloodDeviceApiPresenter extends BasePresenter<TestBloodViewApiC
                             public void run() {
 
                                 //读取结果
-                            /*if (!recv.contains("68 01 68 02 02")) {h
+                            /*if (!recv.contains("68 01 68 02 02")) {
                                 Log.e("成功读取结果", "====" + recv);
                                 //68 01 68 06 00 89 16 试纸未拔出
                                 if (recv.trim().equals("68 01 68 06 00 89 16")) {
@@ -198,7 +191,7 @@ public class TestBloodDeviceApiPresenter extends BasePresenter<TestBloodViewApiC
                                 }
                             }*/
 
-                                if (recv.trim().equals(SEND_ORDER)) {
+                                if (recv.trim().equals("68 01 68 06 00 89 16")) {
                                     Log.e("onTestPaperNoPullOut", "====onTestPaperNoPullOut");
                                     viewModel.onTestPaperNoPullOut();
                                 } else {
@@ -217,13 +210,6 @@ public class TestBloodDeviceApiPresenter extends BasePresenter<TestBloodViewApiC
                             }
                         });
 
-                    }else{
-                        countByteSizeIsZero++;
-                        if (countByteSizeIsZero>3){
-                            countByteSizeIsZero = 0;
-                            viewModel.onReadFinish();
-                            return;
-                        }
                     }
                 }finally {
                     lock.unlock();
@@ -293,13 +279,11 @@ public class TestBloodDeviceApiPresenter extends BasePresenter<TestBloodViewApiC
         viewModel.log("初始化主站请求建立");
         //写入初始化，固定返回随机帧
         count = 1;
-        final byte[] to_send = CH34xDriverUtil.toByteArray(SEND_ORDER);
-
-
+        final byte[] to_send = CH34xDriverUtil.toByteArray("68 00 68 01 00 89 16");
         //写数据，第一个参数为需要发送的字节数组，第二个参数为需要发送的字节长度，返回实际发送的字节长度
         int retval = XTYApplication.driver.WriteData(to_send, to_send.length);
         viewModel.log("写入数据成功" + retval);
-        Log.e("第一次写入", SEND_ORDER);
+        Log.e("第一次写入", "68 00 68 01 00 89 16");
       //  ToastUtil.showToast("第一次发起");
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -345,7 +329,7 @@ public class TestBloodDeviceApiPresenter extends BasePresenter<TestBloodViewApiC
      */
     private void initConfig() {
         viewModel.log("配置串口波特率");
-        int baudRate = 115200;
+        int baudRate = 9600;
         byte dataBit = 8;
         byte stopBit = 1;
         byte parity = 0;

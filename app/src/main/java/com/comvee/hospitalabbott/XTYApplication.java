@@ -8,16 +8,12 @@ import android.hardware.usb.UsbManager;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
 
-import com.comvee.greendao.HMROpenHelper;
 import com.comvee.greendao.gen.DaoMaster;
 import com.comvee.greendao.gen.DaoSession;
-import com.comvee.hospitalabbott.network.model.PushInfo;
-import com.comvee.hospitalabbott.network.rxbus.BloodUpdateRxModel;
-import com.comvee.hospitalabbott.network.rxbus.RxBus;
 import com.comvee.hospitalabbott.receiver.WifiStateReceiver;
 import com.comvee.hospitalabbott.tool.LogUtils;
-import com.comvee.hospitalabbott.tool.RxJavaUtil;
 import com.comvee.hospitalabbott.tool.ThreadHandler;
+import com.comvee.hospitalabbott.tool.db.MyDaoMaster;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreater;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreater;
@@ -31,12 +27,7 @@ import com.vise.baseble.ViseBle;
 import com.vise.log.ViseLog;
 import com.vise.log.inner.LogcatTree;
 
-import java.util.concurrent.TimeUnit;
-
 import cn.wch.ch34xuartdriver.CH34xUARTDriver;
-import io.reactivex.Observable;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Consumer;
 
 /**
  * Created by F011512088 on 2018/1/9.
@@ -138,10 +129,19 @@ public class XTYApplication extends Application {
         // 可能你已经注意到了，你并不需要去编写「CREATE TABLE」这样的 SQL 语句，因为 greenDAO 已经帮你做了。
         // 注意：默认的 DaoMaster.DevOpenHelper 会在数据库升级时，删除所有的表，意味着这将导致数据的丢失。
         // 所以，在正式的项目中，你还应该做一层封装，来实现数据库的安全升级。
-        db = new HMROpenHelper(this, "xty_info.db", null).getWritableDatabase();
-        // 注意：该数据库连接属于 DaoMaster，所以多个 Session 指的是相同的数据库连接。
-        mDaoMaster = new DaoMaster(db);
-        mDaoSession = mDaoMaster.newSession();
+
+//        db = new HMROpenHelper(this, "xty_info.db", null).getWritableDatabase();
+//        mDaoMaster = new DaoMaster(db);
+//        mDaoSession = mDaoMaster.newSession();
+
+
+
+        //TODO 修复 重新创建表  无法识别表明 修改  言诚
+        MyDaoMaster helper = new MyDaoMaster(this, "xty_info.db");
+        SQLiteDatabase db = helper.getWritableDatabase();
+        DaoMaster daoMaster = new DaoMaster(db);
+        mDaoSession = daoMaster.newSession();
+
 
     }
 

@@ -1,5 +1,6 @@
 package com.comvee.hospitalabbott.ui.login;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -17,6 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.comvee.hospitalabbott.R;
 import com.comvee.hospitalabbott.XTYApplication;
 import com.comvee.hospitalabbott.base.BaseActivity;
@@ -33,6 +36,7 @@ import com.comvee.hospitalabbott.ui.main.MainActivity;
 import com.comvee.hospitalabbott.widget.comveealert.ComveeAlertDialog;
 import com.comvee.hospitalabbott.widget.view.CleanEditTextWithIcon;
 import com.comvee.hospitalabbott.widget.view.ProgressButton;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import butterknife.BindView;
 
@@ -68,6 +72,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginViewControl
     private String[] addressList;
     private String[] addressName;
     public static final String ACCOUNT_NAME = "accountName";
+    public static final String METHION_NO = "methion_no";//保存设备码
 
     private String accountStr;
     private boolean isMD5PWD = false; //判断密码框中的字符串是否是MD5码
@@ -94,6 +99,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginViewControl
             public void onClick(View view) {
                 if (Utils.isNetwork(LoginActivity.this)) {
                     Utils.closeKeyboard(LoginActivity.this);
+                    if (TextUtils.isEmpty(SPUtils.getInstance().getString(METHION_NO))) {
+                        ToastUtils.showShort("请打开电话权限");
+                        return;
+                    }
                     mPresenter.toLogin(getContext(),
                             loginEdAccount,
                             loginEdPwd,
@@ -151,7 +160,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginViewControl
         if (getIntent() != null)
             if (!TextUtils.isEmpty(getIntent().getStringExtra(ACCOUNT_NAME)))
                 accountStr = getIntent().getStringExtra(ACCOUNT_NAME);
-        deviceCode.setText("设备编号：" + UserHelper.getMachineNo());
 
         if (!TextUtils.isEmpty(UserHelper.getString(UserHelper.LastUserNo)))
             loginEdAccount.setText(UserHelper.getString(UserHelper.LastUserNo));
@@ -263,11 +271,28 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginViewControl
         });
 
         initProgressDialog(true);
+
+        new RxPermissions(this).request(Manifest.permission.READ_PHONE_STATE).subscribe(
+                granted ->{
+                    if (granted){
+                        SPUtils.getInstance().put(METHION_NO,Utils.getDeviceID(LoginActivity.this));
+                        deviceCode.setText("设备编号：" + UserHelper.getMachineNo());
+                    }else{
+                        ToastUtils.showShort("请打开电话权限");
+                    }
+                }
+        );
+
+
     }
+
+
 
     @Override
     protected void onResume() {
         super.onResume();
+
+
     }
 
     @Override

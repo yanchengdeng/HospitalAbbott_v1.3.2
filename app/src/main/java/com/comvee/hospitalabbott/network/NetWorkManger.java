@@ -2,12 +2,11 @@ package com.comvee.hospitalabbott.network;
 
 import android.util.Log;
 
-import com.comvee.hospitalabbott.helper.AbbottHelper;
+import com.blankj.utilcode.util.SPUtils;
+import com.comvee.hospitalabbott.helper.UserHelper;
 import com.comvee.hospitalabbott.network.config.BasicParamsInterceptor;
-import com.comvee.hospitalabbott.network.config.LoggingInterceptor;
 import com.comvee.hospitalabbott.network.config.LoggingTotalInterceptor;
 import com.comvee.hospitalabbott.tool.AppUtils;
-import com.comvee.hospitalabbott.helper.UserHelper;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,6 +14,8 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.comvee.hospitalabbott.ui.login.LoginActivity.METHION_NO;
 
 /**
  * 网络请求封装类
@@ -37,7 +38,7 @@ public class NetWorkManger {
         // 添加公共参数拦截器
         BasicParamsInterceptor basicParamsInterceptor = new BasicParamsInterceptor.Builder()
                 .addParam("verNo", AppUtils.APP_VERSION_CODE+"")
-                .addParam("machineNo", UserHelper.getMachineNo())
+                .addParam("machineNo", SPUtils.getInstance().getString(METHION_NO,"1000000000"))
                 .addParam("machineSn", UserHelper.getMachineSn())
                 .addParam("sessionToken", UserHelper.getSessionToken())
                 .addParam("appType", "3")//app类型： 1 旧版血糖仪       2 新版血糖仪app   3otg血糖仪

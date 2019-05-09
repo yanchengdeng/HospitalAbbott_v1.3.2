@@ -16,13 +16,12 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:src="@drawable/test_device_connectionless"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
     <RelativeLayout
         android:id="@+id/rl_connect"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
         android:layout_below="@+id/test_title_bar">
 
         <RelativeLayout

@@ -1,17 +1,21 @@
 package com.comvee.hospitalabbott.network.loader;
 
-import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.comvee.greendao.gen.TestInfoDao;
 import com.comvee.greendao.gen.TestPaperModelDao;
 import com.comvee.hospitalabbott.XTYApplication;
 import com.comvee.hospitalabbott.bean.BloodRangeBean;
+import com.comvee.hospitalabbott.bean.BloodSugarChatDynmicInfo;
+import com.comvee.hospitalabbott.bean.BloodSugarChatInfo;
 import com.comvee.hospitalabbott.bean.HistoryCountModel;
 import com.comvee.hospitalabbott.bean.HistoryModel;
+import com.comvee.hospitalabbott.bean.HospitalBed;
 import com.comvee.hospitalabbott.bean.LoginModel;
 import com.comvee.hospitalabbott.bean.MemberCountBean;
+import com.comvee.hospitalabbott.bean.NewBloodItem;
 import com.comvee.hospitalabbott.bean.RefreshBedModel;
 import com.comvee.hospitalabbott.bean.SearchBean;
 import com.comvee.hospitalabbott.bean.TestInfo;
@@ -19,25 +23,24 @@ import com.comvee.hospitalabbott.bean.TestPaperBean;
 import com.comvee.hospitalabbott.bean.TestPaperModel;
 import com.comvee.hospitalabbott.bean.UncheckinBean;
 import com.comvee.hospitalabbott.bean.VersionBean;
+import com.comvee.hospitalabbott.helper.BedHelper;
+import com.comvee.hospitalabbott.helper.BedRefreshHelper;
+import com.comvee.hospitalabbott.helper.HistoryHelper;
+import com.comvee.hospitalabbott.helper.UserHelper;
 import com.comvee.hospitalabbott.network.BaseResponse;
 import com.comvee.hospitalabbott.network.NetWorkManger;
 import com.comvee.hospitalabbott.network.api.ComveeApi;
 import com.comvee.hospitalabbott.network.config.HttpCall;
 import com.comvee.hospitalabbott.network.config.HttpFaultException;
 import com.comvee.hospitalabbott.tool.DateUtil;
-import com.comvee.hospitalabbott.helper.UserHelper;
-import com.comvee.hospitalabbott.helper.HistoryHelper;
-import com.comvee.hospitalabbott.helper.BedHelper;
-import com.comvee.hospitalabbott.helper.BedRefreshHelper;
-import com.comvee.hospitalabbott.tool.Utils;
 import com.comvee.hospitalabbott.widget.calendar.TimeUtil;
 import com.google.gson.Gson;
 
+import org.apache.commons.lang.text.StrBuilder;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -264,6 +267,136 @@ public class ComveeLoader extends ObjectLoader {
         return mComveeApi.addMemberParamLog(map)
                 .compose(ObjectLoader.<String>applySchedulersMap());
     }
+
+
+    /**
+     * 批量添加用户血糖
+     */
+
+    public Observable<String> batchList(HospitalBed hospitalBed, List<NewBloodItem> databaseAll) {
+//        NewBloodItemDao newBloodItemDao = XTYApplication.getInstance().getDaoSession().getNewBloodItemDao();
+//        List<NewBloodItem> databaseAll = newBloodItemDao.loadAll();
+        JSONArray jsonArray = new JSONArray();
+        if (databaseAll!=null && databaseAll.size()>0){
+            for (int i = 0;i< databaseAll.size();i++) {
+                JSONObject item = new JSONObject();
+                try {
+                    item.put("batchId", databaseAll.get(i).getHistory_id());
+                    item.put("value",  databaseAll.get(i).getSugar());
+                    item.put("recordDt", getDate(databaseAll.get(i)));
+                    item.put("recordTime", getDate(databaseAll.get(i))+getTime(databaseAll.get(i)));
+                    item.put("paramType", "1");
+                    item.put("remark","-----");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                jsonArray.put(item);
+            }
+        }
+
+
+
+        Map<String, String> map = new HashMap<>();
+        map.put("memberId", hospitalBed.getMemberId());
+        map.put("paramLogArrayJson",jsonArray.toString());
+        return mComveeApi.batchUploadMemberData(map)
+                .compose(ObjectLoader.<String>applySchedulersMap());
+    }
+
+    private String getDate(NewBloodItem newBloodItem) {
+        StrBuilder strBuilder = new StrBuilder();
+        strBuilder.append("20"+newBloodItem.getYear())
+                .append("-")
+                .append(newBloodItem.getMouth()>9?newBloodItem.getMouth():"0"+newBloodItem.getMouth())
+                .append("-")
+                .append(newBloodItem.getDay()>9?newBloodItem.getDay():"0"+newBloodItem.getDay());
+
+        return strBuilder.toString();
+    }
+
+    private String getTime(NewBloodItem newBloodItem){
+        StrBuilder strBuilder = new StrBuilder();
+        strBuilder.append(" ").append(newBloodItem.getHour()>9?newBloodItem.getHour():"0"+newBloodItem.getHour())
+                .append(":")
+                .append(newBloodItem.getMinus()>9?newBloodItem.getMinus():"0"+newBloodItem.getMinus())
+                .append(":")
+                .append("00");
+
+        return strBuilder.toString();
+
+    }
+
+    /**
+     * 获取用户血糖记录列表
+     *
+     * @param memberId     成员id
+     * @param startDt      开始时间
+     * @param endDt        结束时间
+     * @param type 需要查询的血糖时间段code  传空字符串获取全部
+     */
+    public Observable<BloodSugarChatInfo> getBloodChartInfo(final String memberId, String startDt,
+                                                           String endDt, String type) {
+        Map<String, String> map = new HashMap<>();
+        map.put("memberId", memberId);
+        map.put("startDt", startDt);
+        map.put("endDt", endDt);
+        map.put("type", type);//图表数据类型 1 血糖标准天图 (默认） 2 趋势图
+        return mComveeApi.loadMemberBloodSugarChar(map)
+                .subscribeOn(Schedulers.io())
+                .map(new Function<BaseResponse<BloodSugarChatInfo>, BloodSugarChatInfo>() {
+                    @Override
+                    public BloodSugarChatInfo apply(@NonNull BaseResponse<BloodSugarChatInfo> response) throws Exception {
+//                        if (!response.isSuccess()) {
+                        if (!response.getCode().equals("0")) {
+                            throw new HttpFaultException(Integer.valueOf(response.getCode()), response.getMsg());
+                        }
+                        BloodSugarChatInfo historyModel = response.getObj();
+                        LogUtils.w("dyc",historyModel);
+//                        HistoryHelper.setLocalHistory(memberId, historyModel);
+//                        HistoryCountModel countModel = HistoryHelper.getLocalHistory(memberId);
+                        return historyModel;
+                    }
+                })
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    /**
+     * 获取用户血糖记录列表
+     *
+     * @param memberId     成员id
+     * @param startDt      开始时间
+     * @param endDt        结束时间
+     * @param type 需要查询的血糖时间段code  传空字符串获取全部
+     */
+    public Observable<BloodSugarChatDynmicInfo> getBloodChartInfoSuper(final String memberId, String startDt,
+                                                                       String endDt, String type) {
+        Map<String, String> map = new HashMap<>();
+        map.put("memberId", memberId);
+        map.put("startDt", startDt);
+        map.put("endDt", endDt);
+        map.put("type", type);//图表数据类型 1 血糖标准天图 (默认） 2 趋势图
+        return mComveeApi.loadMemberBloodSugarCharDyanmic(map)
+                .subscribeOn(Schedulers.io())
+                .map(new Function<BaseResponse<BloodSugarChatDynmicInfo>, BloodSugarChatDynmicInfo>() {
+                    @Override
+                    public BloodSugarChatDynmicInfo apply(@NonNull BaseResponse<BloodSugarChatDynmicInfo> response) throws Exception {
+//                        if (!response.isSuccess()) {
+                        if (!response.getCode().equals("0")) {
+                            throw new HttpFaultException(Integer.valueOf(response.getCode()), response.getMsg());
+                        }
+                        BloodSugarChatDynmicInfo historyModel = response.getObj();
+                        LogUtils.w("dyc",historyModel);
+//                        HistoryHelper.setLocalHistory(memberId, historyModel);
+//                        HistoryCountModel countModel = HistoryHelper.getLocalHistory(memberId);
+                        return historyModel;
+                    }
+                })
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
 
     /**
      * 获取用户血糖记录列表

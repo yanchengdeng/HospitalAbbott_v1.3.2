@@ -2,42 +2,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.comvee.hospitalabbott">
 
-    <uses-feature android:name="android.hardware.usb.host" />
-
-    <!-- 访问CellID或WiFi,只要当前设备可以接收到基站的服务信号，便可获得位置信息 -->
+    <uses-feature android:name="android.hardware.usb.host" /> <!-- 访问CellID或WiFi,只要当前设备可以接收到基站的服务信号，便可获得位置信息 -->
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许读取网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许读取wifi网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许 弹出系统级别的AlterDialog -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 允许 修改屏幕亮度 -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-
-    <!-- 获取设备ID -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
-    <!-- 设置系统时间 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> <!-- 获取设备ID -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 设置系统时间 -->
     <!-- <uses-permission android:name="android.permission.SET_TIME" /> -->
-
-
     <!-- 获取读写的权利 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
-    <uses-permission android:name="android.permission.BATTERY_STATS" />
-
-    <!-- WIFI -->
+    <uses-permission android:name="android.permission.BATTERY_STATS" /> <!-- WIFI -->
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- 允许程序改变网络链接状态 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 允许程序改变WIFI链接状态 -->
-
-
     <!-- 屏幕待机时间 -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-
-    <!-- 屏蔽HOME、BACK -->
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-
-    <!-- 震动权限 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> <!-- 屏蔽HOME、BACK -->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" /> <!-- 震动权限 -->
     <uses-permission android:name="android.permission.VIBRATE" /> <!-- 拨号 -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
@@ -49,6 +33,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.detection.BloodDiffRecordActivity"></activity>
+        <activity android:name=".ui.detection.ChartScanActivity" />
+        <activity android:name=".ui.detection.TestBloodNewActivity" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:launchMode="singleTask">
@@ -126,7 +113,7 @@
         <service android:name=".network.service.BloodUpdateService" />
         <service android:name=".network.service.IndexLoadRefreshService" />
 
-        <activity android:name=".ui.login.NetworkTestActivity"></activity>
+        <activity android:name=".ui.login.NetworkTestActivity" />
     </application>
 
 </manifest>

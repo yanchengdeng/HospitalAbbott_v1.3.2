@@ -39,8 +39,6 @@ import butterknife.BindView;
 
 /**
  * Created by F011512088 on 2018/1/25.
- * @author dengyancheng
- * 数据读取完成
  */
 
 public class TestBloodActivity extends BaseFragmentActivity<TestBloodDeviceApiPresenter, TestBloodViewApiController>
@@ -175,9 +173,6 @@ public class TestBloodActivity extends BaseFragmentActivity<TestBloodDeviceApiPr
         llOperatingBtn.setOnClickListener(this);
         onCompleteBtnEnable(false);
 
-        //TODO  yancheng本期先把历史隐藏
-        topHistory.setVisibility(View.GONE);
-
 
         //时间段
         bloodResultTimeAdapter = new BloodResultTimeAdapter(this, TestResultDataUtil.getTimeStr());
@@ -262,8 +257,7 @@ public class TestBloodActivity extends BaseFragmentActivity<TestBloodDeviceApiPr
         if (errorIv != null)
             errorIv.setVisibility(View.GONE);
         if (rlConnect != null)
-            //TODO  yancheng    rlConnect.setVisibility(View.VISIBLE);
-            rlConnect.setVisibility(View.GONE);
+            rlConnect.setVisibility(View.VISIBLE);
         if (stateTv != null) {
             stateTv.setVisibility(View.VISIBLE);
             stateTv.setTextColor(getResources().getColor(R.color.black));
@@ -291,7 +285,6 @@ public class TestBloodActivity extends BaseFragmentActivity<TestBloodDeviceApiPr
                 if (errorIv != null)
                     errorIv.setVisibility(View.GONE);
                 if (rlConnect != null)
-                    //TODO  yancheng    rlConnect.setVisibility(View.VISIBLE);
                     rlConnect.setVisibility(View.VISIBLE);
                 if (stateTv != null) {
                     stateTv.setVisibility(View.VISIBLE);
@@ -331,14 +324,10 @@ public class TestBloodActivity extends BaseFragmentActivity<TestBloodDeviceApiPr
                 if (topBack != null) {
                     topBack.setVisibility(View.VISIBLE);
                 }
-                if (errorIv != null){
-                    errorIv.setImageResource(R.drawable.dongtaixetang_error);
-                }
-
-//                    errorIv.setVisibility(View.GONE);
+                if (errorIv != null)
+                    errorIv.setVisibility(View.GONE);
                 if (rlConnect != null)
-                    //TODO  yancheng    rlConnect.setVisibility(View.VISIBLE);
-                    rlConnect.setVisibility(View.GONE);
+                    rlConnect.setVisibility(View.VISIBLE);
                 if (stateTv != null) {
                     stateTv.setVisibility(View.VISIBLE);
                     stateTv.setTextColor(getResources().getColor(R.color.red));
@@ -413,7 +402,7 @@ public class TestBloodActivity extends BaseFragmentActivity<TestBloodDeviceApiPr
                     llOperatingBtn.setClickable(true);
                     llOperatingBtn.setBackgroundResource(R.drawable.rounded_rectangle_btn);
                 } else {
-//                    llOperatingBtn.setClickable(false);
+                    llOperatingBtn.setClickable(false);
                     llOperatingBtn.setBackgroundResource(R.drawable.shape_solid_gray_circle_btn);
                 }
             }
@@ -437,7 +426,6 @@ public class TestBloodActivity extends BaseFragmentActivity<TestBloodDeviceApiPr
 
     @Override
     public void onClick(View v) {
-        mPresenter.requestDataConnect();
         switch (v.getId()) {
             case R.id.ll_operating_btn:
                 String operatingStr = operatingBtn.getText().toString().trim();
@@ -665,8 +653,6 @@ public class TestBloodActivity extends BaseFragmentActivity<TestBloodDeviceApiPr
         //  stringBuffer.append(bloodData);
         gotData = true;
         hexBuffer.append(recv);
-        Log.e("合并数据 长度", "==" + hexBuffer.toString().replace(" ","").length());
-
         Log.e("合并数据", "==" + lastTimeRec + recv);
         //结束符号
         if (recv.contains("0d 0a 04") || (lastTimeRec + recv).contains("0d 0a 04")) {
@@ -680,14 +666,8 @@ public class TestBloodActivity extends BaseFragmentActivity<TestBloodDeviceApiPr
 
     }
 
-    // 数据读取完成
     @Override
     public void onReadFinish() {
-        if (hexBuffer!=null && hexBuffer.length()>0){
-            lastTimeRec = "";
-            Log.e("数据读取成功", "==" + hexBuffer.length()   +"  =正确： "+(7+17*6));
-            readBloodSucess();
-        }
 
     }
 

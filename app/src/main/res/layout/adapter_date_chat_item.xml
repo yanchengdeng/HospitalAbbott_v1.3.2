@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:background="@color/white"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_layout"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="25"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:gravity="center"
+        android:background="@drawable/date_circle_empty"
+        android:textColor="@color/blue" />
+
+
+    <TextView
+        android:id="@+id/tv_week_title"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="3dp"
+        android:textColor="@color/text_gray_99"
+        android:paddingBottom="3dp"
+        android:background="#f3f3f3"
+        android:text="一" />
+
+
+</LinearLayout>

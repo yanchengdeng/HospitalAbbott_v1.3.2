@@ -161,4 +161,13 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
     </style>
+
+    <style name="MyTablayoutstyle" parent="Base.Widget.Design.TabLayout">
+        <item name="tabBackground">@color/white</item>
+        <item name="tabIndicatorColor">@color/blue</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabSelectedTextColor">@color/blue</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>

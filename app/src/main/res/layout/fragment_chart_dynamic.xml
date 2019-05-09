@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/text_gray_f6f6f8"
+    tools:context=".ui.detection.ChartScanActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="动态图谱"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:text="(14天血糖数据)"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:gravity="right"
+                android:text="(单位：mmol/L)"
+                android:textColor="@color/text_gray_66"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/bubbleChart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/dynamic_blood" />
+        </FrameLayout>
+
+
+        <TextView
+            android:id="@+id/tv_blood_diff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:drawableLeft="@mipmap/blood_diff"
+            android:drawableRight="@drawable/hospital_107"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:text="日间血糖平均绝对差"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_16"></TextView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <include layout="@layout/layou_bottom_blood_params" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line_grey" />
+
+            <include layout="@layout/layou_bottom_blood_params_big_three" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
