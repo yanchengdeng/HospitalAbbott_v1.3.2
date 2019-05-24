@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -86,7 +85,7 @@ public class DynamicChartFragment extends BaseFragment {
         tvLess39 = view.findViewById(R.id.tv_lessthan_39_tir);
         tvLess139 = view.findViewById(R.id.tv_lessthan_139_tir);
         tvLessTir = view.findViewById(R.id.tv_avg_tir);
-
+        chart.setVisibility(View.INVISIBLE);
 
 
         //tir
@@ -120,9 +119,6 @@ public class DynamicChartFragment extends BaseFragment {
             }
         });
 
-
-
-
         //血糖标准差
         view.findViewById(R.id.ll_avg_standardVal).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,12 +149,6 @@ public class DynamicChartFragment extends BaseFragment {
             }
         });
 
-
-
-
-
-
-
         view.findViewById(R.id.tv_blood_diff).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -172,29 +162,26 @@ public class DynamicChartFragment extends BaseFragment {
 
     }
 
+    //获取动态血糖
     private void getDataInfo() {
 
         String today = DateUtil.date2Str(Calendar.getInstance().getTime(), DateUtil.FORMAT_YMD);
         Calendar calendarBeforWeek = Calendar.getInstance();
         calendarBeforWeek.add(Calendar.DAY_OF_YEAR,-14);
         String todayBeforWeek = DateUtil.date2Str(calendarBeforWeek.getTime(), DateUtil.FORMAT_YMD);
-        ComveeLoader.getInstance().getBloodChartInfoSuper(hospitalBed.getMemberId(), todayBeforWeek, today, "2")
-//        ComveeLoader.getInstance().getBloodChartInfo(hospitalBed.getMemberId(), today,today,"1")
+
+        //TODO 测试数据  待测试完成后
+        ComveeLoader.getInstance().getBloodChartInfoSuper(hospitalBed.getMemberId(), "2019-04-25", "2019-05-07", "2")
+//        ComveeLoader.getInstance().getBloodChartInfoSuper(hospitalBed.getMemberId(), todayBeforWeek, today, "2")
                 .subscribe(new HttpCall<BloodSugarChatDynmicInfo>(null) {
                     @Override
                     public void onNext(BloodSugarChatDynmicInfo bloodSugarChatInfo) {
-                        Log.w("dyc", bloodSugarChatInfo + "");
                         if (bloodSugarChatInfo != null) {
                             initChartView(bloodSugarChatInfo);
-
-
                             tvBloodAvg.setText(""+bloodSugarChatInfo.avgNum);
                             tvstandardVal.setText(""+bloodSugarChatInfo.standardVal);
                             tvmeanAmplitudeOfGlycemicExcursion.setText(""+bloodSugarChatInfo.meanAmplitudeOfGlycemicExcursion);
                             tvcoefficientOfVariation.setText(""+bloodSugarChatInfo.coefficientOfVariation);
-
-
-
                             tvLessTir.setText(""+bloodSugarChatInfo.awiTimeRateOfNormal);
                             tvLess39.setText(""+bloodSugarChatInfo.awiTimeRateOf3_9);
                             tvLess139.setText(""+bloodSugarChatInfo.awiTimeRateOf13_9);
@@ -206,8 +193,6 @@ public class DynamicChartFragment extends BaseFragment {
                     @Override
                     public void onComplete() {
                         super.onComplete();
-                        Log.w("dyc", "=====");
-
                     }
 
                     @Override
@@ -223,6 +208,8 @@ public class DynamicChartFragment extends BaseFragment {
     //初始化 chartView
     private void initChartView(BloodSugarChatDynmicInfo bloodSugarChatInfo) {
 
+        chart.setVisibility(View.VISIBLE);
+
         {   // // Chart Style // //
 
             // background color
@@ -234,42 +221,27 @@ public class DynamicChartFragment extends BaseFragment {
             // enable touch gestures
             chart.setTouchEnabled(false);
 
-            // set listeners
-            chart.setDrawGridBackground(false);
-
             // create marker to display box when values are selected
             MyMarkerView mv = new MyMarkerView(getActivity(), R.layout.custom_marker_view);
 
             // Set the marker to the chart
             mv.setChartView(chart);
-//            chart.setMarker(mv);
-
-            // enable scaling and dragging
+            //禁止放大 拖拽
             chart.setDragEnabled(false);
             chart.setScaleEnabled(false);
-//            chart.setGridBackgroundColor(getResources().getColor(R.color.transparent));
-
-            // chart.setScaleXEnabled(true);
-            // chart.setScaleYEnabled(true);
-
-            // force pinch zoom along both axis
             chart.setPinchZoom(false);
         }
 
         XAxis xAxis;
         {   // // X-Axis Style // //
             xAxis = chart.getXAxis();
-
-            // vertical grid lines
-            xAxis.enableGridDashedLine(10f, 10f, 0f);
+            xAxis.setGridLineWidth(0);
             xAxis.setDrawGridLines(false);
-//            xAxis.setGridColor(Color.argb(255,255,153,50));
+            xAxis.setDrawAxisLine(false);
             xAxis.setAxisMinimum(0);
             xAxis.setAxisMaximum(24);
-            xAxis.setSpaceMax(6);
-            xAxis.setSpaceMin(6);
-
-
+            //强制将分割线 设置为5个   保证  4个区间 每个区间 6小时  满足需求
+            xAxis.setLabelCount(5,true);
         }
 
         YAxis yAxis;
@@ -277,30 +249,34 @@ public class DynamicChartFragment extends BaseFragment {
             yAxis = chart.getAxisLeft();
 
             // disable dual axis (only use LEFT axis)
-            chart.getAxisRight().setEnabled(false);
+//            chart.getAxisRight().setEnabled(false);
 
             // horizontal grid lines
+            chart.getAxisLeft().setDrawGridLines(false);
             yAxis.enableGridDashedLine(10f, 10f, 0f);
             yAxis.setDrawGridLines(false);
-
-
-            // axis range
+            yAxis.setDrawZeroLine(true);
+            yAxis.setDrawAxisLine(true);
+            yAxis.setAxisLineWidth(1);
+            //y轴右边画线
+            chart.getAxisRight().setDrawGridLines(false);
+            chart.getAxisRight().enableGridDashedLine(0f, 0f, 0f);
+            chart.getAxisRight().setDrawAxisLine(true);
+            chart.getAxisRight().setAxisLineWidth(1);
+            //不显示数值
+            chart.getAxisRight().setDrawLabels(false);
+            // Y轴数据权健
             yAxis.setAxisMaximum(30f);
             yAxis.setAxisMinimum(0f);
         }
 
 
-        {   // // Create Limit Lines // //
-//            LimitLine llXAxis = new LimitLine(9f, "Index 10");
-//            llXAxis.setLineWidth(4f);
-//            llXAxis.enableDashedLine(10f, 10f, 0f);
-//            llXAxis.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
-//            llXAxis.setTextSize(10f);
+        {
 
+            //水平线 （最大值 最小值 ..） 先删除 再添加）
             yAxis.removeAllLimitLines();
             LimitLine ll1 = new LimitLine(bloodSugarChatInfo.highLineVal, "");
             ll1.setLineWidth(2f);
-            //F2F8EE
             ll1.setLineColor(Color.rgb(00, 00, 00));
             ll1.enableDashedLine(5f, 15f, 0f);
             ll1.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_TOP);
@@ -314,8 +290,8 @@ public class DynamicChartFragment extends BaseFragment {
             ll2.setTextSize(10f);
 
             // draw limit lines behind data instead of on top
-            yAxis.setDrawLimitLinesBehindData(true);
-            xAxis.setDrawLimitLinesBehindData(true);
+//            yAxis.setDrawLimitLinesBehindData(true);
+//            xAxis.setDrawLimitLinesBehindData(true);
 
             // add limit lines
             yAxis.addLimitLine(ll1);
@@ -332,49 +308,75 @@ public class DynamicChartFragment extends BaseFragment {
                 return value > 10 ? String.valueOf((int) value + ":00") : String.valueOf("0" + (int) value + ":00");
             }
         });
-
-        // add data
-
-
-        // draw points over time
-        chart.animateX(1500);
-
-        // get the legend (only possible after setting data)
+        chart.animateY(1500);
         Legend l = chart.getLegend();
-
-        // draw legend entries as lines
         l.setForm(Legend.LegendForm.LINE);
-
+        //隐藏折现标签说明
+        l.setEnabled(false);
         setData(parseEntity(bloodSugarChatInfo));
 
     }
 
+    /**
+     * 解析接口数据
+     * @param bloodSugarChatInfo
+     * @return
+     */
     private ArrayList<ILineDataSet> parseEntity(BloodSugarChatDynmicInfo bloodSugarChatInfo) {
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         if (bloodSugarChatInfo==null || bloodSugarChatInfo.chartData==null || bloodSugarChatInfo.chartData.dataSource==null){
             return dataSets;
         }
+//        if (bloodSugarChatInfo.chartData.dataSource.curveOfTenPercent!=null && bloodSugarChatInfo.chartData.dataSource.curveOfTenPercent.length>0 ){
+//            ArrayList<Entry> values = new ArrayList<>();
+//            for (int i = 0;i<bloodSugarChatInfo.chartData.dataSource.curveOfTenPercent.length;i++){
+//                values.add(new Entry(bloodSugarChatInfo.chartData.dataSource.curveOfTenPercent[i][0]*6*0.9f,bloodSugarChatInfo.chartData.dataSource.curveOfTenPercent[i][1]*0.9f));
+//            }
+//            LineDataSet d = new LineDataSet(values, "模拟假数据");
+//            d.setColor(Color.rgb(255,  00, 00));
+//            d.setLineWidth(2);
+//            dataSets.add(d);
+//
+//        }
 
-        if (bloodSugarChatInfo.chartData.dataSource.curveOfTenPercent!=null && bloodSugarChatInfo.chartData.dataSource.curveOfTenPercent.length>0 ){
+
+        int colorLineLight = Color.parseColor("#cbdbe5");//浅色折现
+        int colorLineDeep = Color.parseColor("#a4bdd3");//深色折现
+        int colorAreaLight = Color.parseColor("#EBF1F5");//浅色区域
+        int colorAreaDeep = Color.parseColor("#CDDCE9");//深色区域
+
+
+        //TODO  小技巧： 要按照顺序排才可以在最后一个折现的地方使用  白色区域覆盖原有自带的颜色
+
+        if (bloodSugarChatInfo.chartData.dataSource.curveOfNinetyPercent!=null && bloodSugarChatInfo.chartData.dataSource.curveOfNinetyPercent.length>0 ){
             ArrayList<Entry> values = new ArrayList<>();
-            for (int i = 0;i<bloodSugarChatInfo.chartData.dataSource.curveOfTenPercent.length;i++){
-                values.add(new Entry(bloodSugarChatInfo.chartData.dataSource.curveOfTenPercent[i][0]*6,bloodSugarChatInfo.chartData.dataSource.curveOfTenPercent[i][1]));
+            for (int i = 0;i<bloodSugarChatInfo.chartData.dataSource.curveOfNinetyPercent.length;i++){
+                values.add(new Entry(bloodSugarChatInfo.chartData.dataSource.curveOfNinetyPercent[i][0]*6,bloodSugarChatInfo.chartData.dataSource.curveOfNinetyPercent[i][1]));
             }
-            LineDataSet d = new LineDataSet(values, "10%分位 ");
-            d.setColor(Color.rgb(203,  219, 229));
+            LineDataSet d = new LineDataSet(values, "90%分位 ");
+            //设置这线颜色
+            d.setColor(colorLineLight);
+            //设置折现包含区域颜色
+            d.setFillColor(colorAreaLight);
+            //设置折现宽度
             d.setLineWidth(2);
+            //设置折现区域颜色透明度
+            d.setFillAlpha(255);
             dataSets.add(d);
 
         }
 
-        if (bloodSugarChatInfo.chartData.dataSource.curveOfTwentyFivePercent!=null && bloodSugarChatInfo.chartData.dataSource.curveOfTwentyFivePercent.length>0 ){
+        //同理
+        if (bloodSugarChatInfo.chartData.dataSource.curveOfSeventyFivePercent!=null && bloodSugarChatInfo.chartData.dataSource.curveOfSeventyFivePercent.length>0 ){
             ArrayList<Entry> values = new ArrayList<>();
-            for (int i = 0;i<bloodSugarChatInfo.chartData.dataSource.curveOfTwentyFivePercent.length;i++){
-                values.add(new Entry(bloodSugarChatInfo.chartData.dataSource.curveOfTwentyFivePercent[i][0]*6,bloodSugarChatInfo.chartData.dataSource.curveOfTwentyFivePercent[i][1]));
+            for (int i = 0;i<bloodSugarChatInfo.chartData.dataSource.curveOfSeventyFivePercent.length;i++){
+                values.add(new Entry(bloodSugarChatInfo.chartData.dataSource.curveOfSeventyFivePercent[i][0]*6,bloodSugarChatInfo.chartData.dataSource.curveOfSeventyFivePercent[i][1]));
             }
-            LineDataSet d = new LineDataSet(values, "25%分位 ");
-            d.setColor(Color.rgb( 164, 189, 211));
+            LineDataSet d = new LineDataSet(values, "75%分位 ");
+            d.setColor(colorLineDeep);
+            d.setFillColor(colorAreaDeep);
             d.setLineWidth(2);
+            d.setFillAlpha(255);
             dataSets.add(d);
 
         }
@@ -385,60 +387,46 @@ public class DynamicChartFragment extends BaseFragment {
                 values.add(new Entry(bloodSugarChatInfo.chartData.dataSource.curveOfFiftyPercent[i][0]*6,bloodSugarChatInfo.chartData.dataSource.curveOfFiftyPercent[i][1]));
             }
             LineDataSet d = new LineDataSet(values, "50%分位 ");
-            d.setColor(Color.argb(255, 0, 153, 255));
+            d.setColor(Color.parseColor("#0099ff"));
+            d.setFillColor(colorAreaDeep);
             d.setLineWidth(2);
+            d.setFillAlpha(255);
             dataSets.add(d);
 
         }
 
-
-        //cbdbe5
-
-        //a4bdd3
-
-
-
-        if (bloodSugarChatInfo.chartData.dataSource.curveOfSeventyFivePercent!=null && bloodSugarChatInfo.chartData.dataSource.curveOfSeventyFivePercent.length>0 ){
+        if (bloodSugarChatInfo.chartData.dataSource.curveOfTwentyFivePercent!=null && bloodSugarChatInfo.chartData.dataSource.curveOfTwentyFivePercent.length>0 ){
             ArrayList<Entry> values = new ArrayList<>();
-            for (int i = 0;i<bloodSugarChatInfo.chartData.dataSource.curveOfSeventyFivePercent.length;i++){
-                values.add(new Entry(bloodSugarChatInfo.chartData.dataSource.curveOfSeventyFivePercent[i][0]*6,bloodSugarChatInfo.chartData.dataSource.curveOfSeventyFivePercent[i][1]));
+            for (int i = 0;i<bloodSugarChatInfo.chartData.dataSource.curveOfTwentyFivePercent.length;i++){
+                values.add(new Entry(bloodSugarChatInfo.chartData.dataSource.curveOfTwentyFivePercent[i][0]*6,bloodSugarChatInfo.chartData.dataSource.curveOfTwentyFivePercent[i][1]));
             }
-            LineDataSet d = new LineDataSet(values, "75%分位 ");
-            d.setColor(Color.rgb( 164, 189, 211));
+            LineDataSet d = new LineDataSet(values, "25%分位 ");
+            d.setColor(colorLineDeep);
+            d.setFillColor(colorAreaLight);
+            d.setFillAlpha(255);
             d.setLineWidth(2);
             dataSets.add(d);
 
         }
 
-
-        if (bloodSugarChatInfo.chartData.dataSource.curveOfNinetyPercent!=null && bloodSugarChatInfo.chartData.dataSource.curveOfNinetyPercent.length>0 ){
+        if (bloodSugarChatInfo.chartData.dataSource.curveOfTenPercent!=null && bloodSugarChatInfo.chartData.dataSource.curveOfTenPercent.length>0 ){
             ArrayList<Entry> values = new ArrayList<>();
-            for (int i = 0;i<bloodSugarChatInfo.chartData.dataSource.curveOfNinetyPercent.length;i++){
-                values.add(new Entry(bloodSugarChatInfo.chartData.dataSource.curveOfNinetyPercent[i][0]*6,bloodSugarChatInfo.chartData.dataSource.curveOfNinetyPercent[i][1]));
+            for (int i = 0;i<bloodSugarChatInfo.chartData.dataSource.curveOfTenPercent.length;i++){
+                values.add(new Entry(bloodSugarChatInfo.chartData.dataSource.curveOfTenPercent[i][0]*6,bloodSugarChatInfo.chartData.dataSource.curveOfTenPercent[i][1]));
             }
-            LineDataSet d = new LineDataSet(values, "90%分位 ");
-            d.setColor(Color.rgb(203,  219, 229));
+            LineDataSet d = new LineDataSet(values, "10%分位 ");
+            d.setColor(colorLineLight);
+            d.setFillColor(Color.WHITE);
+            d.setFillAlpha(255);
             d.setLineWidth(2);
             dataSets.add(d);
 
         }
+
+
+
 
 //        resetDataSet(dataSets);
-
-
-
-
-
-
-
-
-//        if (bloodSugarChatInfo.chartData != null && bloodSugarChatInfo.chartData.dataSource != null && bloodSugarChatInfo.chartData.dataSource.length > 0) {
-//            for (int i = 0; i < bloodSugarChatInfo.chartData.dataSource.length; i++) {
-//                if (bloodSugarChatInfo.chartData.dataSource[i] != null && bloodSugarChatInfo.chartData.dataSource[i].length == 3) {
-//                    entries.add(new Entry(bloodSugarChatInfo.chartData.dataSource[i][0] * 6, bloodSugarChatInfo.chartData.dataSource[i][1]));
-//                }
-//            }
-//        }
         return dataSets;
     }
 
@@ -512,21 +500,24 @@ public class DynamicChartFragment extends BaseFragment {
     }
 
 
+    /**
+     * 设置数据到图标
+     * @param values
+     */
     private void setData(ArrayList<ILineDataSet> values) {
-
-            // create a data object with the data sets
             LineData data = new LineData(values);
-
-            // set data
             chart.setData(data);
-
             List<ILineDataSet> sets = chart.getData()
                     .getDataSets();
 
             for (ILineDataSet iSet : sets) {
-
                 LineDataSet set = (LineDataSet) iSet;
+                //设置数据圆点显示
                 set.setDrawCircles(false);
+                //填充颜色
+                set.setDrawFilled(true);
+                //设置取现模式
+                set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
             }
         }
     }

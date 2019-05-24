@@ -43,12 +43,131 @@
 
         </LinearLayout>
 
-
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/bubbleChart"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:background="@android:color/white" />
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/bubbleChart"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@android:color/white"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="40dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="1dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/yellow" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/icon_food" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="1dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/yellow" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/icon_food" />
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="1dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:background="@color/yellow" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/icon_food" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginLeft="60dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="1dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:background="@color/purple" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/icon_moon" />
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/chart_guid_logo" />
+            </LinearLayout>
+
+        </FrameLayout>
 
 
         <LinearLayout
@@ -57,14 +176,14 @@
             android:layout_marginTop="10dp"
             android:orientation="vertical">
 
-            <include layout="@layout/layou_bottom_blood_params"/>
+            <include layout="@layout/layou_bottom_blood_params" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/line_grey" />
 
-            <include layout="@layout/layou_bottom_blood_params_big"/>
+            <include layout="@layout/layou_bottom_blood_params_big" />
 
 
         </LinearLayout>

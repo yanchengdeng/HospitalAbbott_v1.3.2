@@ -51,4 +51,5 @@
     <color name="low_blood">#0099ff</color>
     <color name="normal_blood">#02c968</color>
     <color name="high_blood">#fa7437</color>
+    <color name="purple">#D1A6FD</color>
 </resources>

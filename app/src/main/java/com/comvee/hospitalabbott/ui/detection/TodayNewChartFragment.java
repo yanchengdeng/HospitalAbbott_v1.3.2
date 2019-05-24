@@ -52,17 +52,13 @@ public class TodayNewChartFragment extends BaseFragment {
     private HospitalBed hospitalBed;
 
     //平均值  标准值 波动  异常
-    private TextView tvBloodAvg, tvstandardVal, tvmeanAmplitudeOfGlycemicExcursion,tvcoefficientOfVariation;
+    private TextView tvBloodAvg, tvstandardVal, tvmeanAmplitudeOfGlycemicExcursion, tvcoefficientOfVariation;
 
-    private TextView tvLessTir, tvLess39,tvLess40,tvLess139,tvLessUnit39,tvlessUnit40,tvLessUnit139;
+    private TextView tvLessTir, tvLess39, tvLess40, tvLess139, tvLessUnit39, tvlessUnit40, tvLessUnit139;
 
     private RecyclerView recyclerView;
 
     private DateListAdapter dateListAdapter;
-
-
-
-
 
 
     @Override
@@ -101,7 +97,6 @@ public class TodayNewChartFragment extends BaseFragment {
         tvLessTir = view.findViewById(R.id.tv_avg_tir);
 
 
-
         recyclerView = view.findViewById(R.id.recyclerView);
         dateListAdapter = new DateListAdapter(R.layout.adapter_date_chat_item, getDateList());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -110,15 +105,13 @@ public class TodayNewChartFragment extends BaseFragment {
         recyclerView.setAdapter(dateListAdapter);
 
 
-
-
         //tir
 
 
         view.findViewById(R.id.ll_tir_num).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getActivity()!=null){
+                if (getActivity() != null) {
                     ((ChartScanActivity) getActivity()).showDialogTips(0);
                 }
             }
@@ -128,19 +121,17 @@ public class TodayNewChartFragment extends BaseFragment {
         view.findViewById(R.id.ll_less_39_num).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getActivity()!=null){
+                if (getActivity() != null) {
                     ((ChartScanActivity) getActivity()).showDialogTips(1);
                 }
             }
         });
 
 
-
-
         view.findViewById(R.id.ll_less_40_num).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getActivity()!=null){
+                if (getActivity() != null) {
                     ((ChartScanActivity) getActivity()).showDialogTips(2);
                 }
             }
@@ -150,20 +141,18 @@ public class TodayNewChartFragment extends BaseFragment {
         view.findViewById(R.id.ll_less_139_num).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getActivity()!=null){
+                if (getActivity() != null) {
                     ((ChartScanActivity) getActivity()).showDialogTips(3);
                 }
             }
         });
 
 
-
-
         //血糖标准差
         view.findViewById(R.id.ll_avg_standardVal).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getActivity()!=null){
+                if (getActivity() != null) {
                     ((ChartScanActivity) getActivity()).showDialogTips(4);
                 }
             }
@@ -173,7 +162,7 @@ public class TodayNewChartFragment extends BaseFragment {
         view.findViewById(R.id.ll_avg_avg_bodong).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getActivity()!=null){
+                if (getActivity() != null) {
                     ((ChartScanActivity) getActivity()).showDialogTips(5);
                 }
             }
@@ -183,18 +172,15 @@ public class TodayNewChartFragment extends BaseFragment {
         view.findViewById(R.id.ll_avg_avg_bianyi).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getActivity()!=null){
+                if (getActivity() != null) {
                     ((ChartScanActivity) getActivity()).showDialogTips(6);
                 }
             }
         });
 
 
-
-
-
-
         String today = DateUtil.date2Str(new Date(), DateUtil.FORMAT_YMD);
+        chart.setVisibility(View.INVISIBLE);
         getDataInfo(today);
 
         dateListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -213,11 +199,12 @@ public class TodayNewChartFragment extends BaseFragment {
 
     //初始化 chartView
     private void initChartView(BloodSugarChatInfo bloodSugarChatInfo) {
+        chart.setVisibility(View.VISIBLE);
 
         {   // // Chart Style // //
 
             // background color
-            chart.setBackgroundColor(Color.WHITE);
+//            chart.setBackgroundColor(Color.WHITE);
 
             // disable description text
             chart.getDescription().setEnabled(false);
@@ -226,7 +213,7 @@ public class TodayNewChartFragment extends BaseFragment {
             chart.setTouchEnabled(false);
 
             // set listeners
-            chart.setDrawGridBackground(false);
+//            chart.setDrawGridBackground(false);
 
             // create marker to display box when values are selected
             MyMarkerView mv = new MyMarkerView(getActivity(), R.layout.custom_marker_view);
@@ -238,8 +225,6 @@ public class TodayNewChartFragment extends BaseFragment {
             // enable scaling and dragging
             chart.setDragEnabled(false);
             chart.setScaleEnabled(false);
-//            chart.setGridBackgroundColor(getResources().getColor(R.color.transparent));
-
             // chart.setScaleXEnabled(true);
             // chart.setScaleYEnabled(true);
 
@@ -250,17 +235,13 @@ public class TodayNewChartFragment extends BaseFragment {
         XAxis xAxis;
         {   // // X-Axis Style // //
             xAxis = chart.getXAxis();
-
             // vertical grid lines
-            xAxis.enableGridDashedLine(10f, 10f, 0f);
+//            xAxis.enableGridDashedLine(10f, 10f, 0f);
+            xAxis.setGridLineWidth(0);
             xAxis.setDrawGridLines(false);
-//            xAxis.setGridColor(Color.argb(255,255,153,50));
             xAxis.setAxisMinimum(0);
             xAxis.setAxisMaximum(24);
-            xAxis.setSpaceMax(6);
-            xAxis.setSpaceMin(6);
-
-
+            xAxis.setLabelCount(5, true);
         }
 
         YAxis yAxis;
@@ -268,11 +249,25 @@ public class TodayNewChartFragment extends BaseFragment {
             yAxis = chart.getAxisLeft();
 
             // disable dual axis (only use LEFT axis)
-            chart.getAxisRight().setEnabled(false);
+//            chart.getAxisRight().setEnabled(false);
 
             // horizontal grid lines
+            chart.getAxisLeft().setDrawGridLines(false);
             yAxis.enableGridDashedLine(10f, 10f, 0f);
             yAxis.setDrawGridLines(false);
+            yAxis.setDrawZeroLine(true);
+            yAxis.setDrawAxisLine(true);
+            yAxis.setAxisLineWidth(1);
+
+//            yAxis.setDrawZeroLine(false);
+
+            //y轴右边画线
+            chart.getAxisRight().setDrawGridLines(false);
+            chart.getAxisRight().enableGridDashedLine(0f, 0f, 0f);
+            chart.getAxisRight().setDrawAxisLine(true);
+            chart.getAxisRight().setAxisLineWidth(1);
+            //不显示数值
+            chart.getAxisRight().setDrawLabels(false);
 
 
             // axis range
@@ -281,7 +276,8 @@ public class TodayNewChartFragment extends BaseFragment {
         }
 
 
-        {   // // Create Limit Lines // //
+        {
+            // // Create Limit Lines // //
 //            LimitLine llXAxis = new LimitLine(9f, "Index 10");
 //            llXAxis.setLineWidth(4f);
 //            llXAxis.enableDashedLine(10f, 10f, 0f);
@@ -305,8 +301,8 @@ public class TodayNewChartFragment extends BaseFragment {
 //            ll2.setTextSize(10f);
 
             // draw limit lines behind data instead of on top
-            yAxis.setDrawLimitLinesBehindData(true);
-            xAxis.setDrawLimitLinesBehindData(true);
+//            yAxis.setDrawLimitLinesBehindData(true);
+//            xAxis.setDrawLimitLinesBehindData(true);
 
             // add limit lines
             yAxis.addLimitLine(ll1);
@@ -320,7 +316,7 @@ public class TodayNewChartFragment extends BaseFragment {
         xl.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {
-                return value > 10 ? String.valueOf((int) value + ":00") : String.valueOf("0" + (int) value + ":00");
+                return value > 9 ? String.valueOf((int) value + ":00") : String.valueOf("0" + (int) value + ":00");
             }
         });
 
@@ -328,20 +324,20 @@ public class TodayNewChartFragment extends BaseFragment {
 
 
         // draw points over time
-        chart.animateX(1500);
+//        chart.animateX(1500);
 
         // get the legend (only possible after setting data)
         Legend l = chart.getLegend();
 
         // draw legend entries as lines
         l.setForm(Legend.LegendForm.LINE);
-
-        setData(parseEntity(bloodSugarChatInfo));
+        l.setEnabled(false);
+        setData(parseEntity(bloodSugarChatInfo), bloodSugarChatInfo);
 
     }
 
 
-    private void setData(ArrayList<Entry> values) {
+    private void setData(ArrayList<Entry> values, BloodSugarChatInfo bloodSugarChatInfo) {
 
 
         LineDataSet set1;
@@ -351,7 +347,7 @@ public class TodayNewChartFragment extends BaseFragment {
                 chart.getData().getDataSetCount() > 0) {
             set1 = (LineDataSet) chart.getData().getDataSetByIndex(0);
             set1.setValues(values);
-            set1.setDrawFilled(false);
+            set1.setDrawFilled(true);
             set1.notifyDataSetChanged();
             chart.getData().notifyDataChanged();
             chart.notifyDataSetChanged();
@@ -360,7 +356,7 @@ public class TodayNewChartFragment extends BaseFragment {
             set1 = new LineDataSet(values, "平均值");
 
             set1.setDrawIcons(false);
-            set1.setDrawFilled(false);
+            set1.setDrawFilled(true);
 
 
             // draw dashed line
@@ -416,6 +412,7 @@ public class TodayNewChartFragment extends BaseFragment {
             set1.setColor(Color.argb(255, 0, 153, 255));
             set1.setDrawFilled(true);
             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+
             dataSets.add(set1); // add the data sets
 
 
@@ -423,15 +420,71 @@ public class TodayNewChartFragment extends BaseFragment {
             ((LineDataSet) dataSets.get(0)).enableDashedLine(0, 0, 0);
             ((LineDataSet) dataSets.get(0)).setLineWidth(2);
 
-            //隐藏DateSet
+            //中间颜色填充色
+//            chart.setBackgroundColor(Color.WHITE);
+            chart.setGridBackgroundColor(Color.parseColor("#f2f8ee"));
+            chart.setDrawGridBackground(true);
+//            chart.setDrawBorders(true);
 
+            ArrayList<Entry> fillColorsDatas1 = new ArrayList<>();
+            ArrayList<Entry> fillColorsDatas2 = new ArrayList<>();
+
+            for (int i = 0; i < 100; i++) {
+                fillColorsDatas1.add(new Entry(i, Float.parseFloat(bloodSugarChatInfo.lowLineVal)));
+                fillColorsDatas2.add(new Entry(i, Float.parseFloat(bloodSugarChatInfo.highLineVal)));
+            }
+
+            LineDataSet fillColrosset1, fillColorsset2;
+            fillColrosset1 = new LineDataSet(fillColorsDatas1, "最大值");
+            fillColrosset1.setAxisDependency(YAxis.AxisDependency.LEFT);
+            fillColrosset1.setColor(Color.parseColor("#f2f8ee"));
+            fillColrosset1.setDrawCircles(false);
+            fillColrosset1.setLineWidth(2f);
+            fillColrosset1.setCircleRadius(3f);
+            fillColrosset1.setFillAlpha(255);
+            fillColrosset1.setDrawFilled(true);
+            fillColrosset1.setFillColor(Color.WHITE);
+//            fillColrosset1.setHighLightColor(Color.parseColor("#f2f8ee"));
+            fillColrosset1.setDrawCircleHole(false);
+            fillColrosset1.setFillFormatter(new IFillFormatter() {
+                @Override
+                public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
+                    // change the return value here to better understand the effect
+                    // return 0;
+                    return chart.getAxisLeft().getAxisMinimum();
+                }
+            });
+
+            // create a dataset and give it a type
+            fillColorsset2 = new LineDataSet(fillColorsDatas2, "最小值");
+            fillColorsset2.setAxisDependency(YAxis.AxisDependency.LEFT);
+            fillColorsset2.setColor(Color.parseColor("#f2f8ee"));
+            fillColorsset2.setDrawCircles(false);
+            fillColorsset2.setLineWidth(2f);
+            fillColorsset2.setCircleRadius(3f);
+            fillColorsset2.setFillAlpha(255);
+            fillColorsset2.setDrawFilled(true);
+            fillColorsset2.setFillColor(Color.WHITE);
+            fillColorsset2.setDrawCircleHole(false);
+//            fillColorsset2.setHighLightColor(Color.parseColor("#f2f8ee"));
+            fillColorsset2.setFillFormatter(new IFillFormatter() {
+                @Override
+                public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
+                    // change the return value here to better understand the effect
+                    // return 600;
+                    return chart.getAxisLeft().getAxisMaximum();
+                }
+            });
+
+
+            dataSets.add(fillColrosset1); // add the data sets
+            dataSets.add(fillColorsset2);
 
             // create a data object with the data sets
             LineData data = new LineData(dataSets);
-
+            data.setDrawValues(false);
             // set data
             chart.setData(data);
-
             List<ILineDataSet> sets = chart.getData()
                     .getDataSets();
 
@@ -439,8 +492,11 @@ public class TodayNewChartFragment extends BaseFragment {
 
                 LineDataSet set = (LineDataSet) iSet;
                 set.setDrawCircles(false);
+                set.setMode(LineDataSet.Mode.LINEAR);
             }
         }
+
+        chart.animateY(1500);
         chart.invalidate();
     }
 
@@ -495,31 +551,30 @@ public class TodayNewChartFragment extends BaseFragment {
 
     private void getDataInfo(String today) {
 
+        //Todo  正式删除改行
+        today = "2019-04-26";
+
 
         ComveeLoader.getInstance().getBloodChartInfo(hospitalBed.getMemberId(), today, today, "1")
-//        ComveeLoader.getInstance().getBloodChartInfo(hospitalBed.getMemberId(), today,today,"1")
                 .subscribe(new HttpCall<BloodSugarChatInfo>(null) {
                     @Override
                     public void onNext(BloodSugarChatInfo bloodSugarChatInfo) {
                         Log.w("dyc", bloodSugarChatInfo + "");
                         if (bloodSugarChatInfo != null) {
 //                            if (bloodSugarChatInfo.chartData!=null && bloodSugarChatInfo.chartData.dataSource!=null && bloodSugarChatInfo.chartData.dataSource.length>0) {
-                                initChartView(bloodSugarChatInfo);
+                            initChartView(bloodSugarChatInfo);
 
 
-                            tvBloodAvg.setText(""+bloodSugarChatInfo.avgNum);
-                            tvstandardVal.setText(""+bloodSugarChatInfo.standardVal);
-                            tvmeanAmplitudeOfGlycemicExcursion.setText(""+bloodSugarChatInfo.meanAmplitudeOfGlycemicExcursion);
-                            tvcoefficientOfVariation.setText(""+bloodSugarChatInfo.coefficientOfVariation);
+                            tvBloodAvg.setText("" + bloodSugarChatInfo.avgNum);
+                            tvstandardVal.setText("" + bloodSugarChatInfo.standardVal);
+                            tvmeanAmplitudeOfGlycemicExcursion.setText("" + bloodSugarChatInfo.meanAmplitudeOfGlycemicExcursion);
+                            tvcoefficientOfVariation.setText("" + bloodSugarChatInfo.coefficientOfVariation);
 
 
-
-                            tvLessTir.setText(""+bloodSugarChatInfo.awiTimeRateOfNormal);
-                            tvLess39.setText(""+bloodSugarChatInfo.awiTimeRateOf3_9);
-                            tvLess40.setText(""+bloodSugarChatInfo.awiTimeRateOf4_0);
-                            tvLess139.setText(""+bloodSugarChatInfo.awiTimeRateOf13_9);
-
-
+                            tvLessTir.setText("" + bloodSugarChatInfo.awiTimeRateOfNormal);
+                            tvLess39.setText("" + bloodSugarChatInfo.awiTimeRateOf3_9);
+                            tvLess40.setText("" + bloodSugarChatInfo.awiTimeRateOf4_0);
+                            tvLess139.setText("" + bloodSugarChatInfo.awiTimeRateOf13_9);
 
 
 //                            }
