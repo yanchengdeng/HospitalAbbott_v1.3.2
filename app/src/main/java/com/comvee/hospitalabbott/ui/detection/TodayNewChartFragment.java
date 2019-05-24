@@ -271,8 +271,9 @@ public class TodayNewChartFragment extends BaseFragment {
 
 
             // axis range
-            yAxis.setAxisMaximum(30f);
+            yAxis.setAxisMaximum(21f);
             yAxis.setAxisMinimum(0f);
+            yAxis.setLabelCount(8,true);
         }
 
 

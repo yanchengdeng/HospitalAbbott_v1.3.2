@@ -171,8 +171,9 @@ public class DynamicChartFragment extends BaseFragment {
         String todayBeforWeek = DateUtil.date2Str(calendarBeforWeek.getTime(), DateUtil.FORMAT_YMD);
 
         //TODO 测试数据  待测试完成后
-        ComveeLoader.getInstance().getBloodChartInfoSuper(hospitalBed.getMemberId(), "2019-04-25", "2019-05-07", "2")
-//        ComveeLoader.getInstance().getBloodChartInfoSuper(hospitalBed.getMemberId(), todayBeforWeek, today, "2")
+        todayBeforWeek = "2019-04-25";
+        today = "2019-05-07";
+        ComveeLoader.getInstance().getBloodChartInfoSuper(hospitalBed.getMemberId(), todayBeforWeek, today, "2")
                 .subscribe(new HttpCall<BloodSugarChatDynmicInfo>(null) {
                     @Override
                     public void onNext(BloodSugarChatDynmicInfo bloodSugarChatInfo) {
@@ -266,8 +267,9 @@ public class DynamicChartFragment extends BaseFragment {
             //不显示数值
             chart.getAxisRight().setDrawLabels(false);
             // Y轴数据权健
-            yAxis.setAxisMaximum(30f);
+            yAxis.setAxisMaximum(21f);
             yAxis.setAxisMinimum(0f);
+            yAxis.setLabelCount(8,true);
         }
 
 
