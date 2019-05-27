@@ -553,7 +553,7 @@ public class TodayNewChartFragment extends BaseFragment {
     private void getDataInfo(String today) {
 
         //Todo  正式删除改行
-        today = "2019-04-26";
+//        today = "2019-04-26";
 
 
         ComveeLoader.getInstance().getBloodChartInfo(hospitalBed.getMemberId(), today, today, "1")

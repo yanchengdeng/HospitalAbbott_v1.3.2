@@ -98,9 +98,9 @@
     <string name="test_device_error">连接设备失败，请重新连接</string>
     <string name="test_again_obtain">重新获取血糖</string>
     <string name="test_state_sucess">血糖获取成功</string>
-    <string name="less_39"><![CDATA[<3.9mmol/L占比]]></string>
-    <string name="less_40"><![CDATA[<4.0mmol/L占比]]></string>
-    <string name="less_139"><![CDATA[<13.9.0mmol/L占比]]></string>
+    <string name="less_39"><![CDATA[<3.9mmol/L的时间占比]]></string>
+    <string name="less_40"><![CDATA[<4.0mmol/L的时间占比]]></string>
+    <string name="less_139"><![CDATA[<13.9mmol/L的时间占比]]></string>
     <string name="target_less_4"><![CDATA[目标：< 4%]]></string>
     <string name="target_less_1"><![CDATA[目标：< 1%]]></string>
 </resources>

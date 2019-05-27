@@ -51,8 +51,9 @@ public class TestBloodNewDeviceApiPresenter extends BasePresenter<TestBloodViewA
     // ResumeUsbList方法用于枚举CH34X设备以及打开相关设备
     private int retval;
 
+//    连续不间断的一天血糖数据就是96个   采集14天   14*96=1344   换16进制 --》0540
 //    public static String SEND_ORDER = "68 01 68 06 00 89 16";
-    public static String SEND_ORDER = "68 01 68 01 00 0f 89 16";
+    public static String SEND_ORDER = "68 01 68 01 05 40 89 16";
 //    public static String SEND_ORDER = "68 01 68 03 00 06 89 16";
 
 

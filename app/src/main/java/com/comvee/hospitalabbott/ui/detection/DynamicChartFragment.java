@@ -171,8 +171,8 @@ public class DynamicChartFragment extends BaseFragment {
         String todayBeforWeek = DateUtil.date2Str(calendarBeforWeek.getTime(), DateUtil.FORMAT_YMD);
 
         //TODO 测试数据  待测试完成后
-        todayBeforWeek = "2019-04-25";
-        today = "2019-05-07";
+//        todayBeforWeek = "2019-04-25";
+//        today = "2019-05-07";
         ComveeLoader.getInstance().getBloodChartInfoSuper(hospitalBed.getMemberId(), todayBeforWeek, today, "2")
                 .subscribe(new HttpCall<BloodSugarChatDynmicInfo>(null) {
                     @Override
