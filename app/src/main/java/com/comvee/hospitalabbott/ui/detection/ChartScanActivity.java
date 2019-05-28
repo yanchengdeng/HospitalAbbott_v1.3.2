@@ -60,10 +60,13 @@ public class ChartScanActivity extends BaseRxActivity {
         setContentView(R.layout.activity_chart_scan);
         tabLayout = findViewById(R.id.tablayout);
         viewPager = findViewById(R.id.viewpage);
-        ((TextView)findViewById(R.id.top_history)).setText("2型 (体弱)");
-        ((TextView)findViewById(R.id.top_history)).setTextColor(getResources().getColor(R.color.yellow));
+
 
         hospitalBed = (HospitalBed) getIntent().getSerializableExtra(TestBloodNewActivity.MEMBER_BEAN);
+
+
+        ((TextView)findViewById(R.id.top_history)).setText(hospitalBed.getDiabetesTxt()+"("+hospitalBed.getBtTxt()+")");
+        ((TextView)findViewById(R.id.top_history)).setTextColor(getResources().getColor(R.color.yellow));
 
         ((TextView) findViewById(R.id.top_title)).setText(hospitalBed.getBedNo() + "床 " + hospitalBed.getMemberName());
 

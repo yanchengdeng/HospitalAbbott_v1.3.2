@@ -19,6 +19,9 @@ public class HospitalBed implements MultiItemEntity, Serializable {
     private String memberId;
     private String memberName;
 
+    private String btTxt;//体质类型
+    private String diabetesTxt;//糖尿病类型
+
     //监测方案
     private String smbgScheme;
     private String sex; //性别 1男 2女
@@ -43,6 +46,24 @@ public class HospitalBed implements MultiItemEntity, Serializable {
         this.sex = bedModel.getSex();
         this.planType = bedModel.getPlanType();
         this.patPatientId = bedModel.getPatPatientId();
+        this.btTxt = bedModel.getBtTxt();
+        this.diabetesTxt = bedModel.getDiabetesTxt();
+    }
+
+    public String getBtTxt() {
+        return btTxt;
+    }
+
+    public void setBtTxt(String btTxt) {
+        this.btTxt = btTxt;
+    }
+
+    public String getDiabetesTxt() {
+        return diabetesTxt;
+    }
+
+    public void setDiabetesTxt(String diabetesTxt) {
+        this.diabetesTxt = diabetesTxt;
     }
 
     public String getBedId() {

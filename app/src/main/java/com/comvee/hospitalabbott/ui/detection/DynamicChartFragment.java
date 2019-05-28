@@ -50,8 +50,10 @@ public class DynamicChartFragment extends BaseFragment {
     //平均值  标准值 波动  异常
     private TextView tvBloodAvg, tvstandardVal, tvmeanAmplitudeOfGlycemicExcursion,tvcoefficientOfVariation;
 
-    private TextView tvLessTir, tvLess39,tvLess139;
+    private TextView tvLessTir, tvLess39,tvLess139,tvTirUnit, tvLessUnit39, tvLessUnit139;
 
+
+    private View mainView,viewNoData;
 
 
     @Override
@@ -84,7 +86,14 @@ public class DynamicChartFragment extends BaseFragment {
         tvcoefficientOfVariation = view.findViewById(R.id.tv_avg_bianyi);
         tvLess39 = view.findViewById(R.id.tv_lessthan_39_tir);
         tvLess139 = view.findViewById(R.id.tv_lessthan_139_tir);
+        tvLessUnit39 = view.findViewById(R.id.tv_less_39_unit);
+        tvLessUnit139 = view.findViewById(R.id.tv_less_139_unit);
+        tvTirUnit = view.findViewById(R.id.tv_tir_unit);
         tvLessTir = view.findViewById(R.id.tv_avg_tir);
+        mainView = view.findViewById(R.id.ll_main_content);
+        viewNoData = view.findViewById(R.id.tv_error);
+
+
         chart.setVisibility(View.INVISIBLE);
 
 
@@ -167,7 +176,7 @@ public class DynamicChartFragment extends BaseFragment {
 
         String today = DateUtil.date2Str(Calendar.getInstance().getTime(), DateUtil.FORMAT_YMD);
         Calendar calendarBeforWeek = Calendar.getInstance();
-        calendarBeforWeek.add(Calendar.DAY_OF_YEAR,-14);
+        calendarBeforWeek.add(Calendar.DAY_OF_YEAR,-13);
         String todayBeforWeek = DateUtil.date2Str(calendarBeforWeek.getTime(), DateUtil.FORMAT_YMD);
 
         //TODO 测试数据  待测试完成后
@@ -178,6 +187,15 @@ public class DynamicChartFragment extends BaseFragment {
                     @Override
                     public void onNext(BloodSugarChatDynmicInfo bloodSugarChatInfo) {
                         if (bloodSugarChatInfo != null) {
+                            if (bloodSugarChatInfo.chartShow==0){
+                                viewNoData.setVisibility(View.VISIBLE);
+                                mainView.setVisibility(View.GONE);
+
+                                return;
+                            }
+                            viewNoData.setVisibility(View.GONE);
+                            mainView.setVisibility(View.VISIBLE);
+
                             initChartView(bloodSugarChatInfo);
                             tvBloodAvg.setText(""+bloodSugarChatInfo.avgNum);
                             tvstandardVal.setText(""+bloodSugarChatInfo.standardVal);
@@ -186,6 +204,35 @@ public class DynamicChartFragment extends BaseFragment {
                             tvLessTir.setText(""+bloodSugarChatInfo.awiTimeRateOfNormal);
                             tvLess39.setText(""+bloodSugarChatInfo.awiTimeRateOf3_9);
                             tvLess139.setText(""+bloodSugarChatInfo.awiTimeRateOf13_9);
+
+
+                            if (bloodSugarChatInfo.awiTimeRateOfNormal>=70){
+                                tvLessTir.setTextColor(getResources().getColor(R.color.blue));
+                                tvTirUnit.setTextColor(getResources().getColor(R.color.blue));
+                            }else{
+                                tvLessTir.setTextColor(getResources().getColor(R.color.red));
+                                tvTirUnit.setTextColor(getResources().getColor(R.color.red));
+                            }
+
+                            if (bloodSugarChatInfo.awiTimeRateOf3_9<1){
+                                tvLess39.setTextColor(getResources().getColor(R.color.blue));
+                                tvLessUnit39.setTextColor(getResources().getColor(R.color.blue));
+                            }else{
+                                tvLess39.setTextColor(getResources().getColor(R.color.red));
+                                tvLessUnit39.setTextColor(getResources().getColor(R.color.red));
+                            }
+
+
+
+
+                            if (bloodSugarChatInfo.awiTimeRateOf13_9>=90){
+                                tvLess139.setTextColor(getResources().getColor(R.color.blue));
+                                tvLessUnit139.setTextColor(getResources().getColor(R.color.blue));
+                            }else{
+                                tvLess139.setTextColor(getResources().getColor(R.color.red));
+                                tvLessUnit139.setTextColor(getResources().getColor(R.color.red));
+                            }
+
 
                         }
 

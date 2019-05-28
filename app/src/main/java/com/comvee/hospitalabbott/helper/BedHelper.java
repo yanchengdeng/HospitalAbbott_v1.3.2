@@ -95,6 +95,10 @@ public class BedHelper {
             bedModel.setSex(department.optString("sex"));
             bedModel.setPatPatientId(department.optString("patPatientId"));
             bedModel.setPlanType(department.optInt("planType", 0)); // 监测类型    1 长期  2临时 0 没有
+            bedModel.setBtTxt(department.optString("btTxt"));
+            bedModel.setDiabetesTxt(department.optString("diabetesTxt"));
+
+
 //            Log.d("upDataMember :", "planType = " + department.optInt("planType", 0));
             JSONObject newSugarMap = department.optJSONObject("newSugarMap");
 //                    LogUtils.e("memberName [" + department.optString("memberName") + "], newSugarMap[" + department.optString("newSugarMap") + "]");

@@ -2,12 +2,11 @@ package com.comvee.hospitalabbott.bean;
 
 
 import com.comvee.hospitalabbott.tool.SortUtil;
-import com.comvee.hospitalabbott.tool.Utils;
 import com.google.gson.Gson;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
 
 
 /**
@@ -25,6 +24,8 @@ public class MemberModel {
     private String departmentName;
     private String memberId;
     private String memberName;
+    private String btTxt;//体质类型
+    private String diabetesTxt;//糖尿病类型
 
     private String afterBreakfast;
     private String afterDinner;
@@ -36,6 +37,8 @@ public class MemberModel {
     private String beforedawn;
     private String threeclock;
     private String randomtime;
+
+
     /**
      * 监测类型    1 长期  2临时 0 没有
      */
@@ -53,6 +56,8 @@ public class MemberModel {
         this.concernStatus = rows.getCs();
         this.departmentId = rows.getDi();
         this.departmentName = rows.getDn();
+        this.btTxt = rows.getBtTxt();//体质类型
+        this.diabetesTxt = rows.getDiabetesTxt();//糖尿病类型
         this.memberId = rows.getMi();
         this.memberName = rows.getMn();
         ParamCodeBean abBean = rows.getNewSugarMap().getAb();
@@ -92,13 +97,13 @@ public class MemberModel {
         this.planType = rows.getPlanType();
     }
 
-    @Generated(hash = 468926438)
-    public MemberModel(Long id, String bedId, String bedNo, float bedNoNew, String concernStatus,
-            String departmentId, String departmentName, String memberId, String memberName,
-            String afterBreakfast, String afterDinner, String afterLunch, String beforeBreakfast,
-            String beforeDinner, String beforeLunch, String beforeSleep, String beforedawn,
-            String threeclock, String randomtime, int planType, String smbgScheme, String sex,
-            String patPatientId) {
+
+    @Generated(hash = 1407978720)
+    public MemberModel(Long id, String bedId, String bedNo, float bedNoNew, String concernStatus, String departmentId,
+            String departmentName, String memberId, String memberName, String btTxt, String diabetesTxt,
+            String afterBreakfast, String afterDinner, String afterLunch, String beforeBreakfast, String beforeDinner,
+            String beforeLunch, String beforeSleep, String beforedawn, String threeclock, String randomtime, int planType,
+            String smbgScheme, String sex, String patPatientId) {
         this.id = id;
         this.bedId = bedId;
         this.bedNo = bedNo;
@@ -108,6 +113,8 @@ public class MemberModel {
         this.departmentName = departmentName;
         this.memberId = memberId;
         this.memberName = memberName;
+        this.btTxt = btTxt;
+        this.diabetesTxt = diabetesTxt;
         this.afterBreakfast = afterBreakfast;
         this.afterDinner = afterDinner;
         this.afterLunch = afterLunch;
@@ -124,13 +131,13 @@ public class MemberModel {
         this.patPatientId = patPatientId;
     }
 
+
     @Generated(hash = 1847833359)
     public MemberModel() {
     }
 
-
     public Long getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(Long id) {
@@ -138,7 +145,7 @@ public class MemberModel {
     }
 
     public String getBedId() {
-        return this.bedId;
+        return bedId;
     }
 
     public void setBedId(String bedId) {
@@ -146,14 +153,12 @@ public class MemberModel {
     }
 
     public String getBedNo() {
-        return this.bedNo;
+        return bedNo;
     }
 
     public void setBedNo(String bedNo) {
-        this.bedNoNew = SortUtil.getBedNumNew(bedNo);
         this.bedNo = bedNo;
     }
-
 
     public float getBedNoNew() {
         return bedNoNew;
@@ -172,7 +177,7 @@ public class MemberModel {
     }
 
     public String getDepartmentId() {
-        return this.departmentId;
+        return departmentId;
     }
 
     public void setDepartmentId(String departmentId) {
@@ -180,7 +185,7 @@ public class MemberModel {
     }
 
     public String getDepartmentName() {
-        return this.departmentName;
+        return departmentName;
     }
 
     public void setDepartmentName(String departmentName) {
@@ -188,7 +193,7 @@ public class MemberModel {
     }
 
     public String getMemberId() {
-        return this.memberId;
+        return memberId;
     }
 
     public void setMemberId(String memberId) {
@@ -196,15 +201,31 @@ public class MemberModel {
     }
 
     public String getMemberName() {
-        return this.memberName;
+        return memberName;
     }
 
     public void setMemberName(String memberName) {
         this.memberName = memberName;
     }
 
+    public String getBtTxt() {
+        return btTxt;
+    }
+
+    public void setBtTxt(String btTxt) {
+        this.btTxt = btTxt;
+    }
+
+    public String getDiabetesTxt() {
+        return diabetesTxt;
+    }
+
+    public void setDiabetesTxt(String diabetesTxt) {
+        this.diabetesTxt = diabetesTxt;
+    }
+
     public String getAfterBreakfast() {
-        return this.afterBreakfast;
+        return afterBreakfast;
     }
 
     public void setAfterBreakfast(String afterBreakfast) {
@@ -212,7 +233,7 @@ public class MemberModel {
     }
 
     public String getAfterDinner() {
-        return this.afterDinner;
+        return afterDinner;
     }
 
     public void setAfterDinner(String afterDinner) {
@@ -220,7 +241,7 @@ public class MemberModel {
     }
 
     public String getAfterLunch() {
-        return this.afterLunch;
+        return afterLunch;
     }
 
     public void setAfterLunch(String afterLunch) {
@@ -228,7 +249,7 @@ public class MemberModel {
     }
 
     public String getBeforeBreakfast() {
-        return this.beforeBreakfast;
+        return beforeBreakfast;
     }
 
     public void setBeforeBreakfast(String beforeBreakfast) {
@@ -236,7 +257,7 @@ public class MemberModel {
     }
 
     public String getBeforeDinner() {
-        return this.beforeDinner;
+        return beforeDinner;
     }
 
     public void setBeforeDinner(String beforeDinner) {
@@ -244,7 +265,7 @@ public class MemberModel {
     }
 
     public String getBeforeLunch() {
-        return this.beforeLunch;
+        return beforeLunch;
     }
 
     public void setBeforeLunch(String beforeLunch) {
@@ -252,7 +273,7 @@ public class MemberModel {
     }
 
     public String getBeforeSleep() {
-        return this.beforeSleep;
+        return beforeSleep;
     }
 
     public void setBeforeSleep(String beforeSleep) {
@@ -260,24 +281,35 @@ public class MemberModel {
     }
 
     public String getBeforedawn() {
-        return this.beforedawn;
+        return beforedawn;
     }
 
     public void setBeforedawn(String beforedawn) {
         this.beforedawn = beforedawn;
     }
 
-    public String getThreeclock(){
-        return this.threeclock;
+    public String getThreeclock() {
+        return threeclock;
     }
-    public void setThreeclock(String threeclock){this.threeclock = threeclock;}
+
+    public void setThreeclock(String threeclock) {
+        this.threeclock = threeclock;
+    }
 
     public String getRandomtime() {
-        return this.randomtime;
+        return randomtime;
     }
 
     public void setRandomtime(String randomtime) {
         this.randomtime = randomtime;
+    }
+
+    public int getPlanType() {
+        return planType;
+    }
+
+    public void setPlanType(int planType) {
+        this.planType = planType;
     }
 
     public String getSmbgScheme() {
@@ -296,50 +328,11 @@ public class MemberModel {
         this.sex = sex;
     }
 
-    public Integer getPlanType() {
-        return planType;
-    }
-
-    public void setPlanType(Integer planType) {
-        this.planType = planType;
-    }
-
-    public void setPlanType(int planType) {
-        this.planType = planType;
-    }
-
     public String getPatPatientId() {
         return patPatientId;
     }
 
     public void setPatPatientId(String patPatientId) {
         this.patPatientId = patPatientId;
-    }
-
-    @Override
-    public String toString() {
-        return "MemberModel{" +
-                "id=" + id +
-                ", bedId='" + bedId + '\'' +
-                ", bedNo='" + bedNo + '\'' +
-                ", bedNoNew='" + bedNoNew + '\'' +
-                ", concernStatus='" + concernStatus + '\'' +
-                ", departmentId='" + departmentId + '\'' +
-                ", departmentName='" + departmentName + '\'' +
-                ", memberId='" + memberId + '\'' +
-                ", memberName='" + memberName + '\'' +
-                ", afterBreakfast='" + afterBreakfast + '\'' +
-                ", afterDinner='" + afterDinner + '\'' +
-                ", afterLunch='" + afterLunch + '\'' +
-                ", beforeBreakfast='" + beforeBreakfast + '\'' +
-                ", beforeDinner='" + beforeDinner + '\'' +
-                ", beforeLunch='" + beforeLunch + '\'' +
-                ", beforeSleep='" + beforeSleep + '\'' +
-                ", beforedawn='" + beforedawn + '\'' +
-                ", threeclock=" + threeclock +  '\'' +
-                ", randomtime='" + randomtime + '\'' +
-                ", smbgScheme='" + smbgScheme + '\'' +
-                ", sex='" + sex + '\'' +
-                '}';
     }
 }

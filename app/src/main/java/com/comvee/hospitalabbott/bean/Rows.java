@@ -32,6 +32,8 @@ public class Rows {
     private NewSugarMapBean newSugarMap;
     private String sex;
     private String ss;
+    private String btTxt;//体质类型
+    private String diabetesTxt;//糖尿病类型
     /**
      * 监测类型    1 长期  2临时 0 没有
      */
@@ -140,5 +142,21 @@ public class Rows {
 
     public void setPatPatientId(String patPatientId) {
         this.patPatientId = patPatientId;
+    }
+
+    public String getBtTxt() {
+        return btTxt;
+    }
+
+    public void setBtTxt(String btTxt) {
+        this.btTxt = btTxt;
+    }
+
+    public String getDiabetesTxt() {
+        return diabetesTxt;
+    }
+
+    public void setDiabetesTxt(String diabetesTxt) {
+        this.diabetesTxt = diabetesTxt;
     }
 }

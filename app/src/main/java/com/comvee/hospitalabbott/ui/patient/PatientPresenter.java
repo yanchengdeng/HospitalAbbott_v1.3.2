@@ -123,6 +123,8 @@ public class PatientPresenter extends BasePresenter<PatientViewController> {
                         searchBean.setDepartmentName(memberModel.getDepartmentName());
                         searchBean.setMemberId(memberModel.getMemberId());
                         searchBean.setMemberName(memberModel.getMemberName());
+                        searchBean.setBtTxt(memberModel.getBtTxt());
+                        searchBean.setDiabetesTxt(memberModel.getDiabetesTxt());
 
 //                        String tempName = SortUtil.changeIntToSpecifyLength(searchBean.getBedNo());
 //                        searchBean.setTempUserName(tempName);

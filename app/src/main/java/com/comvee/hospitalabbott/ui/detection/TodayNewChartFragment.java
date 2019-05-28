@@ -54,7 +54,7 @@ public class TodayNewChartFragment extends BaseFragment {
     //平均值  标准值 波动  异常
     private TextView tvBloodAvg, tvstandardVal, tvmeanAmplitudeOfGlycemicExcursion, tvcoefficientOfVariation;
 
-    private TextView tvLessTir, tvLess39, tvLess40, tvLess139, tvLessUnit39, tvlessUnit40, tvLessUnit139;
+    private TextView tvLessTir, tvLess39, tvLess40, tvLess139,tvTirUnit, tvLessUnit39, tvlessUnit40, tvLessUnit139;
 
     private RecyclerView recyclerView;
 
@@ -94,6 +94,7 @@ public class TodayNewChartFragment extends BaseFragment {
         tvlessUnit40 = view.findViewById(R.id.tv_less_4_unit);
         tvLessUnit39 = view.findViewById(R.id.tv_less_39_unit);
         tvLessUnit139 = view.findViewById(R.id.tv_less_139_unit);
+        tvTirUnit = view.findViewById(R.id.tv_tir_unit);
         tvLessTir = view.findViewById(R.id.tv_avg_tir);
 
 
@@ -576,6 +577,41 @@ public class TodayNewChartFragment extends BaseFragment {
                             tvLess39.setText("" + bloodSugarChatInfo.awiTimeRateOf3_9);
                             tvLess40.setText("" + bloodSugarChatInfo.awiTimeRateOf4_0);
                             tvLess139.setText("" + bloodSugarChatInfo.awiTimeRateOf13_9);
+
+                            if (bloodSugarChatInfo.awiTimeRateOfNormal>=70){
+                                tvLessTir.setTextColor(getResources().getColor(R.color.blue));
+                                tvTirUnit.setTextColor(getResources().getColor(R.color.blue));
+                            }else{
+                                tvLessTir.setTextColor(getResources().getColor(R.color.red));
+                                tvTirUnit.setTextColor(getResources().getColor(R.color.red));
+                            }
+
+                            if (bloodSugarChatInfo.awiTimeRateOf3_9<1){
+                                tvLess39.setTextColor(getResources().getColor(R.color.blue));
+                                tvLessUnit39.setTextColor(getResources().getColor(R.color.blue));
+                            }else{
+                                tvLess39.setTextColor(getResources().getColor(R.color.red));
+                                tvLessUnit39.setTextColor(getResources().getColor(R.color.red));
+                            }
+
+
+                            if (bloodSugarChatInfo.awiTimeRateOf4_0<4){
+                                tvLess40.setTextColor(getResources().getColor(R.color.blue));
+                                tvlessUnit40.setTextColor(getResources().getColor(R.color.blue));
+                            }else{
+                                tvLess40.setTextColor(getResources().getColor(R.color.red));
+                                tvlessUnit40.setTextColor(getResources().getColor(R.color.red));
+                            }
+
+                            if (bloodSugarChatInfo.awiTimeRateOf13_9>=90){
+                                tvLess139.setTextColor(getResources().getColor(R.color.blue));
+                                tvLessUnit139.setTextColor(getResources().getColor(R.color.blue));
+                            }else{
+                                tvLess139.setTextColor(getResources().getColor(R.color.red));
+                                tvLessUnit139.setTextColor(getResources().getColor(R.color.red));
+                            }
+
+
 
 
 //                            }

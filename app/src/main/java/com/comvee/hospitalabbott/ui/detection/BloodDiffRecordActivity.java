@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.comvee.hospitalabbott.R;
@@ -58,7 +59,7 @@ public class BloodDiffRecordActivity extends BaseRxActivity {
 
         String today = DateUtil.date2Str(Calendar.getInstance().getTime(), DateUtil.FORMAT_YMD);
         Calendar calendarBeforWeek = Calendar.getInstance();
-        calendarBeforWeek.add(Calendar.DAY_OF_YEAR,-14);
+        calendarBeforWeek.add(Calendar.DAY_OF_YEAR,-13);
         String todayBeforWeek = DateUtil.date2Str(calendarBeforWeek.getTime(), DateUtil.FORMAT_YMD);
         ComveeLoader.getInstance().getBloodChartInfoSuper(hospitalBed.getMemberId(), todayBeforWeek, today, "3")
 //        ComveeLoader.getInstance().getBloodChartInfo(hospitalBed.getMemberId(), today,today,"1")
@@ -67,7 +68,10 @@ public class BloodDiffRecordActivity extends BaseRxActivity {
                     public void onNext(BloodSugarChatDynmicInfo bloodSugarChatInfo) {
                         Log.w("dyc", bloodSugarChatInfo + "");
                         if (bloodSugarChatInfo != null) {
-                            bloodDiffListAdapter.setNewData(getTestData());
+                            bloodDiffListAdapter.setNewData(bloodSugarChatInfo.daySugarAvgDiffValMap);
+                        }else{
+                            bloodDiffListAdapter.setNewData(new ArrayList<>());
+                            bloodDiffListAdapter.setEmptyView(R.layout.adapter_history_emptyview, (ViewGroup) recyclerView.getParent());
                         }
 
                     }
@@ -83,6 +87,7 @@ public class BloodDiffRecordActivity extends BaseRxActivity {
                     public void onError(Throwable e) {
                         super.onError(e);
                         e.printStackTrace();
+                        bloodDiffListAdapter.setEmptyView(R.layout.adapter_history_emptyview, (ViewGroup) recyclerView.getParent());
                     }
                 });
     }

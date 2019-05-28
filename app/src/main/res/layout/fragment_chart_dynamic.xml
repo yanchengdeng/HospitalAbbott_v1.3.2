@@ -1,134 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/text_gray_f6f6f8"
-    tools:context=".ui.detection.ChartScanActivity">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/text_gray_f6f6f8"
+        tools:context=".ui.detection.ChartScanActivity">
 
 
         <LinearLayout
+            android:id="@+id/ll_main_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:padding="@dimen/activity_horizontal_margin"
-           >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="动态图谱"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:text="(14天血糖数据)"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:gravity="right"
-                android:text="(单位：mmol/L)"
-                android:textColor="@color/text_gray_66"
-                android:textSize="13sp" />
-
-        </LinearLayout>
-
-
-
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white">
-
-
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/bubbleChart"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="@android:color/white"
-                 />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="invisible">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/activity_horizontal_margin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="动态图谱"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:text="(14天血糖数据)"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="right"
+                    android:text="(单位：mmol/L)"
+                    android:textColor="@color/text_gray_66"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/bubbleChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:background="@android:color/white" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="260dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="40dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="1dp"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:background="@color/yellow" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/icon_food" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="1dp"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:background="@color/yellow" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/icon_food" />
-
-                    </LinearLayout>
-
-                    <FrameLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
+                        android:layout_width="match_parent"
+                        android:layout_height="260dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="40dp"
+                        android:orientation="horizontal">
 
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_weight="1"
                             android:gravity="center_horizontal"
                             android:orientation="vertical">
 
@@ -146,76 +104,135 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_weight="1"
                             android:gravity="center_horizontal"
-                            android:layout_marginLeft="60dp"
                             android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="1dp"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
-                                android:background="@color/purple" />
+                                android:background="@color/yellow" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@mipmap/icon_moon" />
+                                android:src="@mipmap/icon_food" />
 
                         </LinearLayout>
 
-                    </FrameLayout>
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="1dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:background="@color/yellow" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/icon_food" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="60dp"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="1dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:background="@color/purple" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/icon_moon" />
+
+                            </LinearLayout>
+
+                        </FrameLayout>
 
 
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/chart_guid_dynamic_logo" />
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/chart_guid_dynamic_logo" />
-            </LinearLayout>
-
-        </FrameLayout>
+            </FrameLayout>
 
 
-
-
-        <TextView
-            android:id="@+id/tv_blood_diff"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:drawableLeft="@mipmap/blood_diff"
-            android:drawableRight="@drawable/hospital_107"
-            android:drawablePadding="10dp"
-            android:gravity="center_vertical"
-            android:padding="@dimen/activity_horizontal_margin"
-            android:text="日间血糖平均绝对差"
-            android:textColor="@color/black"
-            android:textSize="@dimen/sp_16"></TextView>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
-
-            <include layout="@layout/layou_bottom_blood_params" />
-
-            <View
+            <TextView
+                android:id="@+id/tv_blood_diff"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/line_grey" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:drawableLeft="@mipmap/blood_diff"
+                android:drawableRight="@drawable/hospital_107"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="日间血糖平均绝对差"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_16"></TextView>
 
-            <include layout="@layout/layou_bottom_blood_params_big_three" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <include layout="@layout/layou_bottom_blood_params" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line_grey" />
+
+                <include layout="@layout/layou_bottom_blood_params_big_three" />
+
+
+            </LinearLayout>
 
 
         </LinearLayout>
 
 
-    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
-</android.support.v4.widget.NestedScrollView>
+    <TextView
+        android:id="@+id/tv_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:drawableTop="@drawable/task_no_bg"
+        android:drawablePadding="@dimen/activity_horizontal_margin"
+        android:text="无完整的14天血糖数据"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+</RelativeLayout>

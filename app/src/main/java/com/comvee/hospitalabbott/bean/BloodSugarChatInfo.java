@@ -12,12 +12,12 @@ public class BloodSugarChatInfo implements Serializable {
     public String avgAwiTimeOfHigh;// 510,
     public String avgAwiTimeOfLow;// "0.00",
     public String avgAwiTimeOfNormal;// 202,
-    public String awiTimeRateOf13_9;// "--",
-    public String awiTimeRateOf3_9;// "--",
-    public String awiTimeRateOf4_0;// "--",
+    public float awiTimeRateOf13_9;// "--",
+    public float awiTimeRateOf3_9;// "--",
+    public float awiTimeRateOf4_0;// "--",
     public String awiTimeRateOfHigh;// "70.83",
     public String awiTimeRateOfLow;// "0.00",
-    public String awiTimeRateOfNormal;
+    public float awiTimeRateOfNormal;
 
     public String eventCountOfHigh;// 2,
     public String eventCountOfLow;// 0,

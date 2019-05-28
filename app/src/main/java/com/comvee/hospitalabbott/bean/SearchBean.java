@@ -29,6 +29,8 @@ public class SearchBean implements Serializable {
     private String roomId;
     private String roomNo;
     private String sex;
+    private String btTxt;//体质类型
+    private String diabetesTxt;//糖尿病类型
     private String tempBedNo;//用于排序
 
     public void setTempUserName(String tempUserName) {
@@ -46,6 +48,8 @@ public class SearchBean implements Serializable {
         this.memberId = model.getMemberId();
         this.memberName = model.getMemberName();
         this.sex = model.getSex();
+        this.btTxt = model.getBtTxt();
+        this.diabetesTxt = model.getDiabetesTxt();
     }
 
     public SearchBean(HospitalBed hospitalBed) {
@@ -56,6 +60,24 @@ public class SearchBean implements Serializable {
         this.memberId = hospitalBed.getMemberId();
         this.memberName = hospitalBed.getMemberName();
         this.sex = hospitalBed.getSex();
+        this.btTxt = hospitalBed.getBtTxt();
+        this.diabetesTxt = hospitalBed.getDiabetesTxt();
+    }
+
+    public String getBtTxt() {
+        return btTxt;
+    }
+
+    public void setBtTxt(String btTxt) {
+        this.btTxt = btTxt;
+    }
+
+    public String getDiabetesTxt() {
+        return diabetesTxt;
+    }
+
+    public void setDiabetesTxt(String diabetesTxt) {
+        this.diabetesTxt = diabetesTxt;
     }
 
     public String getBedId() {

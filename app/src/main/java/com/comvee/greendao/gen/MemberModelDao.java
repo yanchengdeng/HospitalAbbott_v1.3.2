@@ -36,20 +36,22 @@ public class MemberModelDao extends AbstractDao<MemberModel, Long> {
         public final static Property DepartmentName = new Property(6, String.class, "departmentName", false, "DEPARTMENT_NAME");
         public final static Property MemberId = new Property(7, String.class, "memberId", false, "MEMBER_ID");
         public final static Property MemberName = new Property(8, String.class, "memberName", false, "MEMBER_NAME");
-        public final static Property AfterBreakfast = new Property(9, String.class, "afterBreakfast", false, "AFTER_BREAKFAST");
-        public final static Property AfterDinner = new Property(10, String.class, "afterDinner", false, "AFTER_DINNER");
-        public final static Property AfterLunch = new Property(11, String.class, "afterLunch", false, "AFTER_LUNCH");
-        public final static Property BeforeBreakfast = new Property(12, String.class, "beforeBreakfast", false, "BEFORE_BREAKFAST");
-        public final static Property BeforeDinner = new Property(13, String.class, "beforeDinner", false, "BEFORE_DINNER");
-        public final static Property BeforeLunch = new Property(14, String.class, "beforeLunch", false, "BEFORE_LUNCH");
-        public final static Property BeforeSleep = new Property(15, String.class, "beforeSleep", false, "BEFORE_SLEEP");
-        public final static Property Beforedawn = new Property(16, String.class, "beforedawn", false, "BEFOREDAWN");
-        public final static Property Threeclock = new Property(17, String.class, "threeclock", false, "THREECLOCK");
-        public final static Property Randomtime = new Property(18, String.class, "randomtime", false, "RANDOMTIME");
-        public final static Property PlanType = new Property(19, int.class, "planType", false, "PLAN_TYPE");
-        public final static Property SmbgScheme = new Property(20, String.class, "smbgScheme", false, "SMBG_SCHEME");
-        public final static Property Sex = new Property(21, String.class, "sex", false, "SEX");
-        public final static Property PatPatientId = new Property(22, String.class, "patPatientId", false, "PAT_PATIENT_ID");
+        public final static Property BtTxt = new Property(9, String.class, "btTxt", false, "BT_TXT");
+        public final static Property DiabetesTxt = new Property(10, String.class, "diabetesTxt", false, "DIABETES_TXT");
+        public final static Property AfterBreakfast = new Property(11, String.class, "afterBreakfast", false, "AFTER_BREAKFAST");
+        public final static Property AfterDinner = new Property(12, String.class, "afterDinner", false, "AFTER_DINNER");
+        public final static Property AfterLunch = new Property(13, String.class, "afterLunch", false, "AFTER_LUNCH");
+        public final static Property BeforeBreakfast = new Property(14, String.class, "beforeBreakfast", false, "BEFORE_BREAKFAST");
+        public final static Property BeforeDinner = new Property(15, String.class, "beforeDinner", false, "BEFORE_DINNER");
+        public final static Property BeforeLunch = new Property(16, String.class, "beforeLunch", false, "BEFORE_LUNCH");
+        public final static Property BeforeSleep = new Property(17, String.class, "beforeSleep", false, "BEFORE_SLEEP");
+        public final static Property Beforedawn = new Property(18, String.class, "beforedawn", false, "BEFOREDAWN");
+        public final static Property Threeclock = new Property(19, String.class, "threeclock", false, "THREECLOCK");
+        public final static Property Randomtime = new Property(20, String.class, "randomtime", false, "RANDOMTIME");
+        public final static Property PlanType = new Property(21, int.class, "planType", false, "PLAN_TYPE");
+        public final static Property SmbgScheme = new Property(22, String.class, "smbgScheme", false, "SMBG_SCHEME");
+        public final static Property Sex = new Property(23, String.class, "sex", false, "SEX");
+        public final static Property PatPatientId = new Property(24, String.class, "patPatientId", false, "PAT_PATIENT_ID");
     }
 
     private Query<MemberModel> departmentModel_BedModelListQuery;
@@ -75,20 +77,22 @@ public class MemberModelDao extends AbstractDao<MemberModel, Long> {
                 "\"DEPARTMENT_NAME\" TEXT," + // 6: departmentName
                 "\"MEMBER_ID\" TEXT," + // 7: memberId
                 "\"MEMBER_NAME\" TEXT," + // 8: memberName
-                "\"AFTER_BREAKFAST\" TEXT," + // 9: afterBreakfast
-                "\"AFTER_DINNER\" TEXT," + // 10: afterDinner
-                "\"AFTER_LUNCH\" TEXT," + // 11: afterLunch
-                "\"BEFORE_BREAKFAST\" TEXT," + // 12: beforeBreakfast
-                "\"BEFORE_DINNER\" TEXT," + // 13: beforeDinner
-                "\"BEFORE_LUNCH\" TEXT," + // 14: beforeLunch
-                "\"BEFORE_SLEEP\" TEXT," + // 15: beforeSleep
-                "\"BEFOREDAWN\" TEXT," + // 16: beforedawn
-                "\"THREECLOCK\" TEXT," + // 17: threeclock
-                "\"RANDOMTIME\" TEXT," + // 18: randomtime
-                "\"PLAN_TYPE\" INTEGER NOT NULL ," + // 19: planType
-                "\"SMBG_SCHEME\" TEXT," + // 20: smbgScheme
-                "\"SEX\" TEXT," + // 21: sex
-                "\"PAT_PATIENT_ID\" TEXT);"); // 22: patPatientId
+                "\"BT_TXT\" TEXT," + // 9: btTxt
+                "\"DIABETES_TXT\" TEXT," + // 10: diabetesTxt
+                "\"AFTER_BREAKFAST\" TEXT," + // 11: afterBreakfast
+                "\"AFTER_DINNER\" TEXT," + // 12: afterDinner
+                "\"AFTER_LUNCH\" TEXT," + // 13: afterLunch
+                "\"BEFORE_BREAKFAST\" TEXT," + // 14: beforeBreakfast
+                "\"BEFORE_DINNER\" TEXT," + // 15: beforeDinner
+                "\"BEFORE_LUNCH\" TEXT," + // 16: beforeLunch
+                "\"BEFORE_SLEEP\" TEXT," + // 17: beforeSleep
+                "\"BEFOREDAWN\" TEXT," + // 18: beforedawn
+                "\"THREECLOCK\" TEXT," + // 19: threeclock
+                "\"RANDOMTIME\" TEXT," + // 20: randomtime
+                "\"PLAN_TYPE\" INTEGER NOT NULL ," + // 21: planType
+                "\"SMBG_SCHEME\" TEXT," + // 22: smbgScheme
+                "\"SEX\" TEXT," + // 23: sex
+                "\"PAT_PATIENT_ID\" TEXT);"); // 24: patPatientId
     }
 
     /** Drops the underlying database table. */
@@ -142,70 +146,80 @@ public class MemberModelDao extends AbstractDao<MemberModel, Long> {
             stmt.bindString(9, memberName);
         }
  
+        String btTxt = entity.getBtTxt();
+        if (btTxt != null) {
+            stmt.bindString(10, btTxt);
+        }
+ 
+        String diabetesTxt = entity.getDiabetesTxt();
+        if (diabetesTxt != null) {
+            stmt.bindString(11, diabetesTxt);
+        }
+ 
         String afterBreakfast = entity.getAfterBreakfast();
         if (afterBreakfast != null) {
-            stmt.bindString(10, afterBreakfast);
+            stmt.bindString(12, afterBreakfast);
         }
  
         String afterDinner = entity.getAfterDinner();
         if (afterDinner != null) {
-            stmt.bindString(11, afterDinner);
+            stmt.bindString(13, afterDinner);
         }
  
         String afterLunch = entity.getAfterLunch();
         if (afterLunch != null) {
-            stmt.bindString(12, afterLunch);
+            stmt.bindString(14, afterLunch);
         }
  
         String beforeBreakfast = entity.getBeforeBreakfast();
         if (beforeBreakfast != null) {
-            stmt.bindString(13, beforeBreakfast);
+            stmt.bindString(15, beforeBreakfast);
         }
  
         String beforeDinner = entity.getBeforeDinner();
         if (beforeDinner != null) {
-            stmt.bindString(14, beforeDinner);
+            stmt.bindString(16, beforeDinner);
         }
  
         String beforeLunch = entity.getBeforeLunch();
         if (beforeLunch != null) {
-            stmt.bindString(15, beforeLunch);
+            stmt.bindString(17, beforeLunch);
         }
  
         String beforeSleep = entity.getBeforeSleep();
         if (beforeSleep != null) {
-            stmt.bindString(16, beforeSleep);
+            stmt.bindString(18, beforeSleep);
         }
  
         String beforedawn = entity.getBeforedawn();
         if (beforedawn != null) {
-            stmt.bindString(17, beforedawn);
+            stmt.bindString(19, beforedawn);
         }
  
         String threeclock = entity.getThreeclock();
         if (threeclock != null) {
-            stmt.bindString(18, threeclock);
+            stmt.bindString(20, threeclock);
         }
  
         String randomtime = entity.getRandomtime();
         if (randomtime != null) {
-            stmt.bindString(19, randomtime);
+            stmt.bindString(21, randomtime);
         }
-        stmt.bindLong(20, entity.getPlanType());
+        stmt.bindLong(22, entity.getPlanType());
  
         String smbgScheme = entity.getSmbgScheme();
         if (smbgScheme != null) {
-            stmt.bindString(21, smbgScheme);
+            stmt.bindString(23, smbgScheme);
         }
  
         String sex = entity.getSex();
         if (sex != null) {
-            stmt.bindString(22, sex);
+            stmt.bindString(24, sex);
         }
  
         String patPatientId = entity.getPatPatientId();
         if (patPatientId != null) {
-            stmt.bindString(23, patPatientId);
+            stmt.bindString(25, patPatientId);
         }
     }
 
@@ -254,70 +268,80 @@ public class MemberModelDao extends AbstractDao<MemberModel, Long> {
             stmt.bindString(9, memberName);
         }
  
+        String btTxt = entity.getBtTxt();
+        if (btTxt != null) {
+            stmt.bindString(10, btTxt);
+        }
+ 
+        String diabetesTxt = entity.getDiabetesTxt();
+        if (diabetesTxt != null) {
+            stmt.bindString(11, diabetesTxt);
+        }
+ 
         String afterBreakfast = entity.getAfterBreakfast();
         if (afterBreakfast != null) {
-            stmt.bindString(10, afterBreakfast);
+            stmt.bindString(12, afterBreakfast);
         }
  
         String afterDinner = entity.getAfterDinner();
         if (afterDinner != null) {
-            stmt.bindString(11, afterDinner);
+            stmt.bindString(13, afterDinner);
         }
  
         String afterLunch = entity.getAfterLunch();
         if (afterLunch != null) {
-            stmt.bindString(12, afterLunch);
+            stmt.bindString(14, afterLunch);
         }
  
         String beforeBreakfast = entity.getBeforeBreakfast();
         if (beforeBreakfast != null) {
-            stmt.bindString(13, beforeBreakfast);
+            stmt.bindString(15, beforeBreakfast);
         }
  
         String beforeDinner = entity.getBeforeDinner();
         if (beforeDinner != null) {
-            stmt.bindString(14, beforeDinner);
+            stmt.bindString(16, beforeDinner);
         }
  
         String beforeLunch = entity.getBeforeLunch();
         if (beforeLunch != null) {
-            stmt.bindString(15, beforeLunch);
+            stmt.bindString(17, beforeLunch);
         }
  
         String beforeSleep = entity.getBeforeSleep();
         if (beforeSleep != null) {
-            stmt.bindString(16, beforeSleep);
+            stmt.bindString(18, beforeSleep);
         }
  
         String beforedawn = entity.getBeforedawn();
         if (beforedawn != null) {
-            stmt.bindString(17, beforedawn);
+            stmt.bindString(19, beforedawn);
         }
  
         String threeclock = entity.getThreeclock();
         if (threeclock != null) {
-            stmt.bindString(18, threeclock);
+            stmt.bindString(20, threeclock);
         }
  
         String randomtime = entity.getRandomtime();
         if (randomtime != null) {
-            stmt.bindString(19, randomtime);
+            stmt.bindString(21, randomtime);
         }
-        stmt.bindLong(20, entity.getPlanType());
+        stmt.bindLong(22, entity.getPlanType());
  
         String smbgScheme = entity.getSmbgScheme();
         if (smbgScheme != null) {
-            stmt.bindString(21, smbgScheme);
+            stmt.bindString(23, smbgScheme);
         }
  
         String sex = entity.getSex();
         if (sex != null) {
-            stmt.bindString(22, sex);
+            stmt.bindString(24, sex);
         }
  
         String patPatientId = entity.getPatPatientId();
         if (patPatientId != null) {
-            stmt.bindString(23, patPatientId);
+            stmt.bindString(25, patPatientId);
         }
     }
 
@@ -338,20 +362,22 @@ public class MemberModelDao extends AbstractDao<MemberModel, Long> {
             cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // departmentName
             cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // memberId
             cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // memberName
-            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // afterBreakfast
-            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // afterDinner
-            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // afterLunch
-            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // beforeBreakfast
-            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // beforeDinner
-            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // beforeLunch
-            cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15), // beforeSleep
-            cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16), // beforedawn
-            cursor.isNull(offset + 17) ? null : cursor.getString(offset + 17), // threeclock
-            cursor.isNull(offset + 18) ? null : cursor.getString(offset + 18), // randomtime
-            cursor.getInt(offset + 19), // planType
-            cursor.isNull(offset + 20) ? null : cursor.getString(offset + 20), // smbgScheme
-            cursor.isNull(offset + 21) ? null : cursor.getString(offset + 21), // sex
-            cursor.isNull(offset + 22) ? null : cursor.getString(offset + 22) // patPatientId
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // btTxt
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // diabetesTxt
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // afterBreakfast
+            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // afterDinner
+            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // afterLunch
+            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // beforeBreakfast
+            cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15), // beforeDinner
+            cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16), // beforeLunch
+            cursor.isNull(offset + 17) ? null : cursor.getString(offset + 17), // beforeSleep
+            cursor.isNull(offset + 18) ? null : cursor.getString(offset + 18), // beforedawn
+            cursor.isNull(offset + 19) ? null : cursor.getString(offset + 19), // threeclock
+            cursor.isNull(offset + 20) ? null : cursor.getString(offset + 20), // randomtime
+            cursor.getInt(offset + 21), // planType
+            cursor.isNull(offset + 22) ? null : cursor.getString(offset + 22), // smbgScheme
+            cursor.isNull(offset + 23) ? null : cursor.getString(offset + 23), // sex
+            cursor.isNull(offset + 24) ? null : cursor.getString(offset + 24) // patPatientId
         );
         return entity;
     }
@@ -367,20 +393,22 @@ public class MemberModelDao extends AbstractDao<MemberModel, Long> {
         entity.setDepartmentName(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
         entity.setMemberId(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
         entity.setMemberName(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
-        entity.setAfterBreakfast(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
-        entity.setAfterDinner(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
-        entity.setAfterLunch(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
-        entity.setBeforeBreakfast(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
-        entity.setBeforeDinner(cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13));
-        entity.setBeforeLunch(cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14));
-        entity.setBeforeSleep(cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15));
-        entity.setBeforedawn(cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16));
-        entity.setThreeclock(cursor.isNull(offset + 17) ? null : cursor.getString(offset + 17));
-        entity.setRandomtime(cursor.isNull(offset + 18) ? null : cursor.getString(offset + 18));
-        entity.setPlanType(cursor.getInt(offset + 19));
-        entity.setSmbgScheme(cursor.isNull(offset + 20) ? null : cursor.getString(offset + 20));
-        entity.setSex(cursor.isNull(offset + 21) ? null : cursor.getString(offset + 21));
-        entity.setPatPatientId(cursor.isNull(offset + 22) ? null : cursor.getString(offset + 22));
+        entity.setBtTxt(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setDiabetesTxt(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setAfterBreakfast(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
+        entity.setAfterDinner(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
+        entity.setAfterLunch(cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13));
+        entity.setBeforeBreakfast(cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14));
+        entity.setBeforeDinner(cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15));
+        entity.setBeforeLunch(cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16));
+        entity.setBeforeSleep(cursor.isNull(offset + 17) ? null : cursor.getString(offset + 17));
+        entity.setBeforedawn(cursor.isNull(offset + 18) ? null : cursor.getString(offset + 18));
+        entity.setThreeclock(cursor.isNull(offset + 19) ? null : cursor.getString(offset + 19));
+        entity.setRandomtime(cursor.isNull(offset + 20) ? null : cursor.getString(offset + 20));
+        entity.setPlanType(cursor.getInt(offset + 21));
+        entity.setSmbgScheme(cursor.isNull(offset + 22) ? null : cursor.getString(offset + 22));
+        entity.setSex(cursor.isNull(offset + 23) ? null : cursor.getString(offset + 23));
+        entity.setPatPatientId(cursor.isNull(offset + 24) ? null : cursor.getString(offset + 24));
      }
     
     @Override

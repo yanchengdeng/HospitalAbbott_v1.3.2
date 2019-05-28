@@ -24,7 +24,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="达标时间占比(TIR)"
-                android:textSize="12sp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textSize="11sp"
                 android:textColor="@color/black" />
 
             <TextView
@@ -104,7 +106,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/less_39"
-                android:textSize="12sp"
+                android:textSize="11sp"
+                android:singleLine="true"
+                android:ellipsize="end"
                 android:textColor="@color/black" />
 
             <TextView
@@ -186,7 +190,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/less_139"
-                android:textSize="12sp"
+                android:textSize="11sp"
+                android:singleLine="true"
+                android:ellipsize="end"
                 android:textColor="@color/black" />
 
             <TextView
