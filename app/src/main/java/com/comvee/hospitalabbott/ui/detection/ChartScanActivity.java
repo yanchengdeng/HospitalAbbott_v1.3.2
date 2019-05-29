@@ -9,6 +9,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,6 +55,43 @@ public class ChartScanActivity extends BaseRxActivity {
             "日间血糖平均绝对差（MODD）：体现每日之间血糖的重复性，可评估血糖的波动程度。"
     };
 
+
+    /**
+     * 1型   0
+     * 2型  1
+     * 1 型（体弱） 2
+     * 2型（体弱）  3
+     * 1型（妊娠）  4
+     * 2型（妊娠）  5
+     */
+    private String tipsTxt[] ={
+            "血糖在3.9-10mmol/L的时间占比不小于70%\n" +
+                    "血糖低于3.9mmol/L的时间占比不超过4%\n" +
+                    "血糖低于4.0mmol/L的时间占比不超过1%\n" +
+                    "  将高血糖时间减少到最小",
+
+            "血糖在3.9-10mmol/L的时间占比不小于70%\n" +
+                    "血糖低于3.9mmol/L的时间占比不超过4%\n" +
+                    "血糖低于4.0mmol/L的时间占比不超过1%\n" +
+                    "将高血糖时间减少到最小",
+
+            "血糖在3.9-10mmol/L的时间占比不小于50%\n" +
+                    "血糖低于3.9mmol/L的时间占比不超过1%\n" +
+                    "血糖低于13.9mmol/L的时间占比不小于90%",
+
+            "血糖在3.9-10mmol/L的时间占比不小于50%\n" +
+                    "血糖低于3.9mmol/L的时间占比不超过1%\n" +
+                    "血糖低于13.9mmol/L的时间占比不小于90%",
+
+            "血糖在3.5-7.8mmol/L的时间占比不小于70%\n" +
+                    "血糖低于3.5mmol/L的时间占比不超过4%\n" +
+                    "血糖高于7.8mmol/L的时间占比不超过于25%",
+
+            "血糖在3.5-7.8mmol/L的时间占比不小于85%\n" +
+                    "血糖低于3.5mmol/L的时间占比不超过4%\n" +
+                    "血糖高于7.8mmol/L的时间占比不超过于10%"
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,8 +103,44 @@ public class ChartScanActivity extends BaseRxActivity {
         hospitalBed = (HospitalBed) getIntent().getSerializableExtra(TestBloodNewActivity.MEMBER_BEAN);
 
 
-        ((TextView)findViewById(R.id.top_history)).setText(hospitalBed.getDiabetesTxt()+"("+hospitalBed.getBtTxt()+")");
+        ((TextView)findViewById(R.id.top_history)).setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.mipmap.question),null);
+
+
+        StringBuilder sbTopHistry = new StringBuilder();
+        if (!TextUtils.isEmpty(hospitalBed.getDiabetesTxt())){
+            sbTopHistry.append(hospitalBed.getDiabetesTxt());
+        }
+        if (!TextUtils.isEmpty(hospitalBed.getBtTxt())){
+            sbTopHistry.append("(").append(hospitalBed.getBtTxt()).append(")");
+        }
+
+        ((TextView)findViewById(R.id.top_history)).setText(sbTopHistry.toString());
+
+
         ((TextView)findViewById(R.id.top_history)).setTextColor(getResources().getColor(R.color.yellow));
+
+        findViewById(R.id.top_history).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String content =  ((TextView)findViewById(R.id.top_history)).getText().toString();
+                if (!TextUtils.isEmpty(content)){
+                    if (content.contains("1型") && content.contains("体弱")){
+                        showDialogTips(false,2);
+                    }else if (content.contains("1型") && content.contains("妊娠")){
+                        showDialogTips(false,4);
+                    }else if (content.contains("2型") && content.contains("体弱")){
+                        showDialogTips(false,3);
+                    }else if (content.contains("2型") && content.contains("妊娠")){
+                        showDialogTips(false,5);
+                    }else if (content.contains("1型")){
+                        showDialogTips(false,0);
+                    }else if (content.contains("2型")){
+                        showDialogTips(false,1);
+                    }
+                }
+            }
+        });
 
         ((TextView) findViewById(R.id.top_title)).setText(hospitalBed.getBedNo() + "床 " + hospitalBed.getMemberName());
 
@@ -154,8 +228,7 @@ public class ChartScanActivity extends BaseRxActivity {
         }
     }
 
-    public void showDialogTips(int flag) {
-
+    public void showDialogTips(boolean isTips,int flag){
         //    通过AlertDialog.Builder这个类来实例化我们的一个AlertDialog的对象
         AlertDialog.Builder builder = new AlertDialog.Builder(ChartScanActivity.this);
         //    设置Title的图标
@@ -163,7 +236,7 @@ public class ChartScanActivity extends BaseRxActivity {
         View view  = LayoutInflater.from(ChartScanActivity.this).inflate(R.layout.blood_tips_dialog,null);
 
         TextView textView = view.findViewById(R.id.tv_content);
-        textView.setText(tips[flag]);
+        textView.setText(isTips?tips[flag]:tipsTxt[flag]);
 
 
         Dialog dialog = builder.create();
@@ -178,7 +251,10 @@ public class ChartScanActivity extends BaseRxActivity {
         });
         dialog.show();
 
+    }
 
+    public void showDialogTips(int flag) {
+        showDialogTips(true,flag);
     }
 
 

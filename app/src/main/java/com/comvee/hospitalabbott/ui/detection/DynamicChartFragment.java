@@ -4,7 +4,10 @@ import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.ActivityUtils;
@@ -50,7 +53,7 @@ public class DynamicChartFragment extends BaseFragment {
     //平均值  标准值 波动  异常
     private TextView tvBloodAvg, tvstandardVal, tvmeanAmplitudeOfGlycemicExcursion,tvcoefficientOfVariation;
 
-    private TextView tvLessTir, tvLess39,tvLess139,tvTirUnit, tvLessUnit39, tvLessUnit139;
+    private TextView tvLessTir, tvLess39, tvLess40, tvLess139,tvTirUnit, tvLessUnit39, tvlessUnit40, tvLessUnit139;
 
 
     private View mainView,viewNoData;
@@ -97,37 +100,7 @@ public class DynamicChartFragment extends BaseFragment {
         chart.setVisibility(View.INVISIBLE);
 
 
-        //tir
-
-
-        view.findViewById(R.id.ll_tir_num).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getActivity()!=null){
-                    ((ChartScanActivity) getActivity()).showDialogTips(0);
-                }
-            }
-        });
-
-        //3.9
-        view.findViewById(R.id.ll_less_39_num).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getActivity()!=null){
-                    ((ChartScanActivity) getActivity()).showDialogTips(1);
-                }
-            }
-        });
-
-        view.findViewById(R.id.ll_less_139_num).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getActivity()!=null){
-                    ((ChartScanActivity) getActivity()).showDialogTips(3);
-                }
-            }
-        });
-
+        initBloodParams(view);
         //血糖标准差
         view.findViewById(R.id.ll_avg_standardVal).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,6 +142,119 @@ public class DynamicChartFragment extends BaseFragment {
 
         getDataInfo();
 
+    }
+
+    private void initBloodParams(View view) {
+
+        //TODO  为了针对需求会根据 体弱 等参数 来显示数据标准  ，动态生成view 添加至底部
+        //只有 2 型  1型 对应 四个参数指标      其他对应三个指标
+        View bootomView;
+        if (!TextUtils.isEmpty(hospitalBed.getDiabetesTxt()) && (hospitalBed.getDiabetesTxt().endsWith("1型") || hospitalBed.getDiabetesTxt().endsWith("2型")) && TextUtils.isEmpty(hospitalBed.getBtTxt())){
+            bootomView = LayoutInflater.from(getActivity()).inflate(R.layout.layou_bottom_blood_params_big,null);
+            tvLess39 = bootomView.findViewById(R.id.tv_lessthan_39_tir);
+            tvLess40 = bootomView.findViewById(R.id.tv_lessthan_4_tir);
+            tvLess139 = bootomView.findViewById(R.id.tv_lessthan_139_tir);
+            tvlessUnit40 = bootomView.findViewById(R.id.tv_less_4_unit);
+            tvLessUnit39 = bootomView.findViewById(R.id.tv_less_39_unit);
+            tvLessUnit139 = bootomView.findViewById(R.id.tv_less_139_unit);
+            tvTirUnit = bootomView.findViewById(R.id.tv_tir_unit);
+            tvLessTir = bootomView.findViewById(R.id.tv_avg_tir);
+
+            bootomView.findViewById(R.id.ll_tir_num).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (getActivity() != null) {
+                        ((ChartScanActivity) getActivity()).showDialogTips(0);
+                    }
+                }
+            });
+
+
+            //3.9
+            bootomView.findViewById(R.id.ll_less_39_num).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (getActivity() != null) {
+                        ((ChartScanActivity) getActivity()).showDialogTips(1);
+                    }
+                }
+            });
+
+
+            bootomView.findViewById(R.id.ll_less_40_num).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (getActivity() != null) {
+                        ((ChartScanActivity) getActivity()).showDialogTips(2);
+                    }
+                }
+            });
+
+            //139
+            bootomView.findViewById(R.id.ll_less_139_num).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (getActivity() != null) {
+                        ((ChartScanActivity) getActivity()).showDialogTips(3);
+                    }
+                }
+            });
+        }else{
+            bootomView = LayoutInflater.from(getActivity()).inflate(R.layout.layou_bottom_blood_params_big_three,null);
+            tvLess39 = bootomView.findViewById(R.id.tv_lessthan_39_tir);
+//            tvLess40 = bootomView.findViewById(R.id.tv_lessthan_4_tir);
+            tvLess139 = bootomView.findViewById(R.id.tv_lessthan_139_tir);
+//            tvlessUnit40 = bootomView.findViewById(R.id.tv_less_4_unit);
+            tvLessUnit39 = bootomView.findViewById(R.id.tv_less_39_unit);
+            tvLessUnit139 = bootomView.findViewById(R.id.tv_less_139_unit);
+            tvTirUnit = bootomView.findViewById(R.id.tv_tir_unit);
+            tvLessTir = bootomView.findViewById(R.id.tv_avg_tir);
+            bootomView.findViewById(R.id.ll_tir_num).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (getActivity() != null) {
+                        ((ChartScanActivity) getActivity()).showDialogTips(0);
+                    }
+                }
+            });
+
+
+            //3.9
+            bootomView.findViewById(R.id.ll_less_39_num).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (getActivity() != null) {
+                        ((ChartScanActivity) getActivity()).showDialogTips(1);
+                    }
+                }
+            });
+
+
+//            bootomView.findViewById(R.id.ll_less_40_num).setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    if (getActivity() != null) {
+//                        ((ChartScanActivity) getActivity()).showDialogTips(2);
+//                    }
+//                }
+//            });
+
+            //139
+            bootomView.findViewById(R.id.ll_less_139_num).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (getActivity() != null) {
+                        ((ChartScanActivity) getActivity()).showDialogTips(3);
+                    }
+                }
+            });
+        }
+
+
+
+        //tir
+
+        ((LinearLayout)view.findViewById(R.id.ll_bootom_view)).addView(bootomView);
     }
 
     //获取动态血糖
@@ -223,15 +309,25 @@ public class DynamicChartFragment extends BaseFragment {
                             }
 
 
+                            if (tvLess40!=null) {
+                                tvLess40.setText("" + bloodSugarChatInfo.awiTimeRateOf4_0);
+                                if (bloodSugarChatInfo.awiTimeRateOf4_0 < 4) {
+                                    tvLess40.setTextColor(getResources().getColor(R.color.blue));
+                                    tvlessUnit40.setTextColor(getResources().getColor(R.color.blue));
+                                } else {
+                                    tvLess40.setTextColor(getResources().getColor(R.color.red));
+                                    tvlessUnit40.setTextColor(getResources().getColor(R.color.red));
+                                }
+                            }
 
 
-                            if (bloodSugarChatInfo.awiTimeRateOf13_9>=90){
-                                tvLess139.setTextColor(getResources().getColor(R.color.blue));
-                                tvLessUnit139.setTextColor(getResources().getColor(R.color.blue));
-                            }else{
+//                            if (bloodSugarChatInfo.awiTimeRateOf13_9>=90){
+//                                tvLess139.setTextColor(getResources().getColor(R.color.blue));
+//                                tvLessUnit139.setTextColor(getResources().getColor(R.color.blue));
+//                            }else{
                                 tvLess139.setTextColor(getResources().getColor(R.color.red));
                                 tvLessUnit139.setTextColor(getResources().getColor(R.color.red));
-                            }
+//                            }
 
 
                         }

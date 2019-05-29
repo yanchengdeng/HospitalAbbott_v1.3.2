@@ -200,6 +200,7 @@
 
 
             <LinearLayout
+                android:id="@+id/ll_bootom_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -211,9 +212,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/line_grey" />
-
-                <include layout="@layout/layou_bottom_blood_params_big_three" />
-
 
             </LinearLayout>
 
