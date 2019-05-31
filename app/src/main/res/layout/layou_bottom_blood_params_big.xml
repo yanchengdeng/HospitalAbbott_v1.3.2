@@ -30,6 +30,7 @@
                 android:textColor="@color/black" />
 
             <TextView
+                android:id="@+id/tv_tir_area"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -70,6 +71,7 @@
                 android:padding="10dp">
 
                 <TextView
+                    android:id="@+id/tv_tir_target"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -101,6 +103,7 @@
 
 
             <TextView
+                android:id="@+id/tv_lessthan_39_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -149,11 +152,12 @@
                 android:padding="10dp">
 
                 <TextView
+                    android:id="@+id/tv_lessthan_39_target"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/target_less_1"
                     android:gravity="center_horizontal"
+                    android:text="@string/target_less_1"
                     android:textColor="@color/text_gray_99" />
 
                 <ImageView
@@ -190,6 +194,7 @@
 
 
             <TextView
+                android:id="@+id/tv_lessthan_4_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -238,11 +243,12 @@
                 android:padding="10dp">
 
                 <TextView
+                    android:id="@+id/tv_lessthan_4_target"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/target_less_4"
                     android:gravity="center_horizontal"
+                    android:text="@string/target_less_4"
                     android:textColor="@color/text_gray_99" />
 
                 <ImageView
@@ -268,6 +274,7 @@
 
 
             <TextView
+                android:id="@+id/tv_lessthan_139_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -316,11 +323,12 @@
                 android:padding="10dp">
 
                 <TextView
+                    android:id="@+id/tv_lessthan_139_target"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="目标：尽量小"
                     android:gravity="center_horizontal"
+                    android:text="目标：尽量小"
                     android:textColor="@color/text_gray_99" />
 
                 <ImageView

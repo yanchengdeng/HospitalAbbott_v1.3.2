@@ -57,11 +57,21 @@ public class TodayNewChartFragment extends BaseFragment {
     //平均值  标准值 波动  异常
     private TextView tvBloodAvg, tvstandardVal, tvmeanAmplitudeOfGlycemicExcursion, tvcoefficientOfVariation;
 
-    private TextView tvLessTir, tvLess39, tvLess40, tvLess139, tvTirUnit, tvLessUnit39, tvlessUnit40, tvLessUnit139;
+    private TextView
+            tvTirTittle,tvLess39Tittle,tvLess4Tittle,tvLess139Tittle,
+            tvLessTir, tvLess39, tvLess40, tvLess139,
+            tvTirUnit, tvLessUnit39, tvlessUnit40, tvLessUnit139,
+            tvTirTarget,tvLess39Target,tvLess4Target,tvLess139Target;
 
     private RecyclerView recyclerView;
 
     private DateListAdapter dateListAdapter;
+
+    private View mainView, viewNoData;
+    //需要一个boolean 表示  是否最后一个值 是 文字介绍（尽量少）  只有 1型  2型 才有   ）
+
+    private boolean isValueFor139 = false;
+    private float triValue,middleValue,lastValue;//如果 这三个比较值用数值表示  则这三个数值依次为
 
 
     @Override
@@ -90,6 +100,9 @@ public class TodayNewChartFragment extends BaseFragment {
         tvstandardVal = view.findViewById(R.id.tv_avg_standardVal);
         tvmeanAmplitudeOfGlycemicExcursion = view.findViewById(R.id.tv_avg_bodong);
         tvcoefficientOfVariation = view.findViewById(R.id.tv_avg_bianyi);
+
+        mainView = view.findViewById(R.id.main_view);
+        viewNoData = view.findViewById(R.id.tv_error);
 
 
         recyclerView = view.findViewById(R.id.recyclerView);
@@ -160,14 +173,33 @@ public class TodayNewChartFragment extends BaseFragment {
         View bootomView;
         if (!TextUtils.isEmpty(hospitalBed.getDiabetesTxt()) && (hospitalBed.getDiabetesTxt().endsWith("1型") || hospitalBed.getDiabetesTxt().endsWith("2型")) && TextUtils.isEmpty(hospitalBed.getBtTxt())) {
             bootomView = LayoutInflater.from(getActivity()).inflate(R.layout.layou_bottom_blood_params_big, null);
+            isValueFor139 = false;
+            tvLessTir = bootomView.findViewById(R.id.tv_avg_tir);
             tvLess39 = bootomView.findViewById(R.id.tv_lessthan_39_tir);
             tvLess40 = bootomView.findViewById(R.id.tv_lessthan_4_tir);
             tvLess139 = bootomView.findViewById(R.id.tv_lessthan_139_tir);
+
+            tvTirTittle = bootomView.findViewById(R.id.tv_tir_area);
+            tvLess39Tittle = bootomView.findViewById(R.id.tv_lessthan_39_title);
+            tvLess4Tittle = bootomView.findViewById(R.id.tv_lessthan_4_title);
+            tvLess139Tittle = bootomView.findViewById(R.id.tv_lessthan_139_title);
+
+
+
+
+
+
+            tvTirTarget = bootomView.findViewById(R.id.tv_tir_target);
+            tvLess39Target = bootomView.findViewById(R.id.tv_lessthan_39_target);
+            tvLess4Target = bootomView.findViewById(R.id.tv_lessthan_4_target);
+            tvLess139Target = bootomView.findViewById(R.id.tv_lessthan_139_target);
+
+
             tvlessUnit40 = bootomView.findViewById(R.id.tv_less_4_unit);
             tvLessUnit39 = bootomView.findViewById(R.id.tv_less_39_unit);
             tvLessUnit139 = bootomView.findViewById(R.id.tv_less_139_unit);
             tvTirUnit = bootomView.findViewById(R.id.tv_tir_unit);
-            tvLessTir = bootomView.findViewById(R.id.tv_avg_tir);
+
 
             bootomView.findViewById(R.id.ll_tir_num).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -210,6 +242,7 @@ public class TodayNewChartFragment extends BaseFragment {
             });
         } else {
             bootomView = LayoutInflater.from(getActivity()).inflate(R.layout.layou_bottom_blood_params_big_three, null);
+            isValueFor139 = true;
             tvLess39 = bootomView.findViewById(R.id.tv_lessthan_39_tir);
 //            tvLess40 = bootomView.findViewById(R.id.tv_lessthan_4_tir);
             tvLess139 = bootomView.findViewById(R.id.tv_lessthan_139_tir);
@@ -218,6 +251,67 @@ public class TodayNewChartFragment extends BaseFragment {
             tvLessUnit139 = bootomView.findViewById(R.id.tv_less_139_unit);
             tvTirUnit = bootomView.findViewById(R.id.tv_tir_unit);
             tvLessTir = bootomView.findViewById(R.id.tv_avg_tir);
+
+
+            tvTirTittle = bootomView.findViewById(R.id.tv_tir_area);
+            tvLess39Tittle = bootomView.findViewById(R.id.tv_lessthan_39_title);
+//            tvLess4Tittle = bootomView.findViewById(R.id.tv_lessthan_4_title);
+            tvLess139Tittle = bootomView.findViewById(R.id.tv_lessthan_139_title);
+
+
+            tvTirTittle = bootomView.findViewById(R.id.tv_tir_area);
+            tvLess39Tittle = bootomView.findViewById(R.id.tv_lessthan_39_title);
+//            tvLess4Tittle = bootomView.findViewById(R.id.tv_lessthan_4_title);
+            tvLess139Tittle = bootomView.findViewById(R.id.tv_lessthan_139_title);
+
+
+
+
+            tvTirTarget = bootomView.findViewById(R.id.tv_tir_target);
+            tvLess39Target = bootomView.findViewById(R.id.tv_lessthan_39_target);
+//            tvLess4Target = bootomView.findViewById(R.id.tv_lessthan_4_target);
+            tvLess139Target = bootomView.findViewById(R.id.tv_lessthan_139_target);
+
+
+            tvTirTarget = bootomView.findViewById(R.id.tv_tir_target);
+            tvLess39Target = bootomView.findViewById(R.id.tv_lessthan_39_target);
+//            tvLess4Target = bootomView.findViewById(R.id.tv_lessthan_4_target);
+            tvLess139Target = bootomView.findViewById(R.id.tv_lessthan_139_target);
+            if (!TextUtils.isEmpty(hospitalBed.getBtTxt()) && !TextUtils.isEmpty(hospitalBed.getDiabetesTxt())) {
+                //1型  2型  体弱
+                if (hospitalBed.getBtTxt().equals("体弱")){
+                    triValue = 50;
+                    middleValue = 1;
+                    lastValue = 90;
+                    tvTirTarget.setText("目标≥50%");
+                    tvLess39Target.setText("目标<1%");
+                    tvLess139Target.setText("目标≥90%");
+                }else if ( hospitalBed.getDiabetesTxt().equals("1型") && hospitalBed.getBtTxt().equals("妊娠")){
+                    //1型    妊娠
+                    triValue = 85;
+                    middleValue = 4;
+                    lastValue = 10;
+                    tvTirTarget.setText("目标≥85%");
+                    tvLess39Target.setText("目标<4%");
+                    tvLess139Target.setText("目标≥10%");
+                    tvTirTittle.setText("目标范围：3.5~7.8mmol/L");
+                    tvLess39Tittle.setText("<3.5mmol/L的时间占比");
+                    tvLess139Tittle.setText(">7.8mmol/L的时间占比");
+                }else{
+                    //2型  妊娠
+                    triValue = 70;
+                    middleValue = 4;
+                    lastValue = 25;
+                    tvTirTarget.setText("目标≥70%");
+                    tvLess39Target.setText("目标<4%");
+                    tvLess139Target.setText("目标≥25%");
+                    tvTirTittle.setText("目标范围：3.5~7.8mmol/L");
+                    tvLess39Tittle.setText("<3.5mmol/L的时间占比");
+                    tvLess139Tittle.setText(">7.8mmol/L的时间占比");
+                }
+            }
+
+
             bootomView.findViewById(R.id.ll_tir_num).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -619,21 +713,24 @@ public class TodayNewChartFragment extends BaseFragment {
     }
 
     private void getDataInfo(String today) {
-
-        //Todo  正式删除改行
-//        today = "2019-04-26";
-
-
         ComveeLoader.getInstance().getBloodChartInfo(hospitalBed.getMemberId(), today, today, "1")
                 .subscribe(new HttpCall<BloodSugarChatInfo>(null) {
                     @Override
                     public void onNext(BloodSugarChatInfo bloodSugarChatInfo) {
                         Log.w("dyc", bloodSugarChatInfo + "");
                         if (bloodSugarChatInfo != null) {
+
+                            if (bloodSugarChatInfo.chartShow == 0) {
+                                viewNoData.setVisibility(View.VISIBLE);
+                                mainView.setVisibility(View.GONE);
+
+                                return;
+                            }
+                            viewNoData.setVisibility(View.GONE);
+                            mainView.setVisibility(View.VISIBLE);
+
 //                            if (bloodSugarChatInfo.chartData!=null && bloodSugarChatInfo.chartData.dataSource!=null && bloodSugarChatInfo.chartData.dataSource.length>0) {
                             initChartView(bloodSugarChatInfo);
-
-
                             tvBloodAvg.setText("" + bloodSugarChatInfo.avgNum);
                             tvstandardVal.setText("" + bloodSugarChatInfo.standardVal);
                             tvmeanAmplitudeOfGlycemicExcursion.setText("" + bloodSugarChatInfo.meanAmplitudeOfGlycemicExcursion);
@@ -645,23 +742,24 @@ public class TodayNewChartFragment extends BaseFragment {
 
                             tvLess139.setText("" + bloodSugarChatInfo.awiTimeRateOf13_9);
 
-                            if (bloodSugarChatInfo.awiTimeRateOfNormal >= 70) {
+                            if (bloodSugarChatInfo.awiTimeRateOfNormal>=triValue){
                                 tvLessTir.setTextColor(getResources().getColor(R.color.blue));
                                 tvTirUnit.setTextColor(getResources().getColor(R.color.blue));
-                            } else {
+                            }else{
                                 tvLessTir.setTextColor(getResources().getColor(R.color.red));
                                 tvTirUnit.setTextColor(getResources().getColor(R.color.red));
                             }
 
-                            if (bloodSugarChatInfo.awiTimeRateOf3_9 < 1) {
+                            if (bloodSugarChatInfo.awiTimeRateOf3_9<middleValue){
                                 tvLess39.setTextColor(getResources().getColor(R.color.blue));
                                 tvLessUnit39.setTextColor(getResources().getColor(R.color.blue));
-                            } else {
+                            }else{
                                 tvLess39.setTextColor(getResources().getColor(R.color.red));
                                 tvLessUnit39.setTextColor(getResources().getColor(R.color.red));
                             }
 
-                            if (tvLess40 != null) {
+
+                            if (tvLess40!=null) {
                                 tvLess40.setText("" + bloodSugarChatInfo.awiTimeRateOf4_0);
                                 if (bloodSugarChatInfo.awiTimeRateOf4_0 < 4) {
                                     tvLess40.setTextColor(getResources().getColor(R.color.blue));
@@ -672,16 +770,19 @@ public class TodayNewChartFragment extends BaseFragment {
                                 }
                             }
 
-//                            if (bloodSugarChatInfo.awiTimeRateOf13_9>=90){
-//                                tvLess139.setTextColor(getResources().getColor(R.color.blue));
-//                                tvLessUnit139.setTextColor(getResources().getColor(R.color.blue));
-//                            }else{
-                            tvLess139.setTextColor(getResources().getColor(R.color.red));
-                            tvLessUnit139.setTextColor(getResources().getColor(R.color.red));
-//                            }
 
-
-//                            }
+                            if (isValueFor139) {
+                                if (bloodSugarChatInfo.awiTimeRateOf13_9 >= lastValue) {
+                                    tvLess139.setTextColor(getResources().getColor(R.color.blue));
+                                    tvLessUnit139.setTextColor(getResources().getColor(R.color.blue));
+                                } else {
+                                    tvLess139.setTextColor(getResources().getColor(R.color.red));
+                                    tvLessUnit139.setTextColor(getResources().getColor(R.color.red));
+                                }
+                            }else{
+                                tvLess139.setTextColor(getResources().getColor(R.color.red));
+                                tvLessUnit139.setTextColor(getResources().getColor(R.color.red));
+                            }
                         }
 
                     }
@@ -697,6 +798,8 @@ public class TodayNewChartFragment extends BaseFragment {
                     public void onError(Throwable e) {
                         super.onError(e);
                         e.printStackTrace();
+                        viewNoData.setVisibility(View.VISIBLE);
+                        mainView.setVisibility(View.GONE);
                     }
                 });
     }

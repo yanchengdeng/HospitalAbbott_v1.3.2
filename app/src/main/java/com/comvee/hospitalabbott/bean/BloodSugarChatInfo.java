@@ -28,6 +28,9 @@ public class BloodSugarChatInfo implements Serializable {
     public String standardVal;// "2.38"
 
 
+    public int chartShow;//1：显示 0:不显示
+
+
     public ChartData chartData;//";// {
     public String coefficientOfVariation;
 

@@ -30,12 +30,13 @@
                 android:textColor="@color/black" />
 
             <TextView
+                android:id="@+id/tv_tir_area"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="目标范围：3.9~10mmol/L"
-                android:textSize="10sp"
-                android:textColor="@color/text_gray_99" />
+                android:textColor="@color/text_gray_99"
+                android:textSize="10sp" />
 
 
             <LinearLayout
@@ -71,11 +72,12 @@
                 android:padding="10dp">
 
                 <TextView
+                    android:id="@+id/tv_tir_target"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="目标：≥70%"
                     android:gravity="center_horizontal"
+                    android:text="目标：≥70%"
                     android:textColor="@color/text_gray_99" />
 
                 <ImageView
@@ -102,14 +104,15 @@
 
 
             <TextView
+                android:id="@+id/tv_lessthan_39_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/less_39"
-                android:textSize="11sp"
-                android:singleLine="true"
                 android:ellipsize="end"
-                android:textColor="@color/black" />
+                android:singleLine="true"
+                android:text="@string/less_39"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -154,11 +157,12 @@
                 android:padding="10dp">
 
                 <TextView
+                    android:id="@+id/tv_lessthan_39_target"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/target_less_1"
                     android:gravity="center_horizontal"
+                    android:text="@string/target_less_1"
                     android:textColor="@color/text_gray_99" />
 
                 <ImageView
@@ -186,14 +190,15 @@
 
 
             <TextView
+                android:id="@+id/tv_lessthan_139_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/less_139"
-                android:textSize="11sp"
-                android:singleLine="true"
                 android:ellipsize="end"
-                android:textColor="@color/black" />
+                android:singleLine="true"
+                android:text="@string/less_139"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -238,11 +243,12 @@
                 android:padding="10dp">
 
                 <TextView
+                    android:id="@+id/tv_lessthan_139_target"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="目标：尽量小"
                     android:gravity="center_horizontal"
+                    android:text="目标：尽量小"
                     android:textColor="@color/text_gray_99" />
 
                 <ImageView

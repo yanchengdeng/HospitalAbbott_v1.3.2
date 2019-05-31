@@ -27,10 +27,13 @@ public class BloodDiffListAdapter extends BaseQuickAdapter<BloodSugarChatDynmicI
         ((TextView)  helper.getView(R.id.tv_diff_date)).setText(""+item.name);
 
         ((TextView)  helper.getView(R.id.tv_diff_value)).setText(String.valueOf(item.value));
-        if (item.value>0.9){
+        if (item.value>0.83){
+            ((TextView)  helper.getView(R.id.tv_diff_value)).setTextColor(mContext.getResources().getColor(R.color.red));
             ((TextView) helper.getView(R.id.tv_diff_value)).setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,mContext.getResources().getDrawable(R.drawable.hospital_103),null);
         }else{
             ((TextView) helper.getView(R.id.tv_diff_value)).setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,null,null);
+            ((TextView)  helper.getView(R.id.tv_diff_value)).setTextColor(mContext.getResources().getColor(R.color.blue));
+
         }
 
 

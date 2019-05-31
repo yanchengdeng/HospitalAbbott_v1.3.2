@@ -1,194 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/text_gray_f6f6f8"
-    tools:context=".ui.detection.ChartScanActivity">
+    android:orientation="vertical">
 
-    <LinearLayout
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content" />
 
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:padding="@dimen/activity_horizontal_margin">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="每日葡萄糖图表"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:background="@color/white"
-                android:text="(单位：mmol/L)"
-                android:textColor="@color/text_gray_66"
-                android:textSize="13sp" />
-
-        </LinearLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white">
-
-
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/bubbleChart"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="@android:color/white"
-                />
-
+            android:layout_height="match_parent"
+            android:id="@+id/main_view"
+            android:background="@color/text_gray_f6f6f8">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="260dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="40dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/activity_horizontal_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="每日葡萄糖图表"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/white"
+                        android:text="(单位：mmol/L)"
+                        android:textColor="@color/text_gray_66"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/bubbleChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:background="@android:color/white" />
+
 
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="1dp"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:background="@color/yellow" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/icon_food" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="1dp"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:background="@color/yellow" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/icon_food" />
-
-                    </LinearLayout>
-
-                    <FrameLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_horizontal"
-                            android:orientation="vertical">
+                            android:layout_height="260dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="40dp"
+                            android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="1dp"
-                                android:layout_height="0dp"
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:background="@color/yellow" />
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@mipmap/icon_food" />
+                                <TextView
+                                    android:layout_width="1dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:background="@color/yellow" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/icon_food" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="1dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:background="@color/yellow" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/icon_food" />
+
+                            </LinearLayout>
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="1dp"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1"
+                                        android:background="@color/yellow" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@mipmap/icon_food" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="60dp"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="1dp"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1"
+                                        android:background="@color/purple" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@mipmap/icon_moon" />
+
+                                </LinearLayout>
+
+                            </FrameLayout>
+
 
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_horizontal"
-                            android:layout_marginLeft="60dp"
-                            android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/chart_guid_logo" />
+                    </LinearLayout>
 
-                            <TextView
-                                android:layout_width="1dp"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:background="@color/purple" />
+                </FrameLayout>
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@mipmap/icon_moon" />
 
-                        </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_bootom_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
 
-                    </FrameLayout>
+                    <include layout="@layout/layou_bottom_blood_params" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/line_grey" />
 
 
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/chart_guid_logo" />
+
             </LinearLayout>
 
-        </FrameLayout>
+        </android.support.v4.widget.NestedScrollView>
 
-
-        <LinearLayout
-            android:id="@+id/ll_bootom_view"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_error"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
-
-            <include layout="@layout/layou_bottom_blood_params" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/line_grey" />
-
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:drawableTop="@drawable/task_no_bg"
+            android:drawablePadding="@dimen/activity_horizontal_margin"
+            android:text="今日无数据"
+            android:textColor="@color/black"
+            android:visibility="gone"
+            android:textSize="14sp" />
 
 
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-</android.support.v4.widget.NestedScrollView>
+    </RelativeLayout>
+</LinearLayout>

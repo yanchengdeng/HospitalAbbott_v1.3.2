@@ -1,7 +1,6 @@
 package com.comvee.hospitalabbott.helper;
 
 import android.content.SharedPreferences;
-import android.text.TextUtils;
 
 import com.comvee.hospitalabbott.XTYApplication;
 
@@ -90,4 +89,7 @@ public class AbbottHelper {
         }
         return buffer.toString();
     }
+
+
+
 }
