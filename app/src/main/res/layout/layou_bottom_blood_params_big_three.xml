@@ -26,7 +26,7 @@
                 android:text="达标时间占比(TIR)"
                 android:singleLine="true"
                 android:ellipsize="end"
-                android:textSize="11sp"
+                android:textSize="10sp"
                 android:textColor="@color/black" />
 
             <TextView
@@ -34,9 +34,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="目标范围：3.9~10mmol/L"
+                android:text="目标范围:3.9~10mmol/L"
                 android:textColor="@color/text_gray_99"
-                android:textSize="10sp" />
+                android:textSize="8sp" />
 
 
             <LinearLayout
@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:text="目标：≥70%"
+                    android:text="目标:≥70%"
                     android:textColor="@color/text_gray_99" />
 
                 <ImageView
@@ -112,14 +112,14 @@
                 android:singleLine="true"
                 android:text="@string/less_39"
                 android:textColor="@color/black"
-                android:textSize="11sp" />
+                android:textSize="10sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="目标范围：3.9~10mmol/L"
-                android:textSize="10sp"
+                android:text="目标范围:3.9~10mmol/L"
+                android:textSize="8sp"
                 android:visibility="invisible"
                 android:textColor="@color/text_gray_99" />
 
@@ -198,14 +198,14 @@
                 android:singleLine="true"
                 android:text="@string/less_139"
                 android:textColor="@color/black"
-                android:textSize="11sp" />
+                android:textSize="10sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="目标范围：3.9~10mmol/L"
-                android:textSize="10sp"
+                android:text="目标范围:3.9~10mmol/L"
+                android:textSize="8sp"
                 android:visibility="invisible"
                 android:textColor="@color/text_gray_99" />
 
@@ -248,7 +248,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:text="目标：尽量小"
+                    android:text="目标:尽量小"
                     android:textColor="@color/text_gray_99" />
 
                 <ImageView

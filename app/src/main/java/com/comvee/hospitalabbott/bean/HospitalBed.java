@@ -19,8 +19,8 @@ public class HospitalBed implements MultiItemEntity, Serializable {
     private String memberId;
     private String memberName;
 
-    private String btTxt;//体质类型
-    private String diabetesTxt;//糖尿病类型
+    private String diabetesTxt;// 1型  2型  病类型
+    private String btTxt;//  体弱  妊娠  体质类型
 
     //监测方案
     private String smbgScheme;

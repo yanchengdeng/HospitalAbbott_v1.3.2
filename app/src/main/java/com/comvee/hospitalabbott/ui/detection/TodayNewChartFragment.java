@@ -73,8 +73,9 @@ public class TodayNewChartFragment extends BaseFragment {
     private boolean isValueFor139 = false;
     private float triValue,middleValue,lastValue;//如果 这三个比较值用数值表示  则这三个数值依次为
 
+    private boolean isRenShen;//是否是妊娠    目标小于
 
-    @Override
+   @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         hospitalBed = (HospitalBed) getArguments().getSerializable(TestBloodNewActivity.MEMBER_BEAN);
@@ -95,6 +96,7 @@ public class TodayNewChartFragment extends BaseFragment {
         if (hospitalBed == null) {
             return;
         }
+
         chart = view.findViewById(R.id.bubbleChart);
         tvBloodAvg = view.findViewById(R.id.tv_avg_num);
         tvstandardVal = view.findViewById(R.id.tv_avg_standardVal);
@@ -167,6 +169,8 @@ public class TodayNewChartFragment extends BaseFragment {
     }
 
     private void initBloodParams(View view) {
+
+
 
         //TODO  为了针对需求会根据 体弱 等参数 来显示数据标准  ，动态生成view 添加至底部
         //只有 2 型  1型 对应 四个参数指标      其他对应三个指标
@@ -241,6 +245,13 @@ public class TodayNewChartFragment extends BaseFragment {
                 }
             });
         } else {
+            if (!TextUtils.isEmpty(hospitalBed.getBtTxt())){
+                if (hospitalBed.getBtTxt().equals("妊娠")){
+                    isRenShen = true;
+                }
+            }
+
+
             bootomView = LayoutInflater.from(getActivity()).inflate(R.layout.layou_bottom_blood_params_big_three, null);
             isValueFor139 = true;
             tvLess39 = bootomView.findViewById(R.id.tv_lessthan_39_tir);
@@ -293,7 +304,7 @@ public class TodayNewChartFragment extends BaseFragment {
                     lastValue = 10;
                     tvTirTarget.setText("目标≥85%");
                     tvLess39Target.setText("目标<4%");
-                    tvLess139Target.setText("目标≥10%");
+                    tvLess139Target.setText("目标<10%");
                     tvTirTittle.setText("目标范围：3.5~7.8mmol/L");
                     tvLess39Tittle.setText("<3.5mmol/L的时间占比");
                     tvLess139Tittle.setText(">7.8mmol/L的时间占比");
@@ -304,7 +315,7 @@ public class TodayNewChartFragment extends BaseFragment {
                     lastValue = 25;
                     tvTirTarget.setText("目标≥70%");
                     tvLess39Target.setText("目标<4%");
-                    tvLess139Target.setText("目标≥25%");
+                    tvLess139Target.setText("目标<25%");
                     tvTirTittle.setText("目标范围：3.5~7.8mmol/L");
                     tvLess39Tittle.setText("<3.5mmol/L的时间占比");
                     tvLess139Tittle.setText(">7.8mmol/L的时间占比");
@@ -772,13 +783,24 @@ public class TodayNewChartFragment extends BaseFragment {
 
 
                             if (isValueFor139) {
-                                if (bloodSugarChatInfo.awiTimeRateOf13_9 >= lastValue) {
-                                    tvLess139.setTextColor(getResources().getColor(R.color.blue));
-                                    tvLessUnit139.setTextColor(getResources().getColor(R.color.blue));
-                                } else {
-                                    tvLess139.setTextColor(getResources().getColor(R.color.red));
-                                    tvLessUnit139.setTextColor(getResources().getColor(R.color.red));
+                                if (isRenShen){
+                                    if (bloodSugarChatInfo.awiTimeRateOf13_9 < lastValue) {
+                                        tvLess139.setTextColor(getResources().getColor(R.color.blue));
+                                        tvLessUnit139.setTextColor(getResources().getColor(R.color.blue));
+                                    } else {
+                                        tvLess139.setTextColor(getResources().getColor(R.color.red));
+                                        tvLessUnit139.setTextColor(getResources().getColor(R.color.red));
+                                    }
+                                }else{
+                                    if (bloodSugarChatInfo.awiTimeRateOf13_9 >= lastValue) {
+                                        tvLess139.setTextColor(getResources().getColor(R.color.blue));
+                                        tvLessUnit139.setTextColor(getResources().getColor(R.color.blue));
+                                    } else {
+                                        tvLess139.setTextColor(getResources().getColor(R.color.red));
+                                        tvLessUnit139.setTextColor(getResources().getColor(R.color.red));
+                                    }
                                 }
+
                             }else{
                                 tvLess139.setTextColor(getResources().getColor(R.color.red));
                                 tvLessUnit139.setTextColor(getResources().getColor(R.color.red));

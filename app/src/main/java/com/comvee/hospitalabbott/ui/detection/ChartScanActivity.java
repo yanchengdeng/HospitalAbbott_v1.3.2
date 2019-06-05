@@ -83,11 +83,11 @@ public class ChartScanActivity extends BaseRxActivity {
                     "血糖低于3.9mmol/L的时间占比不超过1%\n" +
                     "血糖低于13.9mmol/L的时间占比不小于90%",
 
-            "血糖在3.5-7.8mmol/L的时间占比不小于70%\n" +
+            "血糖在3.5-7.8mmol/L的时间占比不小于85%\n" +
                     "血糖低于3.5mmol/L的时间占比不超过4%\n" +
                     "血糖高于7.8mmol/L的时间占比不超过于10%",
 
-            "血糖在3.5-7.8mmol/L的时间占比不小于85%\n" +
+            "血糖在3.5-7.8mmol/L的时间占比不小于70%\n" +
                     "血糖低于3.5mmol/L的时间占比不超过4%\n" +
                     "血糖高于7.8mmol/L的时间占比不超过于25%"
     };
@@ -111,7 +111,11 @@ public class ChartScanActivity extends BaseRxActivity {
             sbTopHistry.append(hospitalBed.getDiabetesTxt());
         }
         if (!TextUtils.isEmpty(hospitalBed.getBtTxt())){
-            sbTopHistry.append("(").append(hospitalBed.getBtTxt()).append(")");
+            sbTopHistry
+                    .append("(")
+                    .append(hospitalBed.getBtTxt())
+                    .append(")")
+            ;
         }
 
         ((TextView)findViewById(R.id.top_history)).setText(sbTopHistry.toString());
