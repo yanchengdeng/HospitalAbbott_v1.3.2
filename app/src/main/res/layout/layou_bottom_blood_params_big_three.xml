@@ -118,9 +118,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="目标范围:3.9~10mmol/L"
+                android:text=" "
                 android:textSize="8sp"
-                android:visibility="invisible"
                 android:textColor="@color/text_gray_99" />
 
 
@@ -204,9 +203,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="目标范围:3.9~10mmol/L"
+                android:text=" "
                 android:textSize="8sp"
-                android:visibility="invisible"
                 android:textColor="@color/text_gray_99" />
 
 

@@ -165,6 +165,10 @@ public class DynamicChartFragment extends BaseFragment {
         if (!TextUtils.isEmpty(hospitalBed.getDiabetesTxt()) && (hospitalBed.getDiabetesTxt().endsWith("1型") || hospitalBed.getDiabetesTxt().endsWith("2型")) && TextUtils.isEmpty(hospitalBed.getBtTxt())){
             bootomView = LayoutInflater.from(getActivity()).inflate(R.layout.layou_bottom_blood_params_big,null);
             isValueFor139 = false;
+            middleValue = 1;
+            triValue = 70;
+            lastValue=90;
+
             tvLessTir = bootomView.findViewById(R.id.tv_avg_tir);
             tvLess39 = bootomView.findViewById(R.id.tv_lessthan_39_tir);
             tvLess40 = bootomView.findViewById(R.id.tv_lessthan_4_tir);
@@ -284,23 +288,23 @@ public class DynamicChartFragment extends BaseFragment {
                     tvLess139Target.setText("目标≥90%");
                 }else if ( hospitalBed.getDiabetesTxt().equals("1型") && hospitalBed.getBtTxt().equals("妊娠")){
                     //1型    妊娠
-                    triValue = 85;
-                    middleValue = 4;
-                    lastValue = 10;
-                    tvTirTarget.setText("目标≥85%");
-                    tvLess39Target.setText("目标<4%");
-                    tvLess139Target.setText("目标<10%");
-                    tvTirTittle.setText("目标范围：3.5~7.8mmol/L");
-                    tvLess39Tittle.setText("<3.5mmol/L的时间占比");
-                    tvLess139Tittle.setText(">7.8mmol/L的时间占比");
-                }else{
-                    //2型  妊娠
                     triValue = 70;
                     middleValue = 4;
                     lastValue = 25;
                     tvTirTarget.setText("目标≥70%");
                     tvLess39Target.setText("目标<4%");
                     tvLess139Target.setText("目标<25%");
+                    tvTirTittle.setText("目标范围：3.5~7.8mmol/L");
+                    tvLess39Tittle.setText("<3.5mmol/L的时间占比");
+                    tvLess139Tittle.setText(">7.8mmol/L的时间占比");
+                }else{
+                    //2型  妊娠
+                    triValue = 85;
+                    middleValue = 4;
+                    lastValue = 10;
+                    tvTirTarget.setText("目标≥85%");
+                    tvLess39Target.setText("目标<4%");
+                    tvLess139Target.setText("目标<10%");
                     tvTirTittle.setText("目标范围：3.5~7.8mmol/L");
                     tvLess39Tittle.setText("<3.5mmol/L的时间占比");
                     tvLess139Tittle.setText(">7.8mmol/L的时间占比");

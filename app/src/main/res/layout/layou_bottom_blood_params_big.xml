@@ -119,7 +119,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="目标范围:3.9~10mmol/L"
                 android:visibility="invisible"
-                android:textSize="4sp"
+                android:textSize="8sp"
                 android:textColor="@color/text_gray_99" />
 
 
